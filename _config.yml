@@ -1,2 +1,3 @@
-remote_theme: ngzhio/jekyll-theme-hamilton
+# remote_theme: ngzhio/jekyll-theme-hamilton
+theme: academic-jekyll-theme
 

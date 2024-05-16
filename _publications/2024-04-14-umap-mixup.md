@@ -23,5 +23,3 @@ technique known as uniform manifold approximation and projection. Evaluations ac
 UMAP Mixup is competitive with or outperforms other Mixup variants, show promise for its potential as an effective tool 
 for enhancing the generalization performance of deep learning models.
 </details>
-
-[Link to paper](http://yellaham.github.io/files/2024-04-14-umap-mixup.pdf)

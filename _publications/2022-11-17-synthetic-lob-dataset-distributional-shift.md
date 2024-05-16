@@ -22,5 +22,3 @@ shift benchmarking. Using the proposed synthetic dataset, we provide a holistic 
 of three different state-of-the-art forecasting methods. Our results reflect the need for increased researcher efforts 
 to develop algorithms with robustness to distributional shifts in high-frequency time series data.
 </details>
-
-[Link to paper](http://yellaham.github.io/files/2022-11-17-synthetic-lob-dataset-distributional-shift.pdf)

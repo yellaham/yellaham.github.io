@@ -24,5 +24,3 @@ output of the GAN discriminator in a forward pass. Numerical results on both syn
 to validate the performance of the algorithm in comparison to classical change point detection benchmarks, standard 
 GAN-based neural SDEs, and other state-of-the-art deep generative models for time series data
 </details>
-
-[Link to paper](http://yellaham.github.io/files/2024-04-14-neural-sde-changepoints.pdf)

@@ -27,5 +27,3 @@ series generation and augmentation schemes. To validate the effectiveness of our
 data as a means for data augmentation to improve the performance of recurrent neural network models on several 
 forecasting tasks.
 </details>
-
-[Link to paper](http://yellaham.github.io/files/2022-11-02-styletime-style-transfer-time-series.pdf)

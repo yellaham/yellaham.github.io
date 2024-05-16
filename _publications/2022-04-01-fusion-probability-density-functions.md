@@ -31,5 +31,3 @@ approaches. Our original contributions include new fusion rules, axioms, and axi
 characterizations; a new formulation of supra-Bayesian fusion in terms of finite-dimensional parametrizations; and a 
 study of supra-Bayesian fusion of posterior pdfs for linear Gaussian models.
 </details>
-
-[Link to paper](http://yellaham.github.io/files/2022-04-01-fusion-probability-density-functions.pdf)

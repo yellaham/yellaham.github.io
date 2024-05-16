@@ -26,5 +26,3 @@ was also applied to real data related to a financial network. Converged Markov c
 elements of the network attest to the method's validity, and plots illustrating posterior distributions of the 
 predicted data against the observed data indicate promising inference for real data applications.
 </details>
-
-[Link to paper](http://yellaham.github.io/files/2022-01-01-graphical-network-topology-estimation-autoregressive-gibbs.pdf)

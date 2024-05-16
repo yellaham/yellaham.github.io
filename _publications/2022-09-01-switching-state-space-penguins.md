@@ -27,5 +27,3 @@ in reproductive success. We apply these methods to extract demographic informati
 abundance in gentoo and Adélie penguins in Antarctica. Our method is broadly applicable to time series of abundance and 
 provides a feasible means of fitting age-structured models without marking individuals.
 </details>
-
-[Link to paper](http://yellaham.github.io/files/2022-09-01-switching-state-space-penguins.pdf)

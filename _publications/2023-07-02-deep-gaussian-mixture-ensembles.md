@@ -24,5 +24,3 @@ allows for learning of mixture weights, which is not commonly done in ensembles.
 that DGMEs outperform state-of-the-art uncertainty quantifying deep learning models in handling complex predictive 
 densities.
 </details>
-
-[Link to paper](http://yellaham.github.io/files/2023-07-02-deep-gaussian-mixture-ensembles.pdf)

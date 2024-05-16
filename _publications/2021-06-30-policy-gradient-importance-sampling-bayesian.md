@@ -24,5 +24,3 @@ are employed to learn a locally optimal policy that maximizes the expected value
 simulations on two different examples demonstrate promising results for the future application of the proposed method 
 to complex Bayesian models.
 </details>
-
-[Link to paper](http://yellaham.github.io/files/2021-06-30-policy-gradient-importance-sampling-bayesian.pdf)

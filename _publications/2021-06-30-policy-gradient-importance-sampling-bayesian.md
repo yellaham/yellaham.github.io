@@ -8,7 +8,7 @@ venue: 'IEEE Transactions on Signal Processing'
 volume: '69'
 pages: '4245-4256'
 year: 2021
-authors: 'Yousef El-Laham, Mónica F Bugallo'
+authors: '<b>Yousef El-Laham</b>, Mónica F Bugallo'
 publisher: 'IEEE'
 ---
 

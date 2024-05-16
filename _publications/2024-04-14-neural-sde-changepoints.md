@@ -5,7 +5,7 @@ permalink: /publication/2024-04-14-neural-sde-changepoints
 paperurl: 'http://yellaham.github.io/files/2024-04-14-neural-sde-changepoints.pdf'
 date: 2024-04-14
 venue: '2024 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)' 
-authors: 'Zhongchang Sun, Yousef El-Laham, Svitlana Vyetrenko'
+authors: 'Zhongchang Sun, <b>Yousef El-Laham</b>, Svitlana Vyetrenko'
 pages: '6965-6969'
 year: 2024
 publisher: 'IEEE'

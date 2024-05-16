@@ -5,7 +5,7 @@ permalink: /publication/2024-04-14-umap-mixup
 paperurl: 'http://yellaham.github.io/files/2024-04-14-umap-mixup.pdf'
 date: 2024-04-14
 venue: '2024 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)'
-authors: '<b> Yousef El-Laham </b>, Elizabeth Fons, Dillon Daudert, Svitlana Vyetrenko'
+authors: '<b>Yousef El-Laham</b>, Elizabeth Fons, Dillon Daudert, Svitlana Vyetrenko'
 pages: "7040-7044"
 year: 2024
 publisher: 'IEEE'

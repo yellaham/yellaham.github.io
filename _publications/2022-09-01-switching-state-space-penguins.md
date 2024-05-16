@@ -5,6 +5,7 @@ permalink: /publication/2022-09-01-switching-state-space-penguins
 paperurl: 'http://yellaham.github.io/files/2022-09-01-switching-state-space-penguins.pdf'
 date: 2022-09-01
 volume: 29
+authors: <b>Yousef El-Laham</b>, Mónica Bugallo, Heather J Lynch
 pages: "607-624"
 year: 2022
 venue: 'Environmental and Ecological Statistics'

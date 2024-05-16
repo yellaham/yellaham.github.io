@@ -5,7 +5,7 @@ permalink: /publication/2022-11-02-styletime-style-transfer-time-series
 paperurl: 'http://yellaham.github.io/files/2022-11-02-styletime-style-transfer-time-series.pdf'
 date: 2022-11-02
 venue: 'Proceedings of the Third ACM International Conference on AI in Finance'
-authors: 'Yousef El-Laham, Svitlana Vyetrenko'
+authors: '<b>Yousef El-Laham</b>, Svitlana Vyetrenko'
 pages: '489-496'
 year: 2022
 ---

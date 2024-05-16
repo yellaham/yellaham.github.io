@@ -9,7 +9,7 @@ volume: '110'
 issue: '4'
 pages: '404-453'
 year: 2022
-authors: 'Günther Koliander, Yousef El-Laham, Petar M Djurić, Franz Hlawatsch'
+authors: 'Günther Koliander, <b>Yousef El-Laham</b>, Petar M Djurić, Franz Hlawatsch'
 publisher: 'IEEE'
 ---
 

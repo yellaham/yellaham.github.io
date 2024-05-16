@@ -11,7 +11,9 @@ year: 2023
 publisher: 'PMLR'
 ---
 
-## Abstract
+<details>
+<summary>Details</summary>
+<br>
 This work introduces a novel probabilistic deep learning technique called deep Gaussian mixture ensembles (DGMEs),
 which enables accurate quantification of both epistemic and aleatoric uncertainty. By assuming the data generating 
 process follows that of a Gaussian mixture, DGMEs are capable of approximating complex probability distributions, 
@@ -23,3 +25,5 @@ that DGMEs outperform state-of-the-art uncertainty quantifying deep learning mod
 densities.
 
 [Link to paper](http://yellaham.github.io/files/2023-07-02-deep-gaussian-mixture-ensembles.pdf)
+</details>
+

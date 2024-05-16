@@ -11,7 +11,9 @@ year: 2024
 publisher: 'IEEE'
 ---
 
-## Abstract
+<details>
+<summary>Abstract</summary>
+<br>
 Stochastic differential equations (SDEs) have been widely used to model real world random phenomena. 
 Existing works mainly focus on the case where the time series is modeled by a single SDE, which might be restrictive 
 for modeling time series with distributional shift. In this work, we propose a change point detection algorithm for
@@ -21,5 +23,6 @@ learned under the framework of generative adversarial networks (GANs) and the ch
 output of the GAN discriminator in a forward pass. Numerical results on both synthetic and real datasets are provided 
 to validate the performance of the algorithm in comparison to classical change point detection benchmarks, standard 
 GAN-based neural SDEs, and other state-of-the-art deep generative models for time series data
+</details>
 
 [Link to paper](http://yellaham.github.io/files/2024-04-14-neural-sde-changepoints.pdf)

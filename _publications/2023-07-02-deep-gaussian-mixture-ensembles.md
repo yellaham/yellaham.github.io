@@ -1,5 +1,5 @@
 ---
-title: "Deep Gaussian mixture ensembles"
+title: "Deep Gaussian Mixture Ensembles"
 collection: publications
 permalink: /publication/2023-07-02-deep-gaussian-mixture-ensembles
 date: 2023-07-02

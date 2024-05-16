@@ -11,7 +11,7 @@ author_profile: true
 
 {% assign postsByYear = site.publications | group_by_exp: "item", "item.date | date: '%Y'" %}
 {% for year in postsByYear reversed %}
-  <h2 class="archive__subtitle">{{ year.name }}</h2>
+  <h1 class="archive__subtitle">{{ year.name }}</h1>
   {% for post in year.items %}
     {% include archive-single.html %}
   {% endfor %}

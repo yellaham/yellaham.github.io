@@ -7,7 +7,7 @@ venue: 'Signal Processing'
 volume: '190'
 pages: '108303'
 year: 2022
-authors: 'Marija Iloska, Yousef El-Laham, Mónica F Bugallo'
+authors: 'Marija Iloska, *Yousef El-Laham*, Mónica F Bugallo'
 publisher: 'Elsevier'
 ---
 

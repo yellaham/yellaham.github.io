@@ -2,9 +2,9 @@
 title: "Deep Gaussian Mixture Ensembles"
 collection: publications
 permalink: /publication/2023-07-02-deep-gaussian-mixture-ensembles
+paperurl: 'http://yellaham.github.io/files/2023-07-02-deep-gaussian-mixture-ensembles.pdf'
 date: 2023-07-02
 venue: 'Uncertainty in Artificial Intelligence'
-paperurl: 'http://yellaham.github.io/files/2023-07-02-deep-gaussian-mixture-ensembles.pdf'
 authors: 'Yousef El-Laham, Niccolò Dalmasso, Elizabeth Fons, Svitlana Vyetrenko'
 pages: '549-559'
 year: 2023

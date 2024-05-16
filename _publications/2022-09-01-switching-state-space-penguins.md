@@ -2,12 +2,12 @@
 title: "Switching State-Space Models for Modeling Penguin Population Dynamics"
 collection: publications
 permalink: /publication/2022-09-01-switching-state-space-penguins
+paperurl: 'http://yellaham.github.io/files/2022-09-01-switching-state-space-penguins.pdf'
 date: 2022-09-01
 volume: 29
 pages: "607-624"
 year: 2022
 venue: 'Environmental and Ecological Statistics'
-paperurl: 'http://yellaham.github.io/files/2022-09-01-switching-state-space-penguins.pdf'
 ---
 
 <details>

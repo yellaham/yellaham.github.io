@@ -2,6 +2,7 @@
 title: "Fusion of Probability Density Functions"
 collection: publications
 permalink: /publication/2022-04-01-fusion-probability-density-functions
+paperurl: 'http://yellaham.github.io/files/2022-04-01-fusion-probability-density-functions.pdf'
 date: 2022-04-01
 venue: 'Proceedings of the IEEE'
 volume: '110'

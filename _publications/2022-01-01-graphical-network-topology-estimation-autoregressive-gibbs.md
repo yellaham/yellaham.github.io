@@ -2,6 +2,7 @@
 title: "Graphical Network and Topology Estimation for Autoregressive Models using Gibbs Sampling"
 collection: publications
 permalink: /publication/2022-01-01-graphical-network-topology-estimation-autoregressive-gibbs
+paperurl: 'http://yellaham.github.io/files/2022-01-01-graphical-network-topology-estimation-autoregressive-gibbs.pdf'
 date: 2022-01-01
 venue: 'Signal Processing'
 volume: '190'

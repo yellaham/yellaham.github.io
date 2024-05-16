@@ -2,9 +2,9 @@
 title: "Augment on Manifold: Mixup Regularization with UMAP"
 collection: publications
 permalink: /publication/2024-04-14-umap-mixup
+paperurl: 'http://yellaham.github.io/files/2024-04-14-umap-mixup.pdf'
 date: 2024-04-14
 venue: '2024 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)'
-paperurl: 'http://yellaham.github.io/files/2024-04-14-umap-mixup.pdf'
 authors: 'Yousef El-Laham, Elizabeth Fons, Dillon Daudert, Svitlana Vyetrenko'
 pages: "7040-7044"
 year: 2024

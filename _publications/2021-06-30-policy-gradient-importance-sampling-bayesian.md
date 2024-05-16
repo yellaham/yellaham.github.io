@@ -2,6 +2,7 @@
 title: "Policy Gradient Importance Sampling for Bayesian Inference"
 collection: publications
 permalink: /publication/2021-06-30-policy-gradient-importance-sampling-bayesian
+paperurl: http://yellaham.github.io/files/2021-06-30-policy-gradient-importance-sampling-bayesian.pdf
 date: 2021-06-30
 venue: 'IEEE Transactions on Signal Processing'
 volume: '69'

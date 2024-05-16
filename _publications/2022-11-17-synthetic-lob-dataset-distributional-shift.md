@@ -2,6 +2,7 @@
 title: "A Synthetic Limit Order Book Dataset for Benchmarking Forecasting Algorithms under Distributional Shift"
 collection: publications
 permalink: /publication/2022-11-17-synthetic-lob-dataset-distributional-shift
+paperurl: 'http://yellaham.github.io/files/2022-11-17-synthetic-lob-dataset-distributional-shift.pdf'
 date: 2022-11-17
 venue: 'NeurIPS 2022 Workshop on Distribution Shifts: Connecting Methods and Applications'
 authors: 'Defu Cao, Yousef El-Laham, Loc Trinh, Svitlana Vyetrenko, Yan Liu'

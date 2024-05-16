@@ -1,5 +1,5 @@
 ---
-title: "Switching state-space models for modeling penguin population dynamics"
+title: "Switching State-Space Models for Modeling Penguin Population Dynamics"
 collection: publications
 permalink: /publication/2022-09-01-switching-state-space-penguins
 date: 2022-09-01

@@ -11,7 +11,7 @@ redirect_from:
 I am a Research Lead at JPMorgan Chase & Co., working in the [AI Research](https://www.jpmorgan.com/technology/artificial-intelligence) 
 team. At JPM, my research focuses on deep generative models for time series data as part of the [Synthetic Data](https://www.jpmorgan.com/technology/artificial-intelligence/initiatives/synthetic-data)
 initiative. I also explore robust uncertainty quantification for deep learning methods, with applications to time-series 
-forecasting.
+forecasting and reinforcement learning. 
 
 Previously, I earned my Ph.D. in Electrical Engineering from Stony Brook University, where I was advised by 
 [Monica Bugallo](https://www.ece.stonybrook.edu/~monica/Welcome.html) and co-advised by [Petar Djuric](https://sites.google.com/stonybrook.edu/petardjuric/home). 

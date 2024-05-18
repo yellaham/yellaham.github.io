@@ -1,5 +1,5 @@
 ---
-title: "Robust frequency and phase estimation for three-phase power systems using a bank of Kalman filters"
+title: "Robust Frequency and Phase Estimation for Three-Phase Power Systems using a Bank of Kalman Filters"
 collection: publications
 permalink: /publication/2021-06-08-kalman-filter-bank-three-phase-power-systems
 paperurl: 'http://yellaham.github.io/files/2021-06-08-kalman-filter-bank-three-phase-power-systems.pdf'

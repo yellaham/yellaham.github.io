@@ -1,7 +1,7 @@
 ---
 title: "Variational Neural Stochastic Differential Equations with Change Points"
 collection: publications
-permalink: /publication/2024-04-14-umap-mixup
+permalink: /publication/2025-03-13-variational_change_points
 paperurl: 'https://openreview.net/pdf?id=GEilvtsFNV'
 date: 2025-03-13
 venue: 'Transactions on Machine Learning Research'

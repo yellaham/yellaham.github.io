@@ -31,12 +31,12 @@ course "ESE 531: Statistical Learning and Inference," which covers the foundatio
 
 **Recent News**
 
-**05-01-2025** Our paper titled [LSCD: Lomb-Scargle Conditioned Diffusion for Time series Imputation
+*05-01-2025* Our paper titled [LSCD: Lomb-Scargle Conditioned Diffusion for Time series Imputation
 ](https://www.arxiv.org/pdf/2506.17039) was accepted to ICML 2025! 
 
-**04-30-2025**: Our paper titled [Mixup Regularization: A Probabilistic Perspective](https://arxiv.org/pdf/2502.13825)
+*04-30-2025*: Our paper titled [Mixup Regularization: A Probabilistic Perspective](https://arxiv.org/pdf/2502.13825)
 was accepted to UAI 2025!
 
 *03-13-2025*: Our journal paper titled 
-[Variational Neural Stochastic Differential Equations with Change Points](https://openreview.net/forum?id=GEilvtsFNV)
+[Variational Neural Stochastic Differential Equations with Change Points](https://openreview.net/pdf?id=GEilvtsFNV)
 was accepted to TMLR!

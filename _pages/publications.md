@@ -9,10 +9,11 @@ author_profile: true
   <div class="wordwrap">You can also find my articles on <a href="{{site.author.googlescholar}}">my Google Scholar profile</a>.</div>
 {% endif %}
 
-{% assign postsByYear = site.publications | group_by_exp: "item", "item.date | date: '%Y'" %}
+{% assign sortedPublications = site.publications | sort: 'date' | reverse %}
+{% assign postsByYear = sortedPublications | group_by_exp: "item", "item.date | date: '%Y'" %}
 {% for year in postsByYear reversed %}
   <h1 class="archive__subtitle" style="color: black;">{{ year.name }}</h1>
-  {% for post in year.items | sort: 'date' %}
+  {% for post in year.items %}
     {% include archive-single.html %}
   {% endfor %}
 {% endfor %}

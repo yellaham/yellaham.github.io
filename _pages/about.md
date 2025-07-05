@@ -23,7 +23,7 @@ was accepted to UAI 2025!
 
 *04-06-2025*: Our paper titled [Fusion of Information in Multiple Particle Filtering in the Presence of 
 Unknown Static Parameters](http://yellaham.github.io/files/2025-04-06-pf_fusion_parameters.pdf) was accepted to 
-ICASSP 2025. 
+ICASSP 2025!
 
 *03-13-2025*: Our journal paper titled 
 [Variational Neural Stochastic Differential Equations with Change Points](https://openreview.net/pdf?id=GEilvtsFNV)

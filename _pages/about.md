@@ -29,7 +29,7 @@ ICASSP 2025.
 [Variational Neural Stochastic Differential Equations with Change Points](https://openreview.net/pdf?id=GEilvtsFNV)
 was accepted to TMLR!
 
-# Educational Background
+## Educational Background
 
 Previously, I earned my Ph.D. in Electrical Engineering from Stony Brook University, where I was advised by 
 [Monica Bugallo](https://www.ece.stonybrook.edu/~monica/Welcome.html) and co-advised by [Petar Djuric](https://sites.google.com/stonybrook.edu/petardjuric/home). 

@@ -16,11 +16,13 @@ location: "Stony Brook, NY"
 
 ## Course Materials
 
-### [Lectures](/teaching/ese-531/lectures/)
-Access lecture notes and materials organized by topic and date.
+### Lectures
+- **[Lecture 1: Introduction to Statistical Inference](/teaching/ese-531/lectures/lecture-1/)**
+- **Lecture 2 (coming soon!)
+
 
 ### Homework Assignments
-*Coming soon - homework assignments will be posted here*
+- **Homework 1**  (coming soon!)
 
 ## Course Description
 

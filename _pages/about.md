@@ -47,5 +47,5 @@ supported my research and my interdisciplinary collaboration via the Junior Rese
 
 ## Teaching Activity 
 In my free time, I teach courses at my alma mater, Stony Brook University. Most recently, in Spring 2024, I taught the
-course "ESE 531: Statistical Learning and Inference," which covers the foundations of mathematical statistics 
+course [ESE 531: Statistical Learning and Inference](/teaching/ese-531/), which covers the foundations of mathematical statistics 
 (both classical and Bayesian paradigms).

@@ -8,136 +8,199 @@ toc_label: "Lecture Outline"
 ---
 
 # ESE 531: Statistical Inference and Estimation
-## Lecture 1: Introduction to Statistical Inference
+# Lecture 1: Probability Inequalities and Limit Theorems
 
-**Date:** [Insert Date]  
+**Date:** 01-31-2025  
 **Instructor:** Yousef El-Laham  
 **Stony Brook University**
 
 ---
 
-## Learning Objectives
+## Sample Statistics
 
-By the end of this lecture, students will be able to:
-- Define statistical inference and its key components
-- Distinguish between descriptive and inferential statistics
-- Understand the role of probability in statistical inference
-- Identify different types of statistical problems
+Given data $Y = (X_1, X_2, X_3, \ldots, X_n)$
 
----
+- **Sample mean**: $\bar{X} = \frac{1}{n} \sum_{i=1}^{n} X_i$
 
-## 1. Course Overview
+- **Sample variance**: $S^2 = \frac{1}{n-1} \sum_{i=1}^{n} (X_i - \bar{X})^2$
 
-### What is Statistical Inference?
+### Properties of Sample Mean
 
-Statistical inference is the process of drawing conclusions about a **population** based on information obtained from a **sample**.
+**What is the mean and variance of $\bar{X}$?**
 
-**Key Components:**
-- **Population**: The entire group we want to study
-- **Sample**: A subset of the population that we actually observe
-- **Parameter**: A numerical characteristic of the population (usually unknown)
-- **Statistic**: A numerical characteristic of the sample (calculated from observed data)
+$$E[\bar{X}] = \mu = E[X]$$
 
-### Example
-Suppose we want to estimate the average height of all students at Stony Brook University.
-- **Population**: All students at Stony Brook University
-- **Sample**: 100 randomly selected students
-- **Parameter**: True average height of all students (unknown)
-- **Statistic**: Average height of the 100 sampled students
+$$V[\bar{X}] = \frac{\sigma^2}{n}$$ 
 
----
+where $\sigma^2 = E[(X - \mu)^2]$
 
-## 2. Types of Statistical Problems
+## Probability Inequalities
 
-### 2.1 Estimation
-**Goal**: Estimate unknown population parameters
+### Theorem: Markov's Inequality
 
-**Types:**
-- **Point Estimation**: Provide a single "best guess" for the parameter
-- **Interval Estimation**: Provide a range of plausible values (confidence intervals)
+Let $Y$ be a non-negative random variable. Then for any $h > 0$:
 
-**Example**: Estimate the mean $\mu$ of a normal distribution
+$$P(Y \geq h) \leq \frac{E[Y]}{h}$$
 
-### 2.2 Hypothesis Testing
-**Goal**: Make decisions about population parameters based on sample evidence
+**Proof**: Assume $Y$ is a continuous RV with pdf $p(y)$
 
-**Process**: 
-1. State null and alternative hypotheses
-2. Collect sample data
-3. Calculate test statistic
-4. Make decision (reject or fail to reject null hypothesis)
+$$E[Y] = \int_0^{\infty} y \cdot p(y) dy$$
 
-**Example**: Test whether $H_0: \mu = \mu_0$ vs $H_1: \mu \neq \mu_0$
+$$= \int_0^h y \cdot p(y) dy + \int_h^{\infty} y \cdot p(y) dy$$
 
----
+$$\geq \int_h^{\infty} y \cdot p(y) dy$$
 
-## 3. Mathematical Foundations
+$$\geq \int_h^{\infty} h \cdot p(y) dy = h \int_h^{\infty} p(y) dy$$
 
-### 3.1 Random Variables and Distributions
+$$= h \cdot P(Y \geq h)$$
 
-Let $X_1, X_2, \ldots, X_n$ be a random sample from a population with:
-- Probability density function (pdf): $f(x; \theta)$
-- Unknown parameter: $\theta \in \Theta$
+Therefore: $E[Y] \geq h \cdot P(Y \geq h)$ ⟹ $P(Y \geq h) \leq \frac{E[Y]}{h}$ □
 
-### 3.2 Likelihood Function
+### Theorem: Chebyshev's Inequality
 
-The **likelihood function** is:
+Let $Y$ be a random variable with finite non-zero variance $\sigma^2$. Then for any $k > 0$:
 
-$$L(\theta) = \prod_{i=1}^n f(x_i; \theta)$$
+$$P(|Y - \mu| \geq k\sigma) \leq \frac{1}{k^2}$$
 
-This function measures how likely the observed data is for different values of $\theta$.
+**Proof**:
+$$P(|Y - \mu| \geq k\sigma) = P((Y - \mu)^2 \geq k^2\sigma^2)$$
 
-### 3.3 Key Concepts for Next Lectures
+$$\leq \frac{E[(Y - \mu)^2]}{k^2\sigma^2}$$
 
-1. **Sufficiency**: When does a statistic contain all relevant information about $\theta$?
-2. **Unbiasedness**: When is an estimator "on target" on average?
-3. **Consistency**: Does our estimator get better with more data?
-4. **Efficiency**: Which estimator has the smallest variance?
+$$= \frac{\sigma^2}{k^2\sigma^2} = \frac{1}{k^2}$$ □
 
----
+### Moment Generating Function (MGF)
 
-## 4. Preview: Maximum Likelihood Estimation
+For a random variable $X$:
+$$M_X(t) = E[e^{tX}]$$
 
-One of the most important estimation methods we'll study:
+$$\frac{dM_X(t)}{dt}\bigg|_{t=0} = E[X]$$
 
-**Idea**: Choose the parameter value $\hat{\theta}$ that maximizes the likelihood function.
+### Theorem: Chernoff Bounds
 
-$$\hat{\theta}_{MLE} = \arg\max_{\theta} L(\theta) = \arg\max_{\theta} \prod_{i=1}^n f(x_i; \theta)$$
+Let $Y$ be a RV with MGF $M_Y(t)$ where $|t| < h$. Then for any $a$:
 
-Often easier to work with the **log-likelihood**:
-$$\ell(\theta) = \log L(\theta) = \sum_{i=1}^n \log f(x_i; \theta)$$
+$$P(Y \geq a) \leq e^{-at} M_Y(t)$$ for $0 < t < h$
 
----
+$$P(Y \leq a) \leq e^{-at} M_Y(t)$$ for $-h < t < 0$
 
-## 5. Example: Normal Distribution
+**Proof**:
+$$P(Y \geq a) = P(e^{tY} \geq e^{ta})$$ for $t > 0$
 
-Suppose $X_1, \ldots, X_n \sim N(\mu, \sigma^2)$ where $\mu$ is unknown and $\sigma^2$ is known.
+$$\leq \frac{E[e^{tY}]}{e^{ta}}$$ (by Markov's inequality)
 
-**Likelihood function:**
-$$L(\mu) = \prod_{i=1}^n \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left(-\frac{(x_i-\mu)^2}{2\sigma^2}\right)$$
+$$= e^{-ta} M_Y(t)$$ □
 
-**Log-likelihood:**
-$$\ell(\mu) = -\frac{n}{2}\log(2\pi\sigma^2) - \frac{1}{2\sigma^2}\sum_{i=1}^n(x_i-\mu)^2$$
+## Laws of Large Numbers and Central Limit Theorem
 
-**MLE:** $\hat{\mu} = \bar{X} = \frac{1}{n}\sum_{i=1}^n X_i$
+### WLLN → SLLN → CLT
 
----
+## Weak Law of Large Numbers (WLLN)
 
-## Next Lecture
+### Definition: Convergence in Probability
 
-**Topic**: Sufficiency and the Factorization Theorem
-- Definition of sufficient statistics
-- Factorization theorem
-- Minimal sufficient statistics
+A sequence of random variables $X_1, X_2, \ldots$ converges in probability to a random variable $X$ if for every $\epsilon > 0$:
 
----
+$$\lim_{n \to \infty} P(|X_n - X| < \epsilon) = 0$$
 
-## Reading Assignment
+or equivalently:
 
-- Review probability theory fundamentals
-- Read Chapter 1 of course textbook
-- Practice problems: [To be assigned]
+$$\lim_{n \to \infty} P(|X_n - X| \leq \epsilon) = 1$$
 
----
+Notation: $X_n \xrightarrow{P} X$
 
+### Theorem: Weak Law of Large Numbers
+
+Let $X_1, X_2, \ldots$ be i.i.d. random variables such that $E[X_i] = \mu$ and $V[X_i] = \sigma^2 < \infty$. Define $\bar{X}_n = \frac{1}{n}\sum_{i=1}^{n} X_i$. Then $\bar{X}_n \xrightarrow{P} \mu$.
+
+**Proof**: 
+
+$$P(|\bar{X}_n - \mu| \geq \epsilon) = P((\bar{X}_n - \mu)^2 \geq \epsilon^2)$$
+
+$$\leq \frac{E[(\bar{X}_n - \mu)^2]}{\epsilon^2} = \frac{V[\bar{X}_n]}{\epsilon^2} = \frac{\sigma^2/n}{\epsilon^2} = \frac{\sigma^2}{n\epsilon^2}$$
+
+$$\lim_{n \to \infty} P(|\bar{X}_n - \mu| \geq \epsilon) \leq \lim_{n \to \infty} \frac{\sigma^2}{n\epsilon^2} = 0$$
+
+Therefore: $\lim_{n \to \infty} P(|\bar{X}_n - \mu| \geq \epsilon) = 0$ □
+
+### Definition: Consistent Estimator
+
+Let $\hat{\theta}$ be an estimator of $\theta$ s.t. $\hat{\theta}_n \xrightarrow{P} \theta$. Then $\hat{\theta}$ is said to be a consistent estimator of $\theta$.
+
+**Example**: Consistency of Sample Variance
+
+$$S_n^2 = \frac{1}{n-1} \sum_{i=1}^{n} (X_i - \bar{X})^2$$
+
+$$E[S_n^2] = \sigma^2$$
+
+If $V[S_n^2] \to 0$ as $n \to \infty$, then $S_n^2 \xrightarrow{P} \sigma^2$
+
+### Theorem: Continuous Mapping Theorem
+
+Suppose $X_1, X_2, \ldots$ converge in probability to $X$. Let $h$ be a continuous function. Then:
+$$h(X_n) \xrightarrow{P} h(X)$$
+
+## Strong Law of Large Numbers (SLLN)
+
+### Definition: Almost Sure Convergence
+
+A sequence of RVs $X_1, X_2, \ldots$ converges almost surely to a random variable $X$ if for every $\epsilon > 0$:
+
+$$P\left(\lim_{n \to \infty} |X_n - X| < \epsilon\right) = 1$$
+
+Notation: $X_n \xrightarrow{a.s.} X$
+
+### Theorem: Strong Law of Large Numbers
+
+Let $X_1, X_2, \ldots$ be i.i.d. random variables such that $E[X_i] = \mu$ and $V[X_i] = \sigma^2 < \infty$. Define $\bar{X}_n = \frac{1}{n}\sum_{i=1}^{n} X_i$. Then for every $\epsilon > 0$:
+
+$$P\left(\lim_{n \to \infty} |\bar{X}_n - \mu| < \epsilon\right) = 1$$
+
+or $\bar{X}_n \xrightarrow{a.s.} \mu$
+
+## Central Limit Theorem (CLT)
+
+### Definition: Convergence in Distribution
+
+A sequence of random variables $X_1, X_2, \ldots$ is said to converge in distribution to $X$ if:
+
+$$\lim_{n \to \infty} F_{X_n}(x) = F_X(x)$$
+
+at all points where $F_X$ is continuous.
+
+Notation: $X_n \xrightarrow{d} X$
+
+### Theorem: Central Limit Theorem
+
+Let $X_1, X_2, \ldots$ be a sequence of i.i.d. RVs whose MGFs exist. Let $E[X_i] = \mu$ and $V[X_i] = \sigma^2$. Define $\bar{X}_n = \frac{1}{n}\sum_{i=1}^{n} X_i$. Let $G_n(x)$ denote the CDF of the RV:
+
+$$Z_n = \frac{\sqrt{n}(\bar{X}_n - \mu)}{\sigma}$$
+
+Then for any $x \in \mathbb{R}$:
+
+$$\lim_{n \to \infty} G_n(x) = \int_{-\infty}^{x} \frac{1}{\sqrt{2\pi}} e^{-y^2/2} dy$$
+
+That is: $\sqrt{n}(\bar{X}_n - \mu) \xrightarrow{d} N(0, \sigma^2)$
+
+### Theorem: Slutsky's Theorem
+
+If $X_n \xrightarrow{d} X$ and $Y_n \xrightarrow{P} a$, then:
+- $X_n + Y_n \xrightarrow{d} X + a$
+- $X_n Y_n \xrightarrow{d} aX$
+
+### Theorem: Delta Method
+
+Let $Y_n$ be a sequence of RVs that satisfies:
+$$\sqrt{n}(Y_n - \theta) \xrightarrow{d} N(0, \sigma^2)$$
+
+For a given function $h$ whose derivative exists and we denote it by $h'$. Then:
+$$\sqrt{n}(h(Y_n) - h(\theta)) \xrightarrow{d} N(0, \sigma^2[h'(\theta)]^2)$$
+
+## Additional Notes
+
+- **Point mass/Delta function/Dirac measure**: Random variable s.t. $P(X = \mu) = 1$, otherwise $P(X \neq \mu) = 0$
+
+- **Sifting property**: $\int f(x)\delta_\mu(x)dx = f(\mu)$
+
+- **Discussion**: If $\sigma$ is unknown, we can replace $\sigma$ in the CLT equation with a consistent estimator $\hat{\sigma} = \sqrt{S_n^2}$
 [← Back to Lectures](/teaching/ese-531/lectures/) | [← Back to Course](/teaching/ese-531/)

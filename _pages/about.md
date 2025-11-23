@@ -7,13 +7,16 @@ redirect_from:
   - /about.html
 ---
 
+Currently, I am a Lead Machine Learning Scientist at Optum. 
 
-I am a Research Lead at JPMorgan Chase & Co., working in the [AI Research](https://www.jpmorgan.com/technology/artificial-intelligence) 
-team. At JPM, my research focuses on deep generative models for time series data as part of the [Synthetic Data](https://www.jpmorgan.com/technology/artificial-intelligence/initiatives/synthetic-data)
-initiative. I also explore robust uncertainty quantification for deep learning methods, with applications to time-series 
+Previously, I was an AI Research Lead at JPMorgan Chase & Co., working in the [AI Research](https://www.jpmorgan.com/technology/artificial-intelligence) 
+team. At JPM, my research focused on deep generative models for time series data as part of the [Synthetic Data](https://www.jpmorgan.com/technology/artificial-intelligence/initiatives/synthetic-data)
+initiative. I also explored robust uncertainty quantification for deep learning methods, with applications to time-series 
 forecasting.
  
 ## Recent News
+
+*11-03-2025*: I joined Optum as a Lead Machine Learning Scientist!
 
 *05-01-2025*: Our paper titled [LSCD: Lomb-Scargle Conditioned Diffusion for Time series Imputation
 ](https://www.arxiv.org/pdf/2506.17039) was accepted to ICML 2025! 
@@ -29,7 +32,7 @@ ICASSP 2025!
 [Variational Neural Stochastic Differential Equations with Change Points](https://openreview.net/pdf?id=GEilvtsFNV)
 was accepted to TMLR!
 
-## Educational Background
+## Education
 
 Previously, I earned my Ph.D. in Electrical Engineering from Stony Brook University, where I was advised by 
 [Monica Bugallo](https://www.ece.stonybrook.edu/~monica/Welcome.html) and co-advised by [Petar Djuric](https://sites.google.com/stonybrook.edu/petardjuric/home). 

@@ -1,5 +1,5 @@
 ---
-title: "ESE 531: Statistical Inference and Estimation"
+title: "ESE 531: Statistical Learning and Inference"
 collection: teaching
 type: "Graduate course"
 permalink: /teaching/ese-531
@@ -13,7 +13,6 @@ location: "Stony Brook, NY"
 **Course Title:** ESE 531: Statistical Inference and Estimation  
 **Institution:** Stony Brook University  
 **Department:** Electrical and Computer Engineering  
-**Instructor:** Yousef El-Laham
 
 ## Course Materials
 
@@ -27,16 +26,8 @@ Access lecture notes and materials organized by topic and date.
 
 This graduate-level course covers fundamental concepts in statistical inference and estimation theory, including parameter estimation, hypothesis testing, and Bayesian methods.
 
-## Learning Objectives
-
-- Understand the principles of statistical inference
-- Master techniques for parameter estimation
-- Learn hypothesis testing procedures
-- Apply Bayesian methods to inference problems
-- Develop skills in statistical modeling and analysis
-
 ## Prerequisites
 
-- Probability theory
+- Calculus
 - Linear algebra
-- Mathematical statistics
+- Probability theory

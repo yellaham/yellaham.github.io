@@ -34,25 +34,25 @@ In statistical inference, we begin by observing data from a random sample. Let's
 
 Given data $Y = (X_1, X_2, X_3, \ldots, X_n)$ where each $X_i$ is an independent observation from the same distribution, we can define:
 
-- **Sample mean**: $\overline{X} = \frac{1}{n} \sum_{i=1}^{n} X_i$
+- **Sample mean**: $\bar{X} = \frac{1}{n} \sum_{i=1}^{n} X_i$
 
-- **Sample variance**: $S^2 = \frac{1}{n-1} \sum_{i=1}^{n} (X_i - \overline{X})^2$
+- **Sample variance**: $S^2 = \frac{1}{n-1} \sum_{i=1}^{n} (X_i - \bar{X})^2$
 
 These are our most basic **statistics** - functions of the observed data that help us understand the underlying population.
 
 ### Properties of Sample Mean
 
-A natural question arises: what can we say about the behavior of $\overline{X}$? Since $\overline{X}$ is itself a random variable (being a function of random variables), it has its own distribution.
+A natural question arises: what can we say about the behavior of $\bar{X}$? Since $\bar{X}$ is itself a random variable (being a function of random variables), it has its own distribution.
 
-**What is the mean and variance of $\overline{X}$?**
+**What is the mean and variance of $\bar{X}$?**
 
-$$E[\overline{X}] = \mu = E[X]$$
+$$E[\bar{X}] = \mu = E[X]$$
 
-$$V[\overline{X}] = \frac{\sigma^2}{n}$$ 
+$$V[\bar{X}] = \frac{\sigma^2}{n}$$ 
 
 where $\sigma^2 = E[(X - \mu)^2]$
 
-Notice something important: as $n$ increases, $V[\overline{X}]$ decreases! This tells us that larger samples give us more precise estimates of $\mu$.
+Notice something important: as $n$ increases, $V[\bar{X}]$ decreases! This tells us that larger samples give us more precise estimates of $\mu$.
 
 ## Probability Inequalities
 
@@ -150,24 +150,24 @@ Notation: $X_n \xrightarrow{P} X$
 
 ### Theorem: Weak Law of Large Numbers
 
-Let $X_1, X_2, \ldots$ be i.i.d. random variables such that $E[X_i] = \mu$ and $V[X_i] = \sigma^2 < \infty$. Define $\overline{X}_n = \frac{1}{n}\sum_{i=1}^{n} X_i$. Then $\overline{X}_n \xrightarrow{P} \mu$.
+Let $X_1, X_2, \ldots$ be i.i.d. random variables such that $E[X_i] = \mu$ and $V[X_i] = \sigma^2 < \infty$. Define $\bar{X}_n = \frac{1}{n} \sum_{i=1}^{n} X_i$. Then $\bar{X}_n \xrightarrow{P} \mu$.
 
 **Proof**: 
 
 $$\begin{aligned}
-P(\lvert\overline{X}_n - \mu\rvert \geq \epsilon) &= P((\overline{X}_n - \mu)^2 \geq \epsilon^2) \\
-&\leq \frac{E[(\overline{X}_n - \mu)^2]}{\epsilon^2} \quad \text{(by Markov's inequality)} \\
-&= \frac{V[\overline{X}_n]}{\epsilon^2} \\
+P(\lvert\bar{X}_n - \mu\rvert \geq \epsilon) &= P((\bar{X}_n - \mu)^2 \geq \epsilon^2) \\
+&\leq \frac{E[(\bar{X}_n - \mu)^2]}{\epsilon^2} \quad \text{(by Markov's inequality)} \\
+&= \frac{V[\bar{X}_n]}{\epsilon^2} \\
 &= \frac{\sigma^2/n}{\epsilon^2} \\
 &= \frac{\sigma^2}{n\epsilon^2}
 \end{aligned}$$
 
 Taking the limit:
-$$\lim_{n \to \infty} P(\lvert\overline{X}_n - \mu\rvert \geq \epsilon) \leq \lim_{n \to \infty} \frac{\sigma^2}{n\epsilon^2} = 0$$
+$$\lim_{n \to \infty} P(\lvert\bar{X}_n - \mu\rvert \geq \epsilon) \leq \lim_{n \to \infty} \frac{\sigma^2}{n\epsilon^2} = 0$$
 
-Therefore: $\lim_{n \to \infty} P(\lvert\overline{X}_n - \mu\rvert \geq \epsilon) = 0$ □
+Therefore: $\lim_{n \to \infty} P(\lvert\bar{X}_n - \mu\rvert \geq \epsilon) = 0$ □
 
-This is a beautiful result! It says that no matter how small $\epsilon > 0$ we choose, we can make the probability that $\overline{X}_n$ is more than $\epsilon$ away from $\mu$ arbitrarily small by taking $n$ large enough.
+This is a beautiful result! It says that no matter how small $\epsilon > 0$ we choose, we can make the probability that $\bar{X}_n$ is more than $\epsilon$ away from $\mu$ arbitrarily small by taking $n$ large enough.
 
 ### Definition: Consistent Estimator
 
@@ -175,7 +175,7 @@ Let $\hat{\theta}$ be an estimator of $\theta$ s.t. $\hat{\theta}_n \xrightarrow
 
 **Example**: Consistency of Sample Variance
 
-$$S_n^2 = \frac{1}{n-1} \sum_{i=1}^{n} (X_i - \overline{X})^2$$
+$$S_n^2 = \frac{1}{n-1} \sum_{i=1}^{n} (X_i - \bar{X})^2$$
 
 $$E[S_n^2] = \sigma^2$$
 
@@ -202,17 +202,17 @@ Notation: $X_n \xrightarrow{a.s.} X$
 
 ### Theorem: Strong Law of Large Numbers
 
-Let $X_1, X_2, \ldots$ be i.i.d. random variables such that $E[X_i] = \mu$ and $V[X_i] = \sigma^2 < \infty$. Define $\overline{X}_n = \frac{1}{n}\sum_{i=1}^{n} X_i$. Then for every $\epsilon > 0$:
+Let $X_1, X_2, \ldots$ be i.i.d. random variables such that $E[X_i] = \mu$ and $V[X_i] = \sigma^2 < \infty$. Define $\bar{X}_n = \frac{1}{n}\sum_{i=1}^{n} X_i$. Then for every $\epsilon > 0$:
 
-$$P\left(\lim_{n \to \infty} \lvert\overline{X}_n - \mu\rvert < \epsilon\right) = 1$$
+$$P\left(\lim_{n \to \infty} \lvert\bar{X}_n - \mu\rvert < \epsilon\right) = 1$$
 
-or $\overline{X}_n \xrightarrow{a.s.} \mu$
+or $\bar{X}_n \xrightarrow{a.s.} \mu$
 
 The SLLN tells us that the sample mean doesn't just get close to $\mu$ in probability, but that it actually converges to $\mu$ with probability 1. This is a stronger statement than the WLLN.
 
 ## Central Limit Theorem (CLT)
 
-The Laws of Large Numbers tell us that $\overline{X}_n \to \mu$, but they don't tell us about the **rate** of convergence or the **distribution** of the error $\overline{X}_n - \mu$. The Central Limit Theorem answers both questions.
+The Laws of Large Numbers tell us that $\bar{X}_n \to \mu$, but they don't tell us about the **rate** of convergence or the **distribution** of the error $\bar{X}_n - \mu$. The Central Limit Theorem answers both questions.
 
 ### Definition: Convergence in Distribution
 
@@ -226,15 +226,15 @@ Notation: $X_n \xrightarrow{d} X$
 
 ### Theorem: Central Limit Theorem
 
-Let $X_1, X_2, \ldots$ be a sequence of i.i.d. RVs whose MGFs exist. Let $E[X_i] = \mu$ and $V[X_i] = \sigma^2$. Define $\overline{X}_n = \frac{1}{n}\sum_{i=1}^{n} X_i$. Let $G_n(x)$ denote the CDF of the RV:
+Let $X_1, X_2, \ldots$ be a sequence of i.i.d. RVs whose MGFs exist. Let $E[X_i] = \mu$ and $V[X_i] = \sigma^2$. Define $\bar{X}_n = \frac{1}{n}\sum_{i=1}^{n} X_i$. Let $G_n(x)$ denote the CDF of the RV:
 
-$$Z_n = \frac{\sqrt{n}(\overline{X}_n - \mu)}{\sigma}$$
+$$Z_n = \frac{\sqrt{n}(\bar{X}_n - \mu)}{\sigma}$$
 
 Then for any $x \in \mathbb{R}$:
 
 $$\lim_{n \to \infty} G_n(x) = \int_{-\infty}^{x} \frac{1}{\sqrt{2\pi}} e^{-y^2/2} dy$$
 
-That is: $\sqrt{n}(\overline{X}_n - \mu) \xrightarrow{d} N(0, \sigma^2)$
+That is: $\sqrt{n}(\bar{X}_n - \mu) \xrightarrow{d} N(0, \sigma^2)$
 
 This is remarkable! Regardless of the original distribution of $X_i$, the standardized sample mean converges to a standard normal distribution. This universality is what makes the CLT so powerful in statistics.
 
@@ -254,7 +254,7 @@ $$\sqrt{n}(Y_n - \theta) \xrightarrow{d} N(0, \sigma^2)$$
 For a given function $h$ whose derivative exists and we denote it by $h'$. Then:
 $$\sqrt{n}(h(Y_n) - h(\theta)) \xrightarrow{d} N(0, \sigma^2[h'(\theta)]^2)$$
 
-The Delta Method is incredibly useful when we want to find the asymptotic distribution of transformations of our estimators. For example, if we have a CLT for $\overline{X}_n$, the Delta Method gives us a CLT for $\log(\overline{X}_n)$ or $\overline{X}_n^2$.
+The Delta Method is incredibly useful when we want to find the asymptotic distribution of transformations of our estimators. For example, if we have a CLT for $\bar{X}_n$, the Delta Method gives us a CLT for $\log(\bar{X}_n)$ or $\bar{X}_n^2$.
 
 ## Additional Notes
 

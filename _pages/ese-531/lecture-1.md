@@ -20,11 +20,11 @@ toc_label: "Lecture Outline"
 
 **Definition (Population):** A **population** is the complete collection of all elements (observations, individuals, measurements) that we want to study. The population is characterized by some probability distribution with unknown parameters.
 
-**Definition (Random Sample):** A **random sample** of size $n$ from a population is a collection of $n$ random variables $X_1, X_2, \ldots, X_n$ such that:
+**Definition (Random Sample):** A **random sample** of size $n$ from a population is a collection of $n$ random variables $X\_1, X\_2, \ldots, X\_n$ such that:
 1. Each $X_i$ has the same distribution as the population (identical distribution)
-2. The random variables $X_1, X_2, \ldots, X_n$ are mutually independent
+2. The random variables $X\_1, X\_2, \ldots, X\_n$ are mutually independent
 
-We denote this as $X_1, X_2, \ldots, X_n \stackrel{\text{iid}}{\sim} F$, where $F$ is the population distribution.
+We denote this as $X\_1, X\_2, \ldots, X\_n \stackrel{\text{iid}}{\sim} F$, where $F$ is the population distribution.
 
 **Example:** If we want to study the heights of all college students in the US (population), we might randomly select 100 students and measure their heights. The measurements $X_1, X_2, \ldots, X_{100}$ would form a random sample.
 
@@ -32,7 +32,7 @@ We denote this as $X_1, X_2, \ldots, X_n \stackrel{\text{iid}}{\sim} F$, where $
 
 In statistical inference, we begin by observing data from a random sample. Let's define some fundamental quantities that we'll use throughout the course.
 
-Given data $Y = (X_1, X_2, X_3, \ldots, X_n)$ where each $X_i$ is an independent observation from the same distribution, we can define:
+Given data $Y = (X\_1, X\_2, X\_3, \ldots, X\_n)$ where each $X\_i$ is an independent observation from the same distribution, we can define:
 
 - **Sample mean**: $\bar{X} = \frac{1}{n} \sum_{i=1}^{n} X_i$
 
@@ -146,11 +146,11 @@ or equivalently:
 
 $$\lim_{n \to \infty} P(\lvert X_n - X \rvert \leq \epsilon) = 1$$
 
-Notation: $X_n \xrightarrow{P} X$
+Notation: $X\_n \xrightarrow{P} X$
 
 ### Theorem: Weak Law of Large Numbers
 
-Let $X_1, X_2, \ldots$ be i.i.d. random variables such that $E[X_i] = \mu$ and $V[X_i] = \sigma^2 < \infty$. Define $\bar{X}\_{n} = \frac{1}{n} \sum\_{i=1}^{n} X\_{i}$. Then $\bar{X}_n \xrightarrow{P} \mu$.
+Let $X_1, X_2, \ldots$ be i.i.d. random variables such that $E[X_i] = \mu$ and $V[X_i] = \sigma^2 < \infty$. Define $\bar{X}\_{n} = \frac{1}{n} \sum\_{i=1}^{n} X\_{i}$. Then $\bar{X}\_n \xrightarrow{P} \mu$.
 
 **Proof**: 
 
@@ -165,13 +165,13 @@ P(\lvert\bar{X}_n - \mu\rvert \geq \epsilon) &= P((\bar{X}_n - \mu)^2 \geq \epsi
 Taking the limit:
 $$\lim_{n \to \infty} P(\lvert\bar{X}_n - \mu\rvert \geq \epsilon) \leq \lim_{n \to \infty} \frac{\sigma^2}{n\epsilon^2} = 0$$
 
-Therefore: $\lim_{n \to \infty} P(\lvert\bar{X}_n - \mu\rvert \geq \epsilon) = 0$ □
+Therefore: $\lim_{n \to \infty} P(\lvert\bar{X}\_n - \mu\rvert \geq \epsilon) = 0$ □
 
-This is a beautiful result! It says that no matter how small $\epsilon > 0$ we choose, we can make the probability that $\bar{X}_n$ is more than $\epsilon$ away from $\mu$ arbitrarily small by taking $n$ large enough.
+This is a beautiful result! It says that no matter how small $\epsilon > 0$ we choose, we can make the probability that $\bar{X}\_n$ is more than $\epsilon$ away from $\mu$ arbitrarily small by taking $n$ large enough.
 
 ### Definition: Consistent Estimator
 
-Let $\hat{\theta}$ be an estimator of $\theta$ s.t. $\hat{\theta}_n \xrightarrow{P} \theta$. Then $\hat{\theta}$ is said to be a consistent estimator of $\theta$.
+Let $\hat{\theta}$ be an estimator of $\theta$ s.t. $\hat{\theta}\_n \xrightarrow{P} \theta$. Then $\hat{\theta}$ is said to be a consistent estimator of $\theta$.
 
 **Example**: Consistency of Sample Variance
 
@@ -179,14 +179,14 @@ $$S_n^2 = \frac{1}{n-1} \sum_{i=1}^{n} (X_i - \bar{X})^2$$
 
 $$E[S_n^2] = \sigma^2$$
 
-If $V[S_n^2] \to 0$ as $n \to \infty$, then $S_n^2 \xrightarrow{P} \sigma^2$
+If $V[S\_n^2] \to 0$ as $n \to \infty$, then $S\_n^2 \xrightarrow{P} \sigma^2$
 
 Consistency is a fundamental property we want our estimators to have - it means they get better as we collect more data.
 
 ### Theorem: Continuous Mapping Theorem
 
 Suppose $X_1, X_2, \ldots$ converge in probability to $X$. Let $h$ be a continuous function. Then:
-$$h(X_n) \xrightarrow{P} h(X)$$
+$$h(X\_n) \xrightarrow{P} h(X)$$
 
 ## Strong Law of Large Numbers (SLLN)
 
@@ -198,21 +198,21 @@ A sequence of RVs $X_1, X_2, \ldots$ converges almost surely to a random variabl
 
 $$P\left(\lim_{n \to \infty} \lvert X_n - X \rvert < \epsilon\right) = 1$$
 
-Notation: $X_n \xrightarrow{a.s.} X$
+Notation: $X\_n \xrightarrow{a.s.} X$
 
 ### Theorem: Strong Law of Large Numbers
 
-Let $X_1, X_2, \ldots$ be i.i.d. random variables such that $E[X_i] = \mu$ and $V[X_i] = \sigma^2 < \infty$. Define $\bar{X}_n = \frac{1}{n}\sum_{i=1}^{n} X_i$. Then for every $\epsilon > 0$:
+Let $X_1, X_2, \ldots$ be i.i.d. random variables such that $E[X_i] = \mu$ and $V[X_i] = \sigma^2 < \infty$. Define $\bar{X}\_n = \frac{1}{n}\sum_{i=1}^{n} X\_i$. Then for every $\epsilon > 0$:
 
 $$P\left(\lim_{n \to \infty} \lvert\bar{X}_n - \mu\rvert < \epsilon\right) = 1$$
 
-or $\bar{X}_n \xrightarrow{a.s.} \mu$
+or $\bar{X}\_n \xrightarrow{a.s.} \mu$
 
 The SLLN tells us that the sample mean doesn't just get close to $\mu$ in probability, but that it actually converges to $\mu$ with probability 1. This is a stronger statement than the WLLN.
 
 ## Central Limit Theorem (CLT)
 
-The Laws of Large Numbers tell us that $\bar{X}_n \to \mu$, but they don't tell us about the **rate** of convergence or the **distribution** of the error $\bar{X}_n - \mu$. The Central Limit Theorem answers both questions.
+The Laws of Large Numbers tell us that $\bar{X}\_n \to \mu$, but they don't tell us about the **rate** of convergence or the **distribution** of the error $\bar{X}\_n - \mu$. The Central Limit Theorem answers both questions.
 
 ### Definition: Convergence in Distribution
 
@@ -222,11 +222,11 @@ $$\lim_{n \to \infty} F_{X_n}(x) = F_X(x)$$
 
 at all points where $F_X$ is continuous.
 
-Notation: $X_n \xrightarrow{d} X$
+Notation: $X\_n \xrightarrow{d} X$
 
 ### Theorem: Central Limit Theorem
 
-Let $X_1, X_2, \ldots$ be a sequence of i.i.d. RVs whose MGFs exist. Let $E[X_i] = \mu$ and $V[X_i] = \sigma^2$. Define $\bar{X}_n = \frac{1}{n}\sum_{i=1}^{n} X_i$. Let $G_n(x)$ denote the CDF of the RV:
+Let $X_1, X_2, \ldots$ be a sequence of i.i.d. RVs whose MGFs exist. Let $E[X_i] = \mu$ and $V[X_i] = \sigma^2$. Define $\bar{X}\_n = \frac{1}{n}\sum_{i=1}^{n} X\_i$. Let $G\_n(x)$ denote the CDF of the RV:
 
 $$Z_n = \frac{\sqrt{n}(\bar{X}_n - \mu)}{\sigma}$$
 
@@ -242,19 +242,19 @@ This is remarkable! Regardless of the original distribution of $X_i$, the standa
 
 Sometimes we need to combine convergence results. Slutsky's theorem helps us do this.
 
-If $X_n \xrightarrow{d} X$ and $Y_n \xrightarrow{P} a$, then:
-- $X_n + Y_n \xrightarrow{d} X + a$
-- $X_n Y_n \xrightarrow{d} aX$
+If $X\_n \xrightarrow{d} X$ and $Y\_n \xrightarrow{P} a$, then:
+- $X\_n + Y\_n \xrightarrow{d} X + a$
+- $X\_n Y\_n \xrightarrow{d} aX$
 
 ### Theorem: Delta Method
 
-Let $Y_n$ be a sequence of RVs that satisfies:
+Let $Y\_n$ be a sequence of RVs that satisfies:
 $$\sqrt{n}(Y_n - \theta) \xrightarrow{d} N(0, \sigma^2)$$
 
 For a given function $h$ whose derivative exists and we denote it by $h'$. Then:
 $$\sqrt{n}(h(Y_n) - h(\theta)) \xrightarrow{d} N(0, \sigma^2[h'(\theta)]^2)$$
 
-The Delta Method is incredibly useful when we want to find the asymptotic distribution of transformations of our estimators. For example, if we have a CLT for $\bar{X}_n$, the Delta Method gives us a CLT for $\log(\bar{X}_n)$ or $\bar{X}_n^2$.
+The Delta Method is incredibly useful when we want to find the asymptotic distribution of transformations of our estimators. For example, if we have a CLT for $\bar{X}\_n$, the Delta Method gives us a CLT for $\log(\bar{X}\_n)$ or $\bar{X}\_n^2$.
 
 ## Additional Notes
 
@@ -262,7 +262,7 @@ The Delta Method is incredibly useful when we want to find the asymptotic distri
 
 - **Sifting property**: $\int f(x)\delta_\mu(x)dx = f(\mu)$
 
-- **Discussion**: In practice, $\sigma$ is usually unknown, so we replace it with a consistent estimator $\hat{\sigma} = \sqrt{S_n^2}$. By Slutsky's theorem, this doesn't affect the limiting distribution.
+- **Discussion**: In practice, $\sigma$ is usually unknown, so we replace it with a consistent estimator $\hat{\sigma} = \sqrt{S\_n^2}$. By Slutsky's theorem, this doesn't affect the limiting distribution.
 
 ## Looking Ahead
 

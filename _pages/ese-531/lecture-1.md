@@ -16,11 +16,7 @@ toc_label: "Lecture Outline"
 
 ---
 
-## Fundamental Definitions
-
-Before diving into sample statistics, let's establish some key concepts that form the foundation of statistical inference.
-
-### Population and Random Sample
+## Population and Random Sample
 
 **Definition 1.1 (Population):** A **population** is the complete collection of all elements (observations, individuals, measurements) that we want to study. The population is characterized by some probability distribution with unknown parameters.
 

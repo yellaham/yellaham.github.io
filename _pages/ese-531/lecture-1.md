@@ -83,11 +83,11 @@ Markov's inequality gives us our first probabilistic bound, but it's quite loose
 
 Let $Y$ be a random variable with finite non-zero variance $\sigma^2$. Then for any $k > 0$:
 
-$$P(|Y - \mu| \geq k\sigma) \leq \frac{1}{k^2}$$
+$$P(\lvert Y - \mu \rvert \geq k\sigma) \leq \frac{1}{k^2}$$
 
 **Proof**:
 $$\begin{aligned}
-P(|Y - \mu| \geq k\sigma) &= P((Y - \mu)^2 \geq k^2\sigma^2) \\
+P(\lvert Y - \mu \rvert \geq k\sigma) &= P((Y - \mu)^2 \geq k^2\sigma^2) \\
 &\leq \frac{E[(Y - \mu)^2]}{k^2\sigma^2} \quad \text{(by Markov's inequality)} \\
 &= \frac{\sigma^2}{k^2\sigma^2} \\
 &= \frac{1}{k^2}
@@ -106,7 +106,7 @@ $$\frac{dM_X(t)}{dt}\bigg|_{t=0} = E[X]$$
 
 ### Theorem: Chernoff Bounds
 
-Let $Y$ be a RV with MGF $M_Y(t)$ where $|t| < h$. Then for any $a$:
+Let $Y$ be a RV with MGF $M_Y(t)$ where $\lvert t \rvert < h$. Then for any $a$:
 
 $$P(Y \geq a) \leq e^{-at} M_Y(t)$$ for $0 < t < h$
 
@@ -140,11 +140,11 @@ The WLLN formalizes our intuition that averages of independent observations shou
 
 A sequence of random variables $X_1, X_2, \ldots$ converges in probability to a random variable $X$ if for every $\epsilon > 0$:
 
-$$\lim_{n \to \infty} P(|X_n - X| < \epsilon) = 0$$
+$$\lim_{n \to \infty} P(\lvert X_n - X \rvert < \epsilon) = 0$$
 
 or equivalently:
 
-$$\lim_{n \to \infty} P(|X_n - X| \leq \epsilon) = 1$$
+$$\lim_{n \to \infty} P(\lvert X_n - X \rvert \leq \epsilon) = 1$$
 
 Notation: $X_n \xrightarrow{P} X$
 
@@ -155,7 +155,7 @@ Let $X_1, X_2, \ldots$ be i.i.d. random variables such that $E[X_i] = \mu$ and $
 **Proof**: 
 
 $$\begin{aligned}
-P(|\bar{X}_n - \mu| \geq \epsilon) &= P((\bar{X}_n - \mu)^2 \geq \epsilon^2) \\
+P(\lvert\bar{X}_n - \mu\rvert \geq \epsilon) &= P((\bar{X}_n - \mu)^2 \geq \epsilon^2) \\
 &\leq \frac{E[(\bar{X}_n - \mu)^2]}{\epsilon^2} \quad \text{(by Markov's inequality)} \\
 &= \frac{V[\bar{X}_n]}{\epsilon^2} \\
 &= \frac{\sigma^2/n}{\epsilon^2} \\
@@ -163,9 +163,9 @@ P(|\bar{X}_n - \mu| \geq \epsilon) &= P((\bar{X}_n - \mu)^2 \geq \epsilon^2) \\
 \end{aligned}$$
 
 Taking the limit:
-$$\lim_{n \to \infty} P(|\bar{X}_n - \mu| \geq \epsilon) \leq \lim_{n \to \infty} \frac{\sigma^2}{n\epsilon^2} = 0$$
+$$\lim_{n \to \infty} P(\lvert\bar{X}_n - \mu\rvert \geq \epsilon) \leq \lim_{n \to \infty} \frac{\sigma^2}{n\epsilon^2} = 0$$
 
-Therefore: $\lim_{n \to \infty} P(|\bar{X}_n - \mu| \geq \epsilon) = 0$ □
+Therefore: $\lim_{n \to \infty} P(\lvert\bar{X}_n - \mu\rvert \geq \epsilon) = 0$ □
 
 This is a beautiful result! It says that no matter how small $\epsilon > 0$ we choose, we can make the probability that $\bar{X}_n$ is more than $\epsilon$ away from $\mu$ arbitrarily small by taking $n$ large enough.
 
@@ -196,7 +196,7 @@ While the WLLN tells us about convergence in probability, the SLLN gives us a st
 
 A sequence of RVs $X_1, X_2, \ldots$ converges almost surely to a random variable $X$ if for every $\epsilon > 0$:
 
-$$P\left(\lim_{n \to \infty} |X_n - X| < \epsilon\right) = 1$$
+$$P\left(\lim_{n \to \infty} \lvert X_n - X \rvert < \epsilon\right) = 1$$
 
 Notation: $X_n \xrightarrow{a.s.} X$
 
@@ -204,7 +204,7 @@ Notation: $X_n \xrightarrow{a.s.} X$
 
 Let $X_1, X_2, \ldots$ be i.i.d. random variables such that $E[X_i] = \mu$ and $V[X_i] = \sigma^2 < \infty$. Define $\bar{X}_n = \frac{1}{n}\sum_{i=1}^{n} X_i$. Then for every $\epsilon > 0$:
 
-$$P\left(\lim_{n \to \infty} |\bar{X}_n - \mu| < \epsilon\right) = 1$$
+$$P\left(\lim_{n \to \infty} \lvert\bar{X}_n - \mu\rvert < \epsilon\right) = 1$$
 
 or $\bar{X}_n \xrightarrow{a.s.} \mu$
 
@@ -226,7 +226,7 @@ Notation: $X_n \xrightarrow{d} X$
 
 ### Theorem: Central Limit Theorem
 
-Let $X_1, X_2, \ldots$ be a sequence of i.i.d. RVs whose MGFs exist. Let $E[X_i] = \mu$ and $V[X_i] = \sigma^2$. Define $\bar{X}_n = \frac{1}{n}\sum_{i=1}^{n} X_i $. Let $G_n(x)$ denote the CDF of the RV:
+Let $X_1, X_2, \ldots$ be a sequence of i.i.d. RVs whose MGFs exist. Let $E[X_i] = \mu$ and $V[X_i] = \sigma^2$. Define $\bar{X}_n = \frac{1}{n}\sum_{i=1}^{n} X_i$. Let $G_n(x)$ denote the CDF of the RV:
 
 $$Z_n = \frac{\sqrt{n}(\bar{X}_n - \mu)}{\sigma}$$
 

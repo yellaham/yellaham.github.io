@@ -70,14 +70,14 @@ $$P(Y \geq h) \leq \frac{E[Y]}{h}$$
 
 **Proof**: Assume $Y$ is a continuous RV with pdf $p(y)$
 
-\begin{align}
+$$\begin{aligned}
 E[Y] &= \int_0^{\infty} y \cdot p(y) \, dy \\
 &= \int_0^h y \cdot p(y) \, dy + \int_h^{\infty} y \cdot p(y) \, dy \\
 &\geq \int_h^{\infty} y \cdot p(y) \, dy \\
 &\geq \int_h^{\infty} h \cdot p(y) \, dy \\
 &= h \int_h^{\infty} p(y) \, dy \\
 &= h \cdot P(Y \geq h)
-\end{align}
+\end{aligned}$$
 
 Therefore: $E[Y] \geq h \cdot P(Y \geq h)$ ⟹ $P(Y \geq h) \leq \frac{E[Y]}{h}$ □
 
@@ -90,12 +90,12 @@ Let $Y$ be a random variable with finite non-zero variance $\sigma^2$. Then for 
 $$P(|Y - \mu| \geq k\sigma) \leq \frac{1}{k^2}$$
 
 **Proof**:
-\begin{align}
+$$\begin{aligned}
 P(|Y - \mu| \geq k\sigma) &= P((Y - \mu)^2 \geq k^2\sigma^2) \\
-&\leq \frac{E[(Y - \mu)^2]}{k^2\sigma^2} && \text{(by Markov's inequality)} \\
+&\leq \frac{E[(Y - \mu)^2]}{k^2\sigma^2} \quad \text{(by Markov's inequality)} \\
 &= \frac{\sigma^2}{k^2\sigma^2} \\
 &= \frac{1}{k^2}
-\end{align} □
+\end{aligned}$$ □
 
 Chebyshev's inequality is much more useful than Markov's because it depends on $k^2$ rather than $k$. For instance, the probability that a random variable deviates from its mean by more than 2 standard deviations is at most $1/4 = 0.25$.
 
@@ -117,11 +117,11 @@ $$P(Y \geq a) \leq e^{-at} M_Y(t)$$ for $0 < t < h$
 $$P(Y \leq a) \leq e^{-at} M_Y(t)$$ for $-h < t < 0$
 
 **Proof**:
-\begin{align}
-P(Y \geq a) &= P(e^{tY} \geq e^{ta}) && \text{for } t > 0 \\
-&\leq \frac{E[e^{tY}]}{e^{ta}} && \text{(by Markov's inequality)} \\
+$$\begin{aligned}
+P(Y \geq a) &= P(e^{tY} \geq e^{ta}) \quad \text{for } t > 0 \\
+&\leq \frac{E[e^{tY}]}{e^{ta}} \quad \text{(by Markov's inequality)} \\
 &= e^{-ta} M_Y(t)
-\end{align} □
+\end{aligned}$$ □
 
 Chernoff bounds can be much tighter than Chebyshev's inequality, especially for distributions with well-behaved MGFs. The key is to optimize over the choice of $t$.
 
@@ -158,18 +158,16 @@ Let $X_1, X_2, \ldots$ be i.i.d. random variables such that $E[X_i] = \mu$ and $
 
 **Proof**: 
 
-\begin{align}
+$$\begin{aligned}
 P(|\bar{X}_n - \mu| \geq \epsilon) &= P((\bar{X}_n - \mu)^2 \geq \epsilon^2) \\
-&\leq \frac{E[(\bar{X}_n - \mu)^2]}{\epsilon^2} && \text{(by Markov's inequality)} \\
+&\leq \frac{E[(\bar{X}_n - \mu)^2]}{\epsilon^2} \quad \text{(by Markov's inequality)} \\
 &= \frac{V[\bar{X}_n]}{\epsilon^2} \\
 &= \frac{\sigma^2/n}{\epsilon^2} \\
 &= \frac{\sigma^2}{n\epsilon^2}
-\end{align}
+\end{aligned}$$
 
 Taking the limit:
-\begin{align}
-\lim_{n \to \infty} P(|\bar{X}_n - \mu| \geq \epsilon) &\leq \lim_{n \to \infty} \frac{\sigma^2}{n\epsilon^2} = 0
-\end{align}
+$$\lim_{n \to \infty} P(|\bar{X}_n - \mu| \geq \epsilon) \leq \lim_{n \to \infty} \frac{\sigma^2}{n\epsilon^2} = 0$$
 
 Therefore: $\lim_{n \to \infty} P(|\bar{X}_n - \mu| \geq \epsilon) = 0$ □
 

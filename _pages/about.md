@@ -7,7 +7,7 @@ redirect_from:
   - /about.html
 ---
 
-Currently, I am a Lead Machine Learning & AI Scientist at Optum. 
+Currently, I am a Lead Machine Learning & AI Scientist at Optum AI. 
 
 Previously, I was an AI Research Lead at JPMorgan Chase & Co., working in the [AI Research](https://www.jpmorgan.com/technology/artificial-intelligence) 
 team. At JPM, my research focused on deep generative models for time series data as part of the [Synthetic Data](https://www.jpmorgan.com/technology/artificial-intelligence/initiatives/synthetic-data)
@@ -16,7 +16,7 @@ forecasting.
  
 ## Recent News
 
-*11-03-2025*: I joined Optum as a Lead Machine Learning & AI Scientist!
+*11-03-2025*: I joined Optum AI as a Lead Machine Learning & AI Scientist!
 
 *05-01-2025*: Our paper titled [LSCD: Lomb-Scargle Conditioned Diffusion for Time series Imputation
 ](https://www.arxiv.org/pdf/2506.17039) was accepted to ICML 2025! 

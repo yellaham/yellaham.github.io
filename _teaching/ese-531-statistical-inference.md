@@ -10,7 +10,7 @@ location: "Stony Brook, NY"
 
 ## Course Information
 
-**Course Title:** ESE 531: Statistical Inference and Estimation  
+**Course Title:** ESE 531: Statistical Learning and Inference  
 **Institution:** Stony Brook University  
 **Department:** Electrical and Computer Engineering  
 

@@ -150,7 +150,7 @@ Notation: $X_n \xrightarrow{P} X$
 
 ### Theorem: Weak Law of Large Numbers
 
-Let $X_1, X_2, \ldots$ be i.i.d. random variables such that $E[X_i] = \mu$ and $V[X_i] = \sigma^2 < \infty$. Define $\bar{X}_n = \frac{1}{n} \sum_{i=1}^{n} X_i$. Then $\bar{X}_n \xrightarrow{P} \mu$.
+Let $X_1, X_2, \ldots$ be i.i.d. random variables such that $E[X_i] = \mu$ and $V[X_i] = \sigma^2 < \infty$. Define $\bar{X}_{n} = \frac{1}{n} \sum_{i=1}^{n} X_{i}$. Then $\bar{X}_n \xrightarrow{P} \mu$.
 
 **Proof**: 
 

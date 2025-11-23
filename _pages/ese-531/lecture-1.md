@@ -1,18 +1,12 @@
 ---
 layout: single
-title: "Lecture 1: Introduction to Statistical Inference"
+title: "Lecture 1: Random Samples, Probability Inequalities, Limit Theorems"
 permalink: /teaching/ese-531/lectures/lecture-1/
 author_profile: true
 toc: true
 toc_label: "Lecture Outline"
 ---
 
-# ESE 531: Statistical Inference and Estimation
-# Lecture 1: Random Samples, Probability Inequalities, Limit Theorems
-
-**Date:** 01-31-2025  
-**Instructor:** Yousef El-Laham  
-**Stony Brook University**
 
 ---
 

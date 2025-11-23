@@ -18,9 +18,9 @@ toc_label: "Lecture Outline"
 
 ## Population and Random Sample
 
-**Definition 1.1 (Population):** A **population** is the complete collection of all elements (observations, individuals, measurements) that we want to study. The population is characterized by some probability distribution with unknown parameters.
+**Definition (Population):** A **population** is the complete collection of all elements (observations, individuals, measurements) that we want to study. The population is characterized by some probability distribution with unknown parameters.
 
-**Definition 1.2 (Random Sample):** A **random sample** of size $n$ from a population is a collection of $n$ random variables $X_1, X_2, \ldots, X_n$ such that:
+**Definition (Random Sample):** A **random sample** of size $n$ from a population is a collection of $n$ random variables $X_1, X_2, \ldots, X_n$ such that:
 1. Each $X_i$ has the same distribution as the population (identical distribution)
 2. The random variables $X_1, X_2, \ldots, X_n$ are mutually independent
 
@@ -226,7 +226,7 @@ Notation: $X_n \xrightarrow{d} X$
 
 ### Theorem: Central Limit Theorem
 
-Let $X_1, X_2, \ldots$ be a sequence of i.i.d. RVs whose MGFs exist. Let $E[X_i] = \mu$ and $V[X_i] = \sigma^2$. Define $\bar{X}_n = \frac{1}{n}\sum_{i=1}^{n} X_i$. Let $G_n(x)$ denote the CDF of the RV:
+Let $X_1, X_2, \ldots$ be a sequence of i.i.d. RVs whose MGFs exist. Let $E[X_i] = \mu$ and $V[X_i] = \sigma^2$. Define $\bar{X}_n = \frac{1}{n}\sum_{i=1}^{n} X_i $. Let $G_n(x)$ denote the CDF of the RV:
 
 $$Z_n = \frac{\sqrt{n}(\bar{X}_n - \mu)}{\sigma}$$
 

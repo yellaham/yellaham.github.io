@@ -8,7 +8,7 @@ toc_label: "Lecture Outline"
 ---
 
 # ESE 531: Statistical Inference and Estimation
-# Lecture 1: Probability Inequalities and Limit Theorems
+# Lecture 1: Random Samples, Probability Inequalities, Limit Theorems
 
 **Date:** 01-31-2025  
 **Instructor:** Yousef El-Laham  
@@ -18,13 +18,19 @@ toc_label: "Lecture Outline"
 
 ## Sample Statistics
 
-Given data $Y = (X_1, X_2, X_3, \ldots, X_n)$
+In statistical inference, we begin by observing data from a random sample. Let's define some fundamental quantities that we'll use throughout the course.
+
+Given data $Y = (X_1, X_2, X_3, \ldots, X_n)$ where each $X_i$ is an independent observation from the same distribution, we can define:
 
 - **Sample mean**: $\bar{X} = \frac{1}{n} \sum_{i=1}^{n} X_i$
 
 - **Sample variance**: $S^2 = \frac{1}{n-1} \sum_{i=1}^{n} (X_i - \bar{X})^2$
 
+These are our most basic **statistics** - functions of the observed data that help us understand the underlying population.
+
 ### Properties of Sample Mean
+
+A natural question arises: what can we say about the behavior of $\bar{X}$? Since $\bar{X}$ is itself a random variable (being a function of random variables), it has its own distribution.
 
 **What is the mean and variance of $\bar{X}$?**
 
@@ -34,7 +40,11 @@ $$V[\bar{X}] = \frac{\sigma^2}{n}$$
 
 where $\sigma^2 = E[(X - \mu)^2]$
 
+Notice something important: as $n$ increases, $V[\bar{X}]$ decreases! This tells us that larger samples give us more precise estimates of $\mu$.
+
 ## Probability Inequalities
+
+Before we can establish the fundamental limit theorems of statistics, we need some tools to bound the probability that random variables deviate from their expected values. Probability inequalities provide these bounds and are essential for proving convergence results.
 
 ### Theorem: Markov's Inequality
 
@@ -56,6 +66,8 @@ $$= h \cdot P(Y \geq h)$$
 
 Therefore: $E[Y] \geq h \cdot P(Y \geq h)$ ⟹ $P(Y \geq h) \leq \frac{E[Y]}{h}$ □
 
+Markov's inequality gives us our first probabilistic bound, but it's quite loose. We can do better if we know something about the variance of our random variable.
+
 ### Theorem: Chebyshev's Inequality
 
 Let $Y$ be a random variable with finite non-zero variance $\sigma^2$. Then for any $k > 0$:
@@ -69,7 +81,11 @@ $$\leq \frac{E[(Y - \mu)^2]}{k^2\sigma^2}$$
 
 $$= \frac{\sigma^2}{k^2\sigma^2} = \frac{1}{k^2}$$ □
 
+Chebyshev's inequality is much more useful than Markov's because it depends on $k^2$ rather than $k$. For instance, the probability that a random variable deviates from its mean by more than 2 standard deviations is at most $1/4 = 0.25$.
+
 ### Moment Generating Function (MGF)
+
+To get even tighter bounds, we can use moment generating functions. The MGF is a powerful tool that, when it exists, uniquely characterizes a distribution.
 
 For a random variable $X$:
 $$M_X(t) = E[e^{tX}]$$
@@ -91,11 +107,22 @@ $$\leq \frac{E[e^{tY}]}{e^{ta}}$$ (by Markov's inequality)
 
 $$= e^{-ta} M_Y(t)$$ □
 
+Chernoff bounds can be much tighter than Chebyshev's inequality, especially for distributions with well-behaved MGFs. The key is to optimize over the choice of $t$.
+
 ## Laws of Large Numbers and Central Limit Theorem
 
-### WLLN → SLLN → CLT
+Now we're ready to establish the fundamental limit theorems that justify statistical inference. These theorems tell us what happens to sample statistics as the sample size grows large.
+
+### The Hierarchy: WLLN → SLLN → CLT
+
+We'll study three increasingly strong results:
+1. **Weak Law of Large Numbers (WLLN)**: Sample mean converges in probability to population mean
+2. **Strong Law of Large Numbers (SLLN)**: Sample mean converges almost surely to population mean  
+3. **Central Limit Theorem (CLT)**: Sample mean is approximately normally distributed for large $n$
 
 ## Weak Law of Large Numbers (WLLN)
+
+The WLLN formalizes our intuition that averages of independent observations should converge to the true population mean. But first, we need to be precise about what "converge" means.
 
 ### Definition: Convergence in Probability
 
@@ -123,6 +150,8 @@ $$\lim_{n \to \infty} P(|\bar{X}_n - \mu| \geq \epsilon) \leq \lim_{n \to \infty
 
 Therefore: $\lim_{n \to \infty} P(|\bar{X}_n - \mu| \geq \epsilon) = 0$ □
 
+This is a beautiful result! It says that no matter how small $\epsilon > 0$ we choose, we can make the probability that $\bar{X}_n$ is more than $\epsilon$ away from $\mu$ arbitrarily small by taking $n$ large enough.
+
 ### Definition: Consistent Estimator
 
 Let $\hat{\theta}$ be an estimator of $\theta$ s.t. $\hat{\theta}_n \xrightarrow{P} \theta$. Then $\hat{\theta}$ is said to be a consistent estimator of $\theta$.
@@ -135,12 +164,16 @@ $$E[S_n^2] = \sigma^2$$
 
 If $V[S_n^2] \to 0$ as $n \to \infty$, then $S_n^2 \xrightarrow{P} \sigma^2$
 
+Consistency is a fundamental property we want our estimators to have - it means they get better as we collect more data.
+
 ### Theorem: Continuous Mapping Theorem
 
 Suppose $X_1, X_2, \ldots$ converge in probability to $X$. Let $h$ be a continuous function. Then:
 $$h(X_n) \xrightarrow{P} h(X)$$
 
 ## Strong Law of Large Numbers (SLLN)
+
+While the WLLN tells us about convergence in probability, the SLLN gives us a stronger form of convergence. The difference is subtle but important.
 
 ### Definition: Almost Sure Convergence
 
@@ -158,7 +191,11 @@ $$P\left(\lim_{n \to \infty} |\bar{X}_n - \mu| < \epsilon\right) = 1$$
 
 or $\bar{X}_n \xrightarrow{a.s.} \mu$
 
+The SLLN tells us that the sample mean doesn't just get close to $\mu$ in probability, but that it actually converges to $\mu$ with probability 1. This is a stronger statement than the WLLN.
+
 ## Central Limit Theorem (CLT)
+
+The Laws of Large Numbers tell us that $\bar{X}_n \to \mu$, but they don't tell us about the **rate** of convergence or the **distribution** of the error $\bar{X}_n - \mu$. The Central Limit Theorem answers both questions.
 
 ### Definition: Convergence in Distribution
 
@@ -182,7 +219,11 @@ $$\lim_{n \to \infty} G_n(x) = \int_{-\infty}^{x} \frac{1}{\sqrt{2\pi}} e^{-y^2/
 
 That is: $\sqrt{n}(\bar{X}_n - \mu) \xrightarrow{d} N(0, \sigma^2)$
 
+This is remarkable! Regardless of the original distribution of $X_i$, the standardized sample mean converges to a standard normal distribution. This universality is what makes the CLT so powerful in statistics.
+
 ### Theorem: Slutsky's Theorem
+
+Sometimes we need to combine convergence results. Slutsky's theorem helps us do this.
 
 If $X_n \xrightarrow{d} X$ and $Y_n \xrightarrow{P} a$, then:
 - $X_n + Y_n \xrightarrow{d} X + a$
@@ -196,11 +237,20 @@ $$\sqrt{n}(Y_n - \theta) \xrightarrow{d} N(0, \sigma^2)$$
 For a given function $h$ whose derivative exists and we denote it by $h'$. Then:
 $$\sqrt{n}(h(Y_n) - h(\theta)) \xrightarrow{d} N(0, \sigma^2[h'(\theta)]^2)$$
 
+The Delta Method is incredibly useful when we want to find the asymptotic distribution of transformations of our estimators. For example, if we have a CLT for $\bar{X}_n$, the Delta Method gives us a CLT for $\log(\bar{X}_n)$ or $\bar{X}_n^2$.
+
 ## Additional Notes
 
 - **Point mass/Delta function/Dirac measure**: Random variable s.t. $P(X = \mu) = 1$, otherwise $P(X \neq \mu) = 0$
 
 - **Sifting property**: $\int f(x)\delta_\mu(x)dx = f(\mu)$
 
-- **Discussion**: If $\sigma$ is unknown, we can replace $\sigma$ in the CLT equation with a consistent estimator $\hat{\sigma} = \sqrt{S_n^2}$
-[← Back to Lectures](/teaching/ese-531/lectures/) | [← Back to Course](/teaching/ese-531/)
+- **Discussion**: In practice, $\sigma$ is usually unknown, so we replace it with a consistent estimator $\hat{\sigma} = \sqrt{S_n^2}$. By Slutsky's theorem, this doesn't affect the limiting distribution.
+
+## Looking Ahead
+
+In our next lecture, we'll use these foundational results to study **sufficiency** - the idea that some statistics contain all the relevant information about unknown parameters. This will lead us toward optimal estimation procedures.
+
+---
+
+[← Back to Course](/teaching/ese-531/)

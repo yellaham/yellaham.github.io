@@ -17,7 +17,7 @@ location: "Stony Brook, NY"
 ## Course Materials
 
 ### Lectures
-- **[Lecture 1: Introduction to Statistical Inference](/teaching/ese-531/lectures/lecture-1/)**
+- **[Lecture 1: Random Samples, Probability Inequalities, Limit Theorems](/teaching/ese-531/lectures/lecture-1/)**
 - **Lecture 2 (coming soon!)
 
 

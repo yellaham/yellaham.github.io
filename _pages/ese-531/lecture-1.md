@@ -16,6 +16,22 @@ toc_label: "Lecture Outline"
 
 ---
 
+## Fundamental Definitions
+
+Before diving into sample statistics, let's establish some key concepts that form the foundation of statistical inference.
+
+### Population and Random Sample
+
+**Definition 1.1 (Population):** A **population** is the complete collection of all elements (observations, individuals, measurements) that we want to study. The population is characterized by some probability distribution with unknown parameters.
+
+**Definition 1.2 (Random Sample):** A **random sample** of size $n$ from a population is a collection of $n$ random variables $X_1, X_2, \ldots, X_n$ such that:
+1. Each $X_i$ has the same distribution as the population (identical distribution)
+2. The random variables $X_1, X_2, \ldots, X_n$ are mutually independent
+
+We denote this as $X_1, X_2, \ldots, X_n \stackrel{\text{iid}}{\sim} F$, where $F$ is the population distribution.
+
+**Example:** If we want to study the heights of all college students in the US (population), we might randomly select 100 students and measure their heights. The measurements $X_1, X_2, \ldots, X_{100}$ would form a random sample.
+
 ## Sample Statistics
 
 In statistical inference, we begin by observing data from a random sample. Let's define some fundamental quantities that we'll use throughout the course.
@@ -54,15 +70,14 @@ $$P(Y \geq h) \leq \frac{E[Y]}{h}$$
 
 **Proof**: Assume $Y$ is a continuous RV with pdf $p(y)$
 
-$$E[Y] = \int_0^{\infty} y \cdot p(y) dy$$
-
-$$= \int_0^h y \cdot p(y) dy + \int_h^{\infty} y \cdot p(y) dy$$
-
-$$\geq \int_h^{\infty} y \cdot p(y) dy$$
-
-$$\geq \int_h^{\infty} h \cdot p(y) dy = h \int_h^{\infty} p(y) dy$$
-
-$$= h \cdot P(Y \geq h)$$
+\begin{align}
+E[Y] &= \int_0^{\infty} y \cdot p(y) \, dy \\
+&= \int_0^h y \cdot p(y) \, dy + \int_h^{\infty} y \cdot p(y) \, dy \\
+&\geq \int_h^{\infty} y \cdot p(y) \, dy \\
+&\geq \int_h^{\infty} h \cdot p(y) \, dy \\
+&= h \int_h^{\infty} p(y) \, dy \\
+&= h \cdot P(Y \geq h)
+\end{align}
 
 Therefore: $E[Y] \geq h \cdot P(Y \geq h)$ ⟹ $P(Y \geq h) \leq \frac{E[Y]}{h}$ □
 
@@ -75,11 +90,12 @@ Let $Y$ be a random variable with finite non-zero variance $\sigma^2$. Then for 
 $$P(|Y - \mu| \geq k\sigma) \leq \frac{1}{k^2}$$
 
 **Proof**:
-$$P(|Y - \mu| \geq k\sigma) = P((Y - \mu)^2 \geq k^2\sigma^2)$$
-
-$$\leq \frac{E[(Y - \mu)^2]}{k^2\sigma^2}$$
-
-$$= \frac{\sigma^2}{k^2\sigma^2} = \frac{1}{k^2}$$ □
+\begin{align}
+P(|Y - \mu| \geq k\sigma) &= P((Y - \mu)^2 \geq k^2\sigma^2) \\
+&\leq \frac{E[(Y - \mu)^2]}{k^2\sigma^2} && \text{(by Markov's inequality)} \\
+&= \frac{\sigma^2}{k^2\sigma^2} \\
+&= \frac{1}{k^2}
+\end{align} □
 
 Chebyshev's inequality is much more useful than Markov's because it depends on $k^2$ rather than $k$. For instance, the probability that a random variable deviates from its mean by more than 2 standard deviations is at most $1/4 = 0.25$.
 
@@ -101,11 +117,11 @@ $$P(Y \geq a) \leq e^{-at} M_Y(t)$$ for $0 < t < h$
 $$P(Y \leq a) \leq e^{-at} M_Y(t)$$ for $-h < t < 0$
 
 **Proof**:
-$$P(Y \geq a) = P(e^{tY} \geq e^{ta})$$ for $t > 0$
-
-$$\leq \frac{E[e^{tY}]}{e^{ta}}$$ (by Markov's inequality)
-
-$$= e^{-ta} M_Y(t)$$ □
+\begin{align}
+P(Y \geq a) &= P(e^{tY} \geq e^{ta}) && \text{for } t > 0 \\
+&\leq \frac{E[e^{tY}]}{e^{ta}} && \text{(by Markov's inequality)} \\
+&= e^{-ta} M_Y(t)
+\end{align} □
 
 Chernoff bounds can be much tighter than Chebyshev's inequality, especially for distributions with well-behaved MGFs. The key is to optimize over the choice of $t$.
 
@@ -142,11 +158,18 @@ Let $X_1, X_2, \ldots$ be i.i.d. random variables such that $E[X_i] = \mu$ and $
 
 **Proof**: 
 
-$$P(|\bar{X}_n - \mu| \geq \epsilon) = P((\bar{X}_n - \mu)^2 \geq \epsilon^2)$$
+\begin{align}
+P(|\bar{X}_n - \mu| \geq \epsilon) &= P((\bar{X}_n - \mu)^2 \geq \epsilon^2) \\
+&\leq \frac{E[(\bar{X}_n - \mu)^2]}{\epsilon^2} && \text{(by Markov's inequality)} \\
+&= \frac{V[\bar{X}_n]}{\epsilon^2} \\
+&= \frac{\sigma^2/n}{\epsilon^2} \\
+&= \frac{\sigma^2}{n\epsilon^2}
+\end{align}
 
-$$\leq \frac{E[(\bar{X}_n - \mu)^2]}{\epsilon^2} = \frac{V[\bar{X}_n]}{\epsilon^2} = \frac{\sigma^2/n}{\epsilon^2} = \frac{\sigma^2}{n\epsilon^2}$$
-
-$$\lim_{n \to \infty} P(|\bar{X}_n - \mu| \geq \epsilon) \leq \lim_{n \to \infty} \frac{\sigma^2}{n\epsilon^2} = 0$$
+Taking the limit:
+\begin{align}
+\lim_{n \to \infty} P(|\bar{X}_n - \mu| \geq \epsilon) &\leq \lim_{n \to \infty} \frac{\sigma^2}{n\epsilon^2} = 0
+\end{align}
 
 Therefore: $\lim_{n \to \infty} P(|\bar{X}_n - \mu| \geq \epsilon) = 0$ □
 

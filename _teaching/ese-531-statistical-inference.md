@@ -6,6 +6,7 @@ permalink: /teaching/ese-531
 venue: "Stony Brook University, Department of Electrical and Computer Engineering"
 date: 2024-01-01
 location: "Stony Brook, NY"
+excerpt: "Graduate-level course covering statistical inference and estimation theory, including parameter estimation, hypothesis testing, and Bayesian methods."
 ---
 
 ## Course Materials

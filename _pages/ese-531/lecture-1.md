@@ -12,13 +12,13 @@ toc_label: "Lecture Outline"
 
 ## Population and Random Sample
 
-**Definition (Population):** A **population** is the complete collection of all elements (observations, individuals, measurements) that we want to study. The population is characterized by some probability distribution with unknown parameters.
+> **Definition (Population):** A **population** is the complete collection of all elements (observations, individuals, measurements) that we want to study. The population is characterized by some probability distribution with unknown parameters.
 
-**Definition (Random Sample):** A **random sample** of size $n$ from a population is a collection of $n$ random variables $X\_1, X\_2, \ldots, X\_n$ such that:
-1. Each $X_i$ has the same distribution as the population (identical distribution)
-2. The random variables $X\_1, X\_2, \ldots, X\_n$ are mutually independent
-
-We denote this as $X\_1, X\_2, \ldots, X\_n \stackrel{\text{iid}}{\sim} F$, where $F$ is the population distribution.
+> **Definition (Random Sample):** A **random sample** of size $n$ from a population is a collection of $n$ random variables $X\_1, X\_2, \ldots, X\_n$ such that:
+> 1. Each $X_i$ has the same distribution as the population (identical distribution)
+> 2. The random variables $X\_1, X\_2, \ldots, X\_n$ are mutually independent
+>
+> We denote this as $X\_1, X\_2, \ldots, X\_n \stackrel{\text{iid}}{\sim} F$, where $F$ is the population distribution.
 
 **Example:** If we want to study the heights of all college students in the US (population), we might randomly select 100 students and measure their heights. The measurements $X_1, X_2, \ldots, X_{100}$ would form a random sample.
 
@@ -54,11 +54,14 @@ Before we can establish the fundamental limit theorems of statistics, we need so
 
 ### Theorem: Markov's Inequality
 
-Let $Y$ be a non-negative random variable. Then for any $h > 0$:
+> Let $Y$ be a non-negative random variable. Then for any $h > 0$:
+>
+> $$P(Y \geq h) \leq \frac{E[Y]}{h}$$
 
-$$P(Y \geq h) \leq \frac{E[Y]}{h}$$
+<details>
+<summary><strong>Proof</strong></summary>
 
-**Proof**: Assume $Y$ is a continuous RV with pdf $p(y)$
+Assume $Y$ is a continuous RV with pdf $p(y)$
 
 $$\begin{aligned}
 E[Y] &= \int_0^{\infty} y \cdot p(y) \, dy \\
@@ -71,21 +74,27 @@ E[Y] &= \int_0^{\infty} y \cdot p(y) \, dy \\
 
 Therefore: $E[Y] \geq h \cdot P(Y \geq h)$ ⟹ $P(Y \geq h) \leq \frac{E[Y]}{h}$ □
 
+</details>
+
 Markov's inequality gives us our first probabilistic bound, but it's quite loose. We can do better if we know something about the variance of our random variable.
 
 ### Theorem: Chebyshev's Inequality
 
-Let $Y$ be a random variable with finite non-zero variance $\sigma^2$. Then for any $k > 0$:
+> Let $Y$ be a random variable with finite non-zero variance $\sigma^2$. Then for any $k > 0$:
+>
+> $$P(\lvert Y - \mu \rvert \geq k\sigma) \leq \frac{1}{k^2}$$
 
-$$P(\lvert Y - \mu \rvert \geq k\sigma) \leq \frac{1}{k^2}$$
+<details>
+<summary><strong>Proof</strong></summary>
 
-**Proof**:
 $$\begin{aligned}
 P(\lvert Y - \mu \rvert \geq k\sigma) &= P((Y - \mu)^2 \geq k^2\sigma^2) \\
 &\leq \frac{E[(Y - \mu)^2]}{k^2\sigma^2} \quad \text{(by Markov's inequality)} \\
 &= \frac{\sigma^2}{k^2\sigma^2} \\
 &= \frac{1}{k^2}
 \end{aligned}$$ □
+
+</details>
 
 Chebyshev's inequality is much more useful than Markov's because it depends on $k^2$ rather than $k$. For instance, the probability that a random variable deviates from its mean by more than 2 standard deviations is at most $1/4 = 0.25$.
 
@@ -100,18 +109,22 @@ $$\frac{dM_X(t)}{dt}\bigg|_{t=0} = E[X]$$
 
 ### Theorem: Chernoff Bounds
 
-Let $Y$ be a RV with MGF $M_Y(t)$ where $\lvert t \rvert < h$. Then for any $a$:
+> Let $Y$ be a RV with MGF $M_Y(t)$ where $\lvert t \rvert < h$. Then for any $a$:
+>
+> $$P(Y \geq a) \leq e^{-at} M_Y(t)$$ for $0 < t < h$
+>
+> $$P(Y \leq a) \leq e^{-at} M_Y(t)$$ for $-h < t < 0$
 
-$$P(Y \geq a) \leq e^{-at} M_Y(t)$$ for $0 < t < h$
+<details>
+<summary><strong>Proof</strong></summary>
 
-$$P(Y \leq a) \leq e^{-at} M_Y(t)$$ for $-h < t < 0$
-
-**Proof**:
 $$\begin{aligned}
 P(Y \geq a) &= P(e^{tY} \geq e^{ta}) \quad \text{for } t > 0 \\
 &\leq \frac{E[e^{tY}]}{e^{ta}} \quad \text{(by Markov's inequality)} \\
 &= e^{-ta} M_Y(t)
 \end{aligned}$$ □
+
+</details>
 
 Chernoff bounds can be much tighter than Chebyshev's inequality, especially for distributions with well-behaved MGFs. The key is to optimize over the choice of $t$.
 

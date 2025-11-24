@@ -61,9 +61,9 @@ Before we can establish the fundamental limit theorems of statistics, we need so
 <details>
 <summary><strong>Proof</strong></summary>
 
-Assume $Y$ is a continuous RV with pdf $p(y)$
-
-$$\begin{aligned}
+> Assume $Y$ is a continuous RV with pdf $p(y)$
+>
+> $$\begin{aligned}
 E[Y] &= \int_0^{\infty} y \cdot p(y) \, dy \\
 &= \int_0^h y \cdot p(y) \, dy + \int_h^{\infty} y \cdot p(y) \, dy \\
 &\geq \int_h^{\infty} y \cdot p(y) \, dy \\
@@ -71,8 +71,8 @@ E[Y] &= \int_0^{\infty} y \cdot p(y) \, dy \\
 &= h \int_h^{\infty} p(y) \, dy \\
 &= h \cdot P(Y \geq h)
 \end{aligned}$$
-
-Therefore: $E[Y] \geq h \cdot P(Y \geq h)$ ⟹ $P(Y \geq h) \leq \frac{E[Y]}{h}$ □
+>
+> Therefore: $E[Y] \geq h \cdot P(Y \geq h)$ ⟹ $P(Y \geq h) \leq \frac{E[Y]}{h}$ □
 
 </details>
 
@@ -87,7 +87,7 @@ Markov's inequality gives us our first probabilistic bound, but it's quite loose
 <details>
 <summary><strong>Proof</strong></summary>
 
-$$\begin{aligned}
+> $$\begin{aligned}
 P(\lvert Y - \mu \rvert \geq k\sigma) &= P((Y - \mu)^2 \geq k^2\sigma^2) \\
 &\leq \frac{E[(Y - \mu)^2]}{k^2\sigma^2} \quad \text{(by Markov's inequality)} \\
 &= \frac{\sigma^2}{k^2\sigma^2} \\
@@ -118,7 +118,7 @@ $$\frac{dM_X(t)}{dt}\bigg|_{t=0} = E[X]$$
 <details>
 <summary><strong>Proof</strong></summary>
 
-$$\begin{aligned}
+> $$\begin{aligned}
 P(Y \geq a) &= P(e^{tY} \geq e^{ta}) \quad \text{for } t > 0 \\
 &\leq \frac{E[e^{tY}]}{e^{ta}} \quad \text{(by Markov's inequality)} \\
 &= e^{-ta} M_Y(t)
@@ -145,40 +145,43 @@ The WLLN formalizes our intuition that averages of independent observations shou
 
 ### Definition: Convergence in Probability
 
-A sequence of random variables $X_1, X_2, \ldots$ converges in probability to a random variable $X$ if for every $\epsilon > 0$:
-
-$$\lim_{n \to \infty} P(\lvert X_n - X \rvert < \epsilon) = 0$$
-
-or equivalently:
-
-$$\lim_{n \to \infty} P(\lvert X_n - X \rvert \leq \epsilon) = 1$$
-
-Notation: $X\_n \xrightarrow{P} X$
+> A sequence of random variables $X_1, X_2, \ldots$ converges in probability to a random variable $X$ if for every $\epsilon > 0$:
+>
+> $$\lim_{n \to \infty} P(\lvert X_n - X \rvert < \epsilon) = 0$$
+>
+> or equivalently:
+>
+> $$\lim_{n \to \infty} P(\lvert X_n - X \rvert \leq \epsilon) = 1$$
+>
+> Notation: $X\_n \xrightarrow{P} X$
 
 ### Theorem: Weak Law of Large Numbers
 
-Let $X_1, X_2, \ldots$ be i.i.d. random variables such that $E[X_i] = \mu$ and $V[X_i] = \sigma^2 < \infty$. Define $\bar{X}\_{n} = \frac{1}{n} \sum\_{i=1}^{n} X\_{i}$. Then $\bar{X}\_n \xrightarrow{P} \mu$.
+> Let $X_1, X_2, \ldots$ be i.i.d. random variables such that $E[X_i] = \mu$ and $V[X_i] = \sigma^2 < \infty$. Define $\bar{X}\_{n} = \frac{1}{n} \sum\_{i=1}^{n} X\_{i}$. Then $\bar{X}\_n \xrightarrow{P} \mu$.
 
-**Proof**: 
+<details>
+<summary><strong>Proof</strong></summary>
 
-$$\begin{aligned}
+> $$\begin{aligned}
 P(\lvert\bar{X}_n - \mu\rvert \geq \epsilon) &= P((\bar{X}_n - \mu)^2 \geq \epsilon^2) \\
 &\leq \frac{E[(\bar{X}_n - \mu)^2]}{\epsilon^2} \quad \text{(by Markov's inequality)} \\
 &= \frac{V[\bar{X}_n]}{\epsilon^2} \\
 &= \frac{\sigma^2/n}{\epsilon^2} \\
 &= \frac{\sigma^2}{n\epsilon^2}
 \end{aligned}$$
+>
+> Taking the limit:
+> $$\lim_{n \to \infty} P(\lvert\bar{X}_n - \mu\rvert \geq \epsilon) \leq \lim_{n \to \infty} \frac{\sigma^2}{n\epsilon^2} = 0$$
+>
+> Therefore: $\lim_{n \to \infty} P(\lvert\bar{X}\_n - \mu\rvert \geq \epsilon) = 0$ □
 
-Taking the limit:
-$$\lim_{n \to \infty} P(\lvert\bar{X}_n - \mu\rvert \geq \epsilon) \leq \lim_{n \to \infty} \frac{\sigma^2}{n\epsilon^2} = 0$$
-
-Therefore: $\lim_{n \to \infty} P(\lvert\bar{X}\_n - \mu\rvert \geq \epsilon) = 0$ □
+</details>
 
 This is a beautiful result! It says that no matter how small $\epsilon > 0$ we choose, we can make the probability that $\bar{X}\_n$ is more than $\epsilon$ away from $\mu$ arbitrarily small by taking $n$ large enough.
 
 ### Definition: Consistent Estimator
 
-Let $\hat{\theta}$ be an estimator of $\theta$ s.t. $\hat{\theta}\_n \xrightarrow{P} \theta$. Then $\hat{\theta}$ is said to be a consistent estimator of $\theta$.
+> Let $\hat{\theta}$ be an estimator of $\theta$ s.t. $\hat{\theta}\_n \xrightarrow{P} \theta$. Then $\hat{\theta}$ is said to be a consistent estimator of $\theta$.
 
 **Example**: Consistency of Sample Variance
 
@@ -192,8 +195,8 @@ Consistency is a fundamental property we want our estimators to have - it means 
 
 ### Theorem: Continuous Mapping Theorem
 
-Suppose $X_1, X_2, \ldots$ converge in probability to $X$. Let $h$ be a continuous function. Then:
-$$h(X\_n) \xrightarrow{P} h(X)$$
+> Suppose $X_1, X_2, \ldots$ converge in probability to $X$. Let $h$ be a continuous function. Then:
+> $$h(X\_n) \xrightarrow{P} h(X)$$
 
 ## Strong Law of Large Numbers (SLLN)
 
@@ -201,19 +204,19 @@ While the WLLN tells us about convergence in probability, the SLLN gives us a st
 
 ### Definition: Almost Sure Convergence
 
-A sequence of RVs $X_1, X_2, \ldots$ converges almost surely to a random variable $X$ if for every $\epsilon > 0$:
-
-$$P\left(\lim_{n \to \infty} \lvert X_n - X \rvert < \epsilon\right) = 1$$
-
-Notation: $X\_n \xrightarrow{a.s.} X$
+> A sequence of RVs $X_1, X_2, \ldots$ converges almost surely to a random variable $X$ if for every $\epsilon > 0$:
+>
+> $$P\left(\lim_{n \to \infty} \lvert X_n - X \rvert < \epsilon\right) = 1$$
+>
+> Notation: $X\_n \xrightarrow{a.s.} X$
 
 ### Theorem: Strong Law of Large Numbers
 
-Let $X_1, X_2, \ldots$ be i.i.d. random variables such that $E[X_i] = \mu$ and $V[X_i] = \sigma^2 < \infty$. Define $\bar{X}\_n = \frac{1}{n}\sum_{i=1}^{n} X\_i$. Then for every $\epsilon > 0$:
-
-$$P\left(\lim_{n \to \infty} \lvert\bar{X}_n - \mu\rvert < \epsilon\right) = 1$$
-
-or $\bar{X}\_n \xrightarrow{a.s.} \mu$
+> Let $X_1, X_2, \ldots$ be i.i.d. random variables such that $E[X_i] = \mu$ and $V[X_i] = \sigma^2 < \infty$. Define $\bar{X}\_n = \frac{1}{n}\sum_{i=1}^{n} X\_i$. Then for every $\epsilon > 0$:
+>
+> $$P\left(\lim_{n \to \infty} \lvert\bar{X}_n - \mu\rvert < \epsilon\right) = 1$$
+>
+> or $\bar{X}\_n \xrightarrow{a.s.} \mu$
 
 The SLLN tells us that the sample mean doesn't just get close to $\mu$ in probability, but that it actually converges to $\mu$ with probability 1. This is a stronger statement than the WLLN.
 
@@ -223,25 +226,25 @@ The Laws of Large Numbers tell us that $\bar{X}\_n \to \mu$, but they don't tell
 
 ### Definition: Convergence in Distribution
 
-A sequence of random variables $X_1, X_2, \ldots$ is said to converge in distribution to $X$ if:
-
-$$\lim_{n \to \infty} F_{X_n}(x) = F_X(x)$$
-
-at all points where $F_X$ is continuous.
-
-Notation: $X\_n \xrightarrow{d} X$
+> A sequence of random variables $X_1, X_2, \ldots$ is said to converge in distribution to $X$ if:
+>
+> $$\lim_{n \to \infty} F_{X_n}(x) = F_X(x)$$
+>
+> at all points where $F_X$ is continuous.
+>
+> Notation: $X\_n \xrightarrow{d} X$
 
 ### Theorem: Central Limit Theorem
 
-Let $X_1, X_2, \ldots$ be a sequence of i.i.d. RVs whose MGFs exist. Let $E[X_i] = \mu$ and $V[X_i] = \sigma^2$. Define $\bar{X}\_n = \frac{1}{n}\sum_{i=1}^{n} X\_i$. Let $G\_n(x)$ denote the CDF of the RV:
-
-$$Z_n = \frac{\sqrt{n}(\bar{X}_n - \mu)}{\sigma}$$
-
-Then for any $x \in \mathbb{R}$:
-
-$$\lim_{n \to \infty} G_n(x) = \int_{-\infty}^{x} \frac{1}{\sqrt{2\pi}} e^{-y^2/2} dy$$
-
-That is: $\sqrt{n}(\bar{X}_n - \mu) \xrightarrow{d} N(0, \sigma^2)$
+> Let $X_1, X_2, \ldots$ be a sequence of i.i.d. RVs whose MGFs exist. Let $E[X_i] = \mu$ and $V[X_i] = \sigma^2$. Define $\bar{X}\_n = \frac{1}{n}\sum_{i=1}^{n} X\_i$. Let $G\_n(x)$ denote the CDF of the RV:
+>
+> $$Z_n = \frac{\sqrt{n}(\bar{X}_n - \mu)}{\sigma}$$
+>
+> Then for any $x \in \mathbb{R}$:
+>
+> $$\lim_{n \to \infty} G_n(x) = \int_{-\infty}^{x} \frac{1}{\sqrt{2\pi}} e^{-y^2/2} dy$$
+>
+> That is: $\sqrt{n}(\bar{X}_n - \mu) \xrightarrow{d} N(0, \sigma^2)$
 
 This is remarkable! Regardless of the original distribution of $X_i$, the standardized sample mean converges to a standard normal distribution. This universality is what makes the CLT so powerful in statistics.
 
@@ -249,17 +252,17 @@ This is remarkable! Regardless of the original distribution of $X_i$, the standa
 
 Sometimes we need to combine convergence results. Slutsky's theorem helps us do this.
 
-If $X\_n \xrightarrow{d} X$ and $Y\_n \xrightarrow{P} a$, then:
-- $X\_n + Y\_n \xrightarrow{d} X + a$
-- $X\_n Y\_n \xrightarrow{d} aX$
+> If $X\_n \xrightarrow{d} X$ and $Y\_n \xrightarrow{P} a$, then:
+> - $X\_n + Y\_n \xrightarrow{d} X + a$
+> - $X\_n Y\_n \xrightarrow{d} aX$
 
 ### Theorem: Delta Method
 
-Let $Y\_n$ be a sequence of RVs that satisfies:
-$$\sqrt{n}(Y_n - \theta) \xrightarrow{d} N(0, \sigma^2)$$
-
-For a given function $h$ whose derivative exists and we denote it by $h'$. Then:
-$$\sqrt{n}(h(Y_n) - h(\theta)) \xrightarrow{d} N(0, \sigma^2[h'(\theta)]^2)$$
+> Let $Y\_n$ be a sequence of RVs that satisfies:
+> $$\sqrt{n}(Y_n - \theta) \xrightarrow{d} N(0, \sigma^2)$$
+>
+> For a given function $h$ whose derivative exists and we denote it by $h'$. Then:
+> $$\sqrt{n}(h(Y_n) - h(\theta)) \xrightarrow{d} N(0, \sigma^2[h'(\theta)]^2)$$
 
 The Delta Method is incredibly useful when we want to find the asymptotic distribution of transformations of our estimators. For example, if we have a CLT for $\bar{X}\_n$, the Delta Method gives us a CLT for $\log(\bar{X}\_n)$ or $\bar{X}\_n^2$.
 

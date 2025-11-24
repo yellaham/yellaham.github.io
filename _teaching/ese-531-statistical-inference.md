@@ -1,18 +1,12 @@
 ---
 title: "ESE 531: Statistical Learning and Inference"
 collection: teaching
-type: "Graduate course"
+type: "Graduate"
 permalink: /teaching/ese-531
 venue: "Stony Brook University, Department of Electrical and Computer Engineering"
 date: 2024-01-01
 location: "Stony Brook, NY"
 ---
-
-## Course Information
-
-**Course Title:** ESE 531: Statistical Learning and Inference  
-**Institution:** Stony Brook University  
-**Department:** Electrical and Computer Engineering  
 
 ## Course Materials
 

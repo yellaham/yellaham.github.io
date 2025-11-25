@@ -41,7 +41,7 @@ error, multiple hypothesis testing, generalized likelihood ratio test, examples 
 
 
 ### Homework Assignments
-- **Homework 1**  (coming soon!)
+- **[Homework 1: Properties of Random Samples](/teaching/ese-531/homeworks/homework-1/)**
 
 ### Recommended Supplementary Reading
 - Fundamentals of Statistical Signal Processing: Estimation Theory, S. M. Kay, Prentice Hall, 1993

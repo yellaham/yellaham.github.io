@@ -1,6 +1,10 @@
-# ESE 531: Statistical Learning and Inference
-## Homework 1: Properties of Random Samples
-
+---
+layout: single
+title: "Homework 1: Properties of Random Samples"
+permalink: /teaching/ese-531/homeworks/homework-1/
+author_profile: true
+toc: true
+toc_label: "Homework Problems and Solutions"
 ---
 
 ### Problem 1

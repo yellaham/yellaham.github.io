@@ -37,11 +37,12 @@ error, multiple hypothesis testing, generalized likelihood ratio test, examples 
 
 ### Lectures
 - **[Lecture 1: Random Samples, Probability Inequalities, Limit Theorems](/teaching/ese-531/lectures/lecture-1/)**
-- **Lecture 2 (coming soon!)
+- **Lecture 2 (coming soon!)**
 
 
 ### Homework Assignments
 - **[Homework 1: Properties of Random Samples](/teaching/ese-531/homeworks/homework-1/)**
+- **Homework 2 (coming soon!)**
 
 ### Recommended Supplementary Reading
 - Fundamentals of Statistical Signal Processing: Estimation Theory, S. M. Kay, Prentice Hall, 1993

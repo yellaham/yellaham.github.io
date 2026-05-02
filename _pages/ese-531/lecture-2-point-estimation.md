@@ -34,6 +34,39 @@ A clean formulation should identify:
 - What constraints define the feasible parameter set.
 - Whether the model is frequentist, Bayesian, or something more structured.
 
+It is also important to distinguish the **parameter** from the **estimator** and the **estimate**:
+
+$$
+\theta \quad \text{is the fixed unknown quantity,}
+$$
+
+$$
+\hat{\theta}_n=T_n(X_1,\ldots,X_n) \quad \text{is a random variable before data are observed,}
+$$
+
+and
+
+$$
+\hat{\theta}_n(x_1,\ldots,x_n)
+$$
+
+is the numerical estimate after observing a particular data set. Many mistakes in point estimation come from mixing these three objects. For example, when we compute $E_\theta[\hat{\theta}_n]$, the expectation is over new random samples generated under the fixed parameter value $\theta$.
+
+### Identifiability
+
+Before computing any estimator, ask whether the parameter is identifiable.
+
+> **Definition (Identifiability):** A parameter $\theta$ is identifiable if
+>
+> $$
+> p(x\mid \theta_1)=p(x\mid \theta_2)
+> \text{ for all }x
+> \quad \Longrightarrow \quad
+> \theta_1=\theta_2.
+> $$
+
+If identifiability fails, no estimator can reliably recover the parameter from the data distribution, even with infinitely many samples. For instance, if $X\sim N(\theta^2,1)$ and the parameter space is $\Theta=\mathbb{R}$, then $\theta$ and $-\theta$ produce the same distribution. The quantity $\theta^2$ is identifiable, but the signed parameter $\theta$ is not.
+
 ## Joint Models and Conditional Independence
 
 For an iid random sample,
@@ -97,6 +130,25 @@ If the equations cannot be solved exactly, we may instead minimize a moment-matc
 > **Moment Identifiability:** Moment matching is meaningful only when the selected theoretical moments determine the parameter. If two different parameter values produce the same matched moments, the resulting estimator cannot distinguish them.
 
 Moment methods are closely related to the uniqueness of moment generating functions: when the MGF exists around zero, the full sequence of moments determines the distribution. In practice, we usually match only enough low-order moments to identify the unknown parameters.
+
+<details>
+<summary><strong>Why Moment Generating Functions Make Moments Useful</strong></summary>
+
+The moment generating function is
+
+$$
+M_X(t)=E[e^{tX}].
+$$
+
+If $M_X(t)$ exists in an open interval around $0$, then its derivatives at $0$ are the raw moments:
+
+$$
+M_X^{(j)}(0)=E[X^j].
+$$
+
+Therefore, if two distributions have the same MGF near $0$, they have the same moments and, more importantly, the same distribution. This theorem does not say that one or two moments determine every model. It says that moments can characterize a distribution when enough of them are known and the MGF exists. Method of moments uses a finite-dimensional version of this idea: choose as many informative moments as there are unknown parameters.
+
+</details>
 
 ## Example: Binomial Random Sample
 
@@ -168,6 +220,48 @@ by the law of large numbers. If the mapping from moments to parameters is contin
 
 However, method of moments estimators can be biased and may fall outside the feasible parameter set.
 
+More formally, suppose the parameter is $d$-dimensional and we match $d$ moments. Let
+
+$$
+g(\theta)=
+\begin{bmatrix}
+E_\theta[X] \\
+E_\theta[X^2] \\
+\vdots \\
+E_\theta[X^d]
+\end{bmatrix},
+\qquad
+\hat{g}_n=
+\begin{bmatrix}
+\hat{m}_1\\
+\hat{m}_2\\
+\vdots\\
+\hat{m}_d
+\end{bmatrix}.
+$$
+
+If $g$ has a continuous inverse near the true parameter $\theta_0$, then
+
+$$
+\hat{\theta}_{\mathrm{MOM}}
+=g^{-1}(\hat{g}_n)
+\xrightarrow{P}
+g^{-1}(g(\theta_0))
+=\theta_0.
+$$
+
+If $g$ is differentiable and the matched sample moments satisfy a multivariate central limit theorem, then the delta method gives the limiting distribution:
+
+$$
+\sqrt{n}(\hat{\theta}_{\mathrm{MOM}}-\theta_0)
+\xrightarrow{d}
+N\left(0,
+[Dg(\theta_0)]^{-1}\Sigma [Dg(\theta_0)]^{-T}
+\right),
+$$
+
+where $\Sigma$ is the covariance matrix of the vector $(X,X^2,\ldots,X^d)^T$ under $\theta_0$. This is the theoretical reason method-of-moments estimators often behave normally in large samples, even when their finite-sample bias is not zero.
+
 ### Uniform Example and Feasibility
 
 If $X_i\sim \mathrm{Uniform}(a,b)$, then
@@ -187,6 +281,8 @@ $$
 $$
 
 These estimates can be mathematically valid but practically awkward: the fitted interval may fail to contain the observed minimum or maximum. This illustrates why feasibility and model constraints still matter after solving the moment equations.
+
+This example also shows the difference between moment matching and likelihood-based fitting. The likelihood for a uniform model is zero unless every observation lies inside the fitted interval. An MLE for $(a,b)$ must respect the sample minimum and maximum, while the moment estimator is driven only by $\bar{X}$ and $\hat{v}$.
 
 ## Maximum Likelihood Estimation
 
@@ -266,9 +362,95 @@ $$
 
 In this example the MLE and method of moments estimator agree.
 
+### Boundary Cases
+
+The derivative calculation assumes $0<p<1$. If all observed counts are zero, the likelihood is maximized at $p=0$. If every trial in every observation is a success, the likelihood is maximized at $p=1$. Boundary cases are not exceptions to MLE theory; they are a reminder that the full optimization problem is
+
+$$
+\max_{0\leq p\leq 1} L(p),
+$$
+
+not just the score equation inside the interval.
+
+## Example: Gaussian MLE for Variance
+
+Suppose
+
+$$
+X_1,\ldots,X_n\stackrel{\mathrm{iid}}{\sim}N(0,\sigma^2),
+$$
+
+and $\sigma^2>0$ is unknown. The likelihood is
+
+$$
+L(\sigma^2)
+=
+\prod_{i=1}^n
+\frac{1}{\sqrt{2\pi\sigma^2}}
+\exp\left(-\frac{x_i^2}{2\sigma^2}\right).
+$$
+
+The log likelihood, after dropping constants that do not depend on $\sigma^2$, is
+
+$$
+\ell(\sigma^2)
+=
+-\frac{n}{2}\log\sigma^2
+-\frac{1}{2\sigma^2}\sum_{i=1}^n x_i^2.
+$$
+
+Let $v=\sigma^2$. Then
+
+$$
+\frac{d\ell}{dv}
+=
+-\frac{n}{2v}
++\frac{1}{2v^2}\sum_{i=1}^n x_i^2.
+$$
+
+Setting this equal to zero gives
+
+$$
+\hat{\sigma}^2_{\mathrm{MLE}}
+=
+\frac{1}{n}\sum_{i=1}^n X_i^2.
+$$
+
+The second derivative is negative at this solution:
+
+$$
+\frac{d^2\ell}{dv^2}
+=
+\frac{n}{2v^2}
+-\frac{1}{v^3}\sum_{i=1}^n x_i^2,
+$$
+
+and substituting $v=\hat{\sigma}^2_{\mathrm{MLE}}$ gives
+
+$$
+\frac{d^2\ell}{dv^2}
+=
+-\frac{n}{2v^2}<0.
+$$
+
+Thus the stationary point is a local maximum. Since $\ell(v)\to -\infty$ as $v\to 0^+$ and as $v\to\infty$, it is also the global maximum.
+
+## Comparing MOM and MLE
+
+Method of moments and maximum likelihood often agree in simple one-parameter exponential-family models, such as Bernoulli or binomial models. They need not agree in general.
+
+The method of moments is built from equations of the form
+
+$$
+\text{theoretical feature}=\text{empirical feature}.
+$$
+
+Maximum likelihood is built from the full probability assigned to the observed data. MOM can be easier and more robust to compute, while MLE tends to have stronger large-sample optimality properties under correct model specification. In finite samples, both methods must still be checked for bias, variance, feasibility, and sensitivity to modeling assumptions.
+
 ## Student Takeaways
 
 - An estimator is a statistic designed to approximate an unknown parameter.
 - Method of moments estimates parameters by matching moments.
+- Consistency of MOM follows from the law of large numbers plus identifiability and continuity of the moment map.
 - MLE chooses the parameter value that makes the observed data most likely.
 - Closed forms are convenient, but many MLEs require constrained or numerical optimization.

@@ -27,6 +27,20 @@ $$
 
 Therefore, prior choice can matter, especially with small data sets.
 
+A practical way to describe prior strength is through **effective sample size**. In the beta-Bernoulli model,
+
+$$
+\Theta\sim \mathrm{Beta}(\alpha,\beta),
+$$
+
+the posterior after $s$ successes in $n$ trials is
+
+$$
+\Theta\mid x\sim \mathrm{Beta}(\alpha+s,\beta+n-s).
+$$
+
+The prior behaves as if it contributed $\alpha-1$ prior successes and $\beta-1$ prior failures when thinking in terms of the posterior mode, or roughly $\alpha+\beta$ prior observations when thinking in terms of the posterior mean. This interpretation is not exact for every purpose, but it is useful for checking whether a prior is weak or strong relative to the available data.
+
 ## Improper Priors
 
 An improper prior does not integrate to one. For example,
@@ -56,6 +70,24 @@ $$
 
 This is why "uniform" is not automatically noninformative.
 
+For example, if $\phi=\log\theta$ and a prior is flat in $\phi$, then
+
+$$
+p_\Phi(\phi)\propto 1.
+$$
+
+Because $\theta=e^\phi$, the induced prior on $\theta$ is
+
+$$
+p_\Theta(\theta)
+=
+p_\Phi(\log\theta)\left|\frac{d}{d\theta}\log\theta\right|
+\propto
+\frac{1}{\theta}.
+$$
+
+Thus a flat prior on a log-scale parameter corresponds to a scale prior $p(\theta)\propto 1/\theta$, not to a flat prior in $\theta$.
+
 ## Jeffreys Prior
 
 > **Definition (Jeffreys Prior):** For a scalar parameter $\theta$, Jeffreys prior is
@@ -67,6 +99,40 @@ This is why "uniform" is not automatically noninformative.
 > where $I(\theta)$ is Fisher information.
 
 Jeffreys prior is designed to respect smooth reparameterizations. It uses the local information geometry of the model rather than a coordinate-specific notion of flatness.
+
+<details>
+<summary><strong>Invariance Calculation</strong></summary>
+
+Let $\phi=g(\theta)$ be a one-to-one differentiable transformation. Scores transform by the chain rule:
+
+$$
+\frac{\partial}{\partial \phi}\log p(X\mid \phi)
+=
+\frac{\partial \theta}{\partial \phi}
+\frac{\partial}{\partial \theta}\log p(X\mid\theta).
+$$
+
+Therefore
+
+$$
+I_\phi(\phi)
+=
+I_\theta(\theta)
+\left(\frac{\partial\theta}{\partial\phi}\right)^2.
+$$
+
+Jeffreys prior in the $\phi$ coordinate is
+
+$$
+p(\phi)\propto \sqrt{I_\phi(\phi)}
+=
+\sqrt{I_\theta(\theta)}
+\left|\frac{\partial\theta}{\partial\phi}\right|.
+$$
+
+This is exactly the change-of-variables formula applied to $p(\theta)\propto\sqrt{I_\theta(\theta)}$. Hence Jeffreys prior has the same form under smooth reparameterization.
+
+</details>
 
 ### Example: Bernoulli Parameter
 
@@ -161,6 +227,28 @@ $$
 
 These formulas are valid when $0<v<m(1-m)$. If the requested variance is too large, no beta distribution can match those moments.
 
+### Worked Calibration Example
+
+Suppose an expert says a probability is centered around $m=0.6$ with variance $v=0.01$. Then
+
+$$
+\frac{m(1-m)}{v}-1
+=
+\frac{0.6(0.4)}{0.01}-1
+=
+23.
+$$
+
+Thus
+
+$$
+\alpha=0.6(23)=13.8,
+\qquad
+\beta=0.4(23)=9.2.
+$$
+
+The prior mean is $13.8/(13.8+9.2)=0.6$, and the concentration $\alpha+\beta=23$ indicates a fairly informative prior. If the same mean were paired with a much larger variance, the resulting $\alpha+\beta$ would be smaller.
+
 ## Asymptotic Bayesian Behavior
 
 As the sample size grows, the likelihood usually dominates the prior:
@@ -174,6 +262,36 @@ $$
 A Taylor expansion around the MAP estimator shows why many posteriors become approximately Gaussian for large $n$.
 
 This is the intuition behind the Bernstein-von Mises theorem: under regularity conditions, the posterior behaves asymptotically like a normal distribution centered near an efficient estimator.
+
+More explicitly, let
+
+$$
+h_n(\theta)=\log p(\theta\mid x)
+=
+\ell_n(\theta)+\log p(\theta)+\text{constant}.
+$$
+
+A Taylor expansion around the MAP estimator $\hat{\theta}_{\mathrm{MAP}}$ gives
+
+$$
+h_n(\theta)
+\approx
+h_n(\hat{\theta}_{\mathrm{MAP}})
+-\frac{1}{2}
+(\theta-\hat{\theta}_{\mathrm{MAP}})^T
+H_n
+(\theta-\hat{\theta}_{\mathrm{MAP}}),
+$$
+
+where
+
+$$
+H_n
+=
+-\nabla^2 h_n(\hat{\theta}_{\mathrm{MAP}}).
+$$
+
+For regular iid models, the likelihood curvature grows like $n$, while the prior curvature typically stays order $1$. This is the mathematical reason the likelihood dominates in large samples. The prior still matters for small samples, weakly identified models, boundary problems, and hierarchical models.
 
 ## Posterior Predictive Checks
 
@@ -195,9 +313,21 @@ A common workflow is:
 
 The summary $T$ should be chosen to target a scientifically meaningful failure mode: means for location mismatch, variances for spread mismatch, tail counts for outlier mismatch, and so on.
 
+A posterior predictive tail probability has the form
+
+$$
+P\left(T(\tilde{X})\geq T(x)\mid x\right)
+\approx
+\frac{1}{M}\sum_{m=1}^M
+\mathbf{1}\{T(\tilde{x}^{(m)})\geq T(x)\}.
+$$
+
+Values very close to $0$ or $1$ suggest that the observed statistic is unusual under replicated data from the fitted model. These checks are diagnostic rather than automatic hypothesis tests: a poor check tells us where the model struggles, but it does not by itself say which replacement model is best.
+
 ## Student Takeaways
 
 - Priors encode assumptions and domain knowledge.
 - Flat priors are not invariant to reparameterization.
 - Jeffreys prior uses Fisher information to reduce coordinate dependence.
 - Posterior predictive checks help diagnose model fit.
+- Prior calibration should be checked on the data scale, not only through hyperparameter formulas.

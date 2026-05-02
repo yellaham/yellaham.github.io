@@ -45,6 +45,8 @@ $$
 
 This condition is useful because it can help determine whether an efficient estimator exists.
 
+The condition is also restrictive. The right-hand side must be an estimator expression that does not contain the unknown parameter in an unusable way after simplification. In many models, no statistic can satisfy this identity for every $\theta$, so no unbiased estimator attains the CRLB exactly in finite samples.
+
 ## White Gaussian Noise Model
 
 Consider
@@ -64,6 +66,39 @@ I(\theta)
 = \frac{1}{\sigma^2}
 \sum_{i=1}^n
 \left(\frac{\partial s_i(\theta)}{\partial \theta}\right)^2.
+$$
+
+This follows by writing the log likelihood, up to constants, as
+
+$$
+\ell(\theta)
+=
+-\frac{1}{2\sigma^2}
+\sum_{i=1}^n
+\left(X_i-s_i(\theta)\right)^2.
+$$
+
+The score is
+
+$$
+\frac{\partial \ell}{\partial\theta}
+=
+\frac{1}{\sigma^2}
+\sum_{i=1}^n
+\left(X_i-s_i(\theta)\right)s_i'(\theta).
+$$
+
+Since $X_i-s_i(\theta)=\epsilon_i$ and the noises are independent with variance $\sigma^2$,
+
+$$
+\mathrm{Var}\left(\frac{\partial \ell}{\partial\theta}\right)
+=
+\frac{1}{\sigma^4}
+\sum_{i=1}^n
+\sigma^2 [s_i'(\theta)]^2
+=
+\frac{1}{\sigma^2}
+\sum_{i=1}^n [s_i'(\theta)]^2.
 $$
 
 Thus every unbiased estimator satisfies
@@ -106,6 +141,26 @@ $$
 
 This is the same derivative term that appears in the delta method.
 
+The bound is obtained by applying the CRLB to an unbiased estimator $\hat{\alpha}$ of $\alpha=g(\theta)$. Since
+
+$$
+E_\theta[\hat{\alpha}]=g(\theta),
+$$
+
+differentiating with respect to $\theta$ gives
+
+$$
+\mathrm{Cov}_\theta(\hat{\alpha},S_n(\theta))=g'(\theta).
+$$
+
+Cauchy-Schwarz then gives
+
+$$
+[g'(\theta)]^2
+\leq
+\mathrm{Var}(\hat{\alpha})I_n(\theta).
+$$
+
 ### MLE Invariance vs. Efficiency
 
 The MLE has an invariance property: if $\hat{\theta}_{\mathrm{MLE}}$ estimates $\theta$, then $g(\hat{\theta}_{\mathrm{MLE}})$ is the MLE of $g(\theta)$. Efficiency is more delicate. A nonlinear transformation can introduce finite-sample bias, so an efficient estimator of $\theta$ does not automatically produce an efficient unbiased estimator of $g(\theta)$.
@@ -134,6 +189,49 @@ $$
 
 and the Fisher information in $n$ samples is $n/\sigma^2$, $\bar{X}$ attains the CRLB and is efficient.
 
+Now consider estimating
+
+$$
+\alpha=\mu^2.
+$$
+
+The transformed CRLB says
+
+$$
+\mathrm{Var}(\hat{\alpha})
+\geq
+\frac{(2\mu)^2}{n/\sigma^2}
+=
+\frac{4\mu^2\sigma^2}{n}.
+$$
+
+The invariant MLE is $\bar{X}^2$, but it is biased:
+
+$$
+E[\bar{X}^2]
+=
+\mu^2+\frac{\sigma^2}{n}.
+$$
+
+An unbiased estimator is
+
+$$
+\hat{\alpha}
+=
+\bar{X}^2-\frac{\sigma^2}{n}.
+$$
+
+Its variance is
+
+$$
+\mathrm{Var}(\hat{\alpha})
+=
+\frac{4\mu^2\sigma^2}{n}
++\frac{2\sigma^4}{n^2},
+$$
+
+which is strictly larger than the transformed CRLB unless $\sigma^2=0$. This example captures the finite-sample difference between MLE invariance and unbiased efficiency.
+
 ## Vector Cramer-Rao Bound
 
 When $\theta\in \mathbb{R}^d$, the covariance matrix of an unbiased estimator satisfies
@@ -153,6 +251,38 @@ I_{ij}(\theta)
 $$
 
 The notation $A\succeq B$ means $A-B$ is positive semidefinite.
+
+Equivalently, for every vector $a\in\mathbb{R}^d$,
+
+$$
+a^T\mathrm{Cov}(\hat{\theta})a
+\geq
+a^T I(\theta)^{-1}a.
+$$
+
+This says every linear combination $a^T\theta$ has variance at least the corresponding scalar bound. The matrix inequality is stronger than checking only the diagonal entries because it also constrains covariances between estimator components.
+
+If the estimator is unbiased for a transformed vector $\alpha=g(\theta)$ with Jacobian
+
+$$
+G(\theta)=\frac{\partial g(\theta)}{\partial\theta^T},
+$$
+
+then
+
+$$
+\mathrm{Cov}(\hat{\alpha})
+\succeq
+G(\theta)I(\theta)^{-1}G(\theta)^T.
+$$
+
+For a scalar function $g(\theta)$ of a vector parameter, this reduces to
+
+$$
+\mathrm{Var}(\hat{g})
+\geq
+\nabla g(\theta)^T I(\theta)^{-1}\nabla g(\theta).
+$$
 
 ## Unknown Mean and Variance in a Gaussian Model
 
@@ -194,9 +324,31 @@ $$
 
 so it does not attain the $\sigma^2$ component of the vector CRLB when $\mu$ is also unknown. The gap reminds us that nuisance parameters can affect finite-sample efficiency.
 
+If $\mu$ were known, the unbiased estimator
+
+$$
+\frac{1}{n}\sum_{i=1}^n (X_i-\mu)^2
+$$
+
+would have variance $2\sigma^4/n$ and would attain the scalar CRLB for $\sigma^2$. When $\mu$ is unknown, estimating the mean consumes one degree of freedom, and the unbiased sample variance uses $n-1$ in the denominator. This is a concrete example of a nuisance parameter changing what can be achieved in finite samples.
+
+## How to Use the CRLB in Practice
+
+A reliable CRLB workflow is:
+
+1. Write the likelihood or log likelihood.
+2. Compute the score vector.
+3. Compute the Fisher information from score covariance or expected negative Hessian.
+4. Invert the information matrix.
+5. Compare the covariance of a proposed unbiased estimator to the bound.
+6. Check equality conditions before claiming efficiency.
+
+For signal models, this workflow often reduces to differentiating the noiseless signal with respect to the unknown parameter. For statistical distribution models, it usually requires differentiating the log density.
+
 ## Student Takeaways
 
 - Efficiency means attaining the CRLB.
 - Transformed parameters require transformed bounds.
 - For multiple parameters, the CRLB is a matrix inequality.
 - Estimators that are excellent for one criterion may not be optimal for another transformed quantity.
+- Nuisance parameters and nonlinear transformations are common reasons finite-sample efficiency fails even when MLEs behave well asymptotically.

@@ -37,6 +37,24 @@ $$
 Q(a)=P(Z>a)=1-\Phi(a).
 $$
 
+If $X\sim N(\mu,\sigma^2)$, then
+
+$$
+P(X>\gamma)
+=
+Q\left(\frac{\gamma-\mu}{\sigma}\right),
+$$
+
+and
+
+$$
+P(X\leq \gamma)
+=
+\Phi\left(\frac{\gamma-\mu}{\sigma}\right).
+$$
+
+These two standardization identities are the main tools for converting detector thresholds into false alarm and detection probabilities.
+
 ## Chi-Squared Random Variables
 
 If $Z_1,\ldots,Z_k$ are iid standard normal random variables, then
@@ -72,6 +90,13 @@ A detector maps observed data to a decision:
 $$
 \delta(x)\in\{H_0,H_1\}.
 $$
+
+There are two common design philosophies:
+
+- **Neyman-Pearson:** constrain the false alarm probability and maximize detection probability.
+- **Bayesian:** assign prior probabilities and costs, then minimize expected loss.
+
+The same likelihood ratio appears in both approaches, but the threshold is chosen for different reasons.
 
 ## False Alarm and Detection Probability
 
@@ -118,6 +143,44 @@ $$
 In continuous problems the threshold can usually be chosen so equality holds. In discrete problems, exact equality may require randomization at the boundary.
 
 Different thresholds trace out a receiver operating characteristic curve: each threshold gives one pair $(P_{\mathrm{FA}},P_D)$. The ROC curve summarizes the achievable tradeoff between false alarms and detections.
+
+<details>
+<summary><strong>Proof Idea for Neyman-Pearson</strong></summary>
+
+Let $R$ be the rejection region where the detector decides $H_1$. The optimization problem is
+
+$$
+\max_R \int_R p_1(x)\,dx
+\qquad
+\text{subject to}
+\qquad
+\int_R p_0(x)\,dx\leq \alpha.
+$$
+
+The Lagrangian is
+
+$$
+\int_R p_1(x)\,dx
+-\lambda\left(\int_R p_0(x)\,dx-\alpha\right)
+=
+\int_R [p_1(x)-\lambda p_0(x)]\,dx+\lambda\alpha.
+$$
+
+For a fixed $\lambda$, the integral is maximized by including exactly those points where
+
+$$
+p_1(x)-\lambda p_0(x)>0,
+$$
+
+or equivalently
+
+$$
+\frac{p_1(x)}{p_0(x)}>\lambda.
+$$
+
+The multiplier $\lambda$ is then selected so the false alarm constraint is satisfied. This gives the likelihood-ratio test.
+
+</details>
 
 ## Gaussian Mean Shift Example
 
@@ -194,6 +257,16 @@ P(\bar{X}>\gamma\mid H_1)
 Q\left(Q^{-1}(\alpha)-\frac{\mu\sqrt{n}}{\sigma}\right).
 $$
 
+The quantity
+
+$$
+\mathrm{SNR}_{\mathrm{det}}
+=
+\frac{\mu\sqrt{n}}{\sigma}
+$$
+
+is the separation between the null and alternative distributions of $\bar{X}$ in standard-deviation units. Larger mean shift, smaller noise, or more samples all improve detection by increasing this separation.
+
 ## Gaussian Variance Change Example
 
 Suppose
@@ -238,6 +311,42 @@ The threshold can therefore be set using chi-squared quantiles.
 
 If $\sigma_1^2>\sigma_0^2$, large values of $Y$ provide evidence for $H_1$. If $\sigma_1^2<\sigma_0^2$, small values of $Y$ provide evidence for $H_1$. The direction of the rejection region comes from the likelihood ratio, not from the statistic alone.
 
+For the increasing-variance case $\sigma_1^2>\sigma_0^2$, choose $\gamma$ so
+
+$$
+P_{\mathrm{FA}}
+=
+P(Y>\gamma\mid H_0)
+=
+P\left(\chi_n^2>\frac{\gamma}{\sigma_0^2}\right)
+=
+\alpha.
+$$
+
+Thus
+
+$$
+\gamma
+=
+\sigma_0^2\chi^2_{n,1-\alpha},
+$$
+
+where $\chi^2_{n,1-\alpha}$ is the $(1-\alpha)$ quantile of the chi-squared distribution with $n$ degrees of freedom. The detection probability is
+
+$$
+P_D
+=
+P(Y>\gamma\mid H_1)
+=
+P\left(\chi_n^2>\frac{\gamma}{\sigma_1^2}\right).
+$$
+
+For the decreasing-variance case $\sigma_1^2<\sigma_0^2$, the rejection region is $Y<\gamma$, and the threshold is set from
+
+$$
+P\left(\chi_n^2<\frac{\gamma}{\sigma_0^2}\right)=\alpha.
+$$
+
 ## Bayesian Detection and Bayes Risk
 
 In a Bayesian detector, hypotheses have prior probabilities and decision errors have costs.
@@ -262,9 +371,29 @@ Choose the decision with smallest $r(d_i\mid x)$. With zero-one loss, this reduc
 
 For equal costs and two hypotheses, this often reduces to choosing the hypothesis with the larger posterior probability.
 
+For two hypotheses, the Bayes rule can be written as a likelihood-ratio test with a cost-and-prior threshold. Decide $H_1$ if
+
+$$
+\Lambda(x)
+=
+\frac{p(x\mid H_1)}{p(x\mid H_0)}
+>
+\frac{(C_{10}-C_{00})P(H_0)}
+{(C_{01}-C_{11})P(H_1)},
+$$
+
+assuming the denominator is positive. Here $C_{ij}$ is the cost of deciding $H_i$ when $H_j$ is true. With zero cost for correct decisions and equal cost for mistakes, this reduces to
+
+$$
+\Lambda(x)>\frac{P(H_0)}{P(H_1)}.
+$$
+
+If the priors are also equal, the threshold is $1$, so the Bayesian rule chooses the hypothesis with larger likelihood.
+
 ## Student Takeaways
 
 - Detection is decision-making under uncertainty.
 - False alarm and detection probabilities quantify detector performance.
 - Neyman-Pearson gives the optimal simple-hypothesis test at a fixed false alarm rate.
 - Gaussian detection problems often reduce to thresholding means or energies.
+- Bayesian detection uses priors and costs to choose the likelihood-ratio threshold.

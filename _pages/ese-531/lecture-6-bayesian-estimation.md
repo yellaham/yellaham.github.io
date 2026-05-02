@@ -39,6 +39,24 @@ $$
 
 Posterior inference combines likelihood information from the data with prior information encoded before seeing the data.
 
+For iid data, the likelihood factorizes as
+
+$$
+p(x_1,\ldots,x_n\mid\theta)
+=
+\prod_{i=1}^n p(x_i\mid\theta),
+$$
+
+so the posterior can be written as
+
+$$
+p(\theta\mid x)
+\propto
+\left[\prod_{i=1}^n p(x_i\mid\theta)\right]p(\theta).
+$$
+
+The proportionality symbol is useful because the denominator does not depend on $\theta$. For point estimation, the normalizing constant is often unnecessary. For posterior probabilities, credible intervals, and predictive distributions, it matters.
+
 ## Conjugate Priors
 
 > **Definition (Conjugacy):** A prior family is conjugate for a likelihood if the posterior distribution belongs to the same family as the prior.
@@ -78,6 +96,19 @@ $$
 
 The prior acts like an additional regularizing term. As $n$ grows, the likelihood often dominates the prior.
 
+MAP estimation is not invariant to reparameterization in the same way MLE is. A density mode depends on the coordinate system because densities transform with Jacobian factors. If $\phi=g(\theta)$, then
+
+$$
+p_\Phi(\phi\mid x)
+=
+p_\Theta(g^{-1}(\phi)\mid x)
+\left|
+\frac{d}{d\phi}g^{-1}(\phi)
+\right|.
+$$
+
+The extra Jacobian can move the posterior mode. This is one reason Bayesian inference is usually centered on the full posterior distribution rather than only on the MAP point.
+
 ## Minimum Mean Squared Error Estimation
 
 The MMSE estimator is the posterior mean:
@@ -95,6 +126,42 @@ $$
 $$
 
 If the posterior is symmetric and unimodal, MAP and MMSE may coincide. In skewed posteriors, the posterior mode and posterior mean can differ substantially.
+
+<details>
+<summary><strong>Why the Posterior Mean Minimizes Squared Error</strong></summary>
+
+For a candidate estimate $a$, expand the posterior risk:
+
+$$
+E[(\Theta-a)^2\mid x]
+=
+E[(\Theta-E[\Theta\mid x]+E[\Theta\mid x]-a)^2\mid x].
+$$
+
+The cross term vanishes because
+
+$$
+E[\Theta-E[\Theta\mid x]\mid x]=0.
+$$
+
+Thus
+
+$$
+E[(\Theta-a)^2\mid x]
+=
+\mathrm{Var}(\Theta\mid x)
++(E[\Theta\mid x]-a)^2.
+$$
+
+The first term does not depend on $a$, and the second is minimized at
+
+$$
+a=E[\Theta\mid x].
+$$
+
+</details>
+
+Different losses give different Bayes estimators. Absolute error loss leads to a posterior median, and zero-one loss for discrete parameters leads to a posterior mode.
 
 ## Beta-Bernoulli Example
 
@@ -123,6 +190,19 @@ $$
 \sim
 \mathrm{Beta}(\alpha+s,\beta+n-s).
 $$
+
+This comes from multiplying the likelihood and prior:
+
+$$
+p(\theta\mid x)
+\propto
+\theta^s(1-\theta)^{n-s}
+\theta^{\alpha-1}(1-\theta)^{\beta-1}
+=
+\theta^{\alpha+s-1}(1-\theta)^{\beta+n-s-1}.
+$$
+
+The final expression is the kernel of a beta density.
 
 The posterior mean is
 
@@ -189,9 +269,110 @@ $$
 
 This variance is smaller than both the prior variance and the sampling variance of $\bar{X}$ when both sources of information are finite. Bayesian updating combines precisions, where precision means inverse variance.
 
+<details>
+<summary><strong>Completing the Square for the Gaussian Posterior</strong></summary>
+
+The posterior density is proportional to
+
+$$
+\exp\left[
+-\frac{1}{2\sigma^2}\sum_{i=1}^n (x_i-\mu)^2
+-\frac{1}{2\tau_0^2}(\mu-\mu_0)^2
+\right].
+$$
+
+Use
+
+$$
+\sum_{i=1}^n (x_i-\mu)^2
+=
+\sum_{i=1}^n (x_i-\bar{x})^2
++n(\bar{x}-\mu)^2.
+$$
+
+Terms not involving $\mu$ can be absorbed into the normalizing constant. The coefficient on $\mu^2$ is
+
+$$
+\frac{n}{\sigma^2}+\frac{1}{\tau_0^2},
+$$
+
+and the coefficient on $\mu$ is
+
+$$
+\frac{n\bar{x}}{\sigma^2}+\frac{\mu_0}{\tau_0^2}.
+$$
+
+Completing the square gives the posterior variance and mean shown above.
+
+</details>
+
+## Exponential-Family Conjugacy
+
+Many conjugate-prior calculations follow one template. Suppose
+
+$$
+p(x\mid\eta)
+=
+h(x)\exp\{\eta^T T(x)-A(\eta)\}
+$$
+
+is a canonical exponential family. A conjugate prior for $\eta$ has kernel
+
+$$
+p(\eta)
+\propto
+\exp\{\eta^T \nu-\kappa A(\eta)\},
+$$
+
+where $\nu$ and $\kappa$ are hyperparameters. After observing iid data,
+
+$$
+p(\eta\mid x)
+\propto
+\exp\left\{
+\eta^T\left(\nu+\sum_{i=1}^n T(x_i)\right)
+-(\kappa+n)A(\eta)
+\right\}.
+$$
+
+So the posterior remains in the same family with updated hyperparameters
+
+$$
+\nu_{\mathrm{post}}=\nu+\sum_{i=1}^n T(x_i),
+\qquad
+\kappa_{\mathrm{post}}=\kappa+n.
+$$
+
+This is the general version of "prior counts plus data counts" in the beta-Bernoulli model and "prior precision plus data precision" in the Gaussian mean model.
+
+## Improper Flat Priors
+
+A flat prior such as
+
+$$
+p(\mu)\propto 1
+$$
+
+on the real line is improper because it does not integrate to one. It can still produce a proper posterior. In the Gaussian mean model with known $\sigma^2$, using $p(\mu)\propto 1$ gives
+
+$$
+p(\mu\mid x)
+\propto
+\exp\left[-\frac{n}{2\sigma^2}(\mu-\bar{x})^2\right],
+$$
+
+so
+
+$$
+\mu\mid x\sim N\left(\bar{x},\frac{\sigma^2}{n}\right).
+$$
+
+Improper priors are therefore tools, not probability distributions. They are acceptable only after checking that the resulting posterior is proper.
+
 ## Student Takeaways
 
 - Bayesian inference returns a posterior distribution, not only a point estimate.
 - MAP maximizes the posterior density.
 - MMSE is the posterior mean.
 - Conjugate priors make posterior updates analytically tractable.
+- Prior hyperparameters often act like pseudo-data or prior precision, which makes their influence easier to interpret.

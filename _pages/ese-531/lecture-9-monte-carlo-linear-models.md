@@ -27,6 +27,20 @@ $$
 
 The strong law of large numbers provides the foundation for this approximation.
 
+If the samples are independent and $\mathrm{Var}_\pi(h(\Theta))<\infty$, the Monte Carlo central limit theorem gives
+
+$$
+\sqrt{M}
+\left[
+\frac{1}{M}\sum_{m=1}^M h(\theta^{(m)})
+-E_\pi[h(\Theta)]
+\right]
+\xrightarrow{d}
+N(0,\mathrm{Var}_\pi(h(\Theta))).
+$$
+
+Thus Monte Carlo error usually decreases like $1/\sqrt{M}$, independent of the parameter dimension. The dimension still matters because it affects how hard it is to obtain good samples.
+
 The difficulty is that in Bayesian inference we often cannot sample directly from the posterior.
 
 ## Rejection Sampling
@@ -44,6 +58,8 @@ $$
 $$
 
 If $q$ is not close to $\pi$, the required $M$ becomes large and the acceptance rate becomes small.
+
+For normalized $\pi$, the average acceptance probability is $1/M$. The best proposals have the same general shape and heavier tails than the target. If the proposal has lighter tails, the ratio $\pi/q$ may be unbounded and no finite envelope constant exists.
 
 ## Importance Sampling
 
@@ -71,6 +87,16 @@ $$
 $$
 
 The variance can be large if the proposal does not cover the important regions of the target.
+
+The support condition is essential:
+
+$$
+\pi(\theta)>0 \quad \Longrightarrow \quad q(\theta)>0.
+$$
+
+Importance sampling can technically run when this condition fails, but it silently ignores target mass. A good proposal should put substantial probability in regions where both $\pi(\theta)$ and $|h(\theta)|$ are large.
+
+The unnormalized estimator is unbiased when the normalized target density is known exactly. The self-normalized estimator is usually biased for finite $M$, but it is consistent and is often the practical choice in Bayesian inference because posteriors are known only up to a normalizing constant.
 
 ### Effective Sample Size
 
@@ -114,6 +140,26 @@ Chains need time to reach stationarity, and samples may be autocorrelated.
 
 In practice, analysts often discard an initial burn-in period and inspect trace plots. Thinning can reduce storage and visible autocorrelation, but it does not fix a poorly mixing chain. Better proposals and reparameterizations are usually more valuable.
 
+### Why Metropolis-Hastings Has the Right Target
+
+The acceptance probability is chosen to satisfy detailed balance:
+
+$$
+\pi(\theta)P(\theta,\theta^\star)
+=
+\pi(\theta^\star)P(\theta^\star,\theta),
+$$
+
+where $P$ is the Markov transition kernel. Detailed balance implies that $\pi$ is stationary. Under additional ergodicity conditions, long-run averages along the chain converge to posterior expectations:
+
+$$
+\frac{1}{M}\sum_{m=1}^M h(\theta^{(m)})
+\to
+E_\pi[h(\Theta)].
+$$
+
+The samples are dependent, so the effective sample size is usually smaller than the number of iterations. Slowly mixing chains can give precise-looking but misleading estimates.
+
 ## Linear Model
 
 A linear model has the form
@@ -155,6 +201,20 @@ $$
 
 If $H^TH$ is singular, the parameters are not identifiable from the design matrix without additional assumptions. Regularization or a prior can then be used to make the problem well posed.
 
+Geometrically, $H\hat{\theta}$ is the orthogonal projection of $X$ onto the column space of $H$. The residual
+
+$$
+r=X-H\hat{\theta}
+$$
+
+is orthogonal to every column of $H$:
+
+$$
+H^T r=0.
+$$
+
+This orthogonality condition is exactly the normal equation. Full column rank of $H$ means no column is a linear combination of the others, so each component of $\theta$ leaves a distinguishable imprint on the mean vector $H\theta$.
+
 ## Mean and Covariance
 
 If $E[W]=0$, then
@@ -180,6 +240,22 @@ $$
 $$
 
 When the noise is Gaussian, least squares is also the maximum likelihood estimator and attains the relevant Cramer-Rao bound under standard conditions.
+
+Even without Gaussian noise, ordinary least squares is the best linear unbiased estimator when the noise has mean zero, common variance, and uncorrelated components. This is the Gauss-Markov theorem. Gaussianity is needed for the exact MLE and finite-sample normal distribution, but not for unbiasedness or the covariance calculation above.
+
+If $W\sim N(0,\sigma^2I)$, then
+
+$$
+X\sim N(H\theta,\sigma^2I),
+$$
+
+and the negative log likelihood is, up to constants,
+
+$$
+\frac{1}{2\sigma^2}\|X-H\theta\|_2^2.
+$$
+
+Thus maximizing the likelihood is equivalent to minimizing least squares.
 
 ## Colored Noise and Generalized Least Squares
 
@@ -231,9 +307,32 @@ $$
 
 Thus GLS attains the vector Cramer-Rao bound under the standard full-rank conditions.
 
+The covariance formula follows directly:
+
+$$
+\hat{\theta}_{\mathrm{GLS}}-\theta
+=
+(H^TC^{-1}H)^{-1}H^TC^{-1}W.
+$$
+
+Therefore
+
+$$
+\mathrm{Cov}(\hat{\theta}_{\mathrm{GLS}})
+=
+(H^TC^{-1}H)^{-1}H^TC^{-1}
+C
+C^{-1}H(H^TC^{-1}H)^{-1}
+=
+(H^TC^{-1}H)^{-1}.
+$$
+
+The matrix $C^{-1}$ gives less weight to noisy directions and more weight to precise directions. This is the linear-model analogue of Fisher information weighting.
+
 ## Student Takeaways
 
 - Monte Carlo approximates posterior expectations using samples.
 - Rejection sampling and importance sampling depend heavily on proposal quality.
 - MCMC trades independent sampling for a Markov chain with the right stationary distribution.
 - Least squares is the natural estimator for linear models with white Gaussian noise.
+- Generalized least squares is ordinary least squares after whitening correlated or unequal-variance noise.

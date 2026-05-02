@@ -100,7 +100,7 @@ Chebyshev's inequality is much more useful than Markov's because it depends on $
 
 ### Moment Generating Function (MGF)
 
-To get even tighter bounds, we can use moment generating functions. The MGF is a powerful tool that, when it exists, uniquely characterizes a distribution.
+To get even tighter bounds, we can use moment generating functions. The MGF is a powerful tool that uniquely characterizes a distribution when it exists in an open interval around $0$.
 
 For a random variable $X$:
 $$M_X(t) = E[e^{tX}]$$
@@ -147,7 +147,7 @@ The WLLN formalizes our intuition that averages of independent observations shou
 
 > A sequence of random variables $X_1, X_2, \ldots$ converges in probability to a random variable $X$ if for every $\epsilon > 0$:
 >
-> $$\lim_{n \to \infty} P(\lvert X_n - X \rvert < \epsilon) = 0$$
+> $$\lim_{n \to \infty} P(\lvert X_n - X \rvert > \epsilon) = 0$$
 >
 > or equivalently:
 >
@@ -204,19 +204,19 @@ While the WLLN tells us about convergence in probability, the SLLN gives us a st
 
 ### Definition: Almost Sure Convergence
 
-> A sequence of RVs $X_1, X_2, \ldots$ converges almost surely to a random variable $X$ if for every $\epsilon > 0$:
+> A sequence of RVs $X_1, X_2, \ldots$ converges almost surely to a random variable $X$ if:
 >
-> $$P\left(\lim_{n \to \infty} \lvert X_n - X \rvert < \epsilon\right) = 1$$
+> $$P\left(\lim_{n \to \infty} X_n = X\right) = 1$$
 >
 > Notation: $X\_n \xrightarrow{a.s.} X$
 
 ### Theorem: Strong Law of Large Numbers
 
-> Let $X_1, X_2, \ldots$ be i.i.d. random variables such that $E[X_i] = \mu$ and $V[X_i] = \sigma^2 < \infty$. Define $\bar{X}\_n = \frac{1}{n}\sum_{i=1}^{n} X\_i$. Then for every $\epsilon > 0$:
+> Let $X_1, X_2, \ldots$ be i.i.d. random variables such that $E[X_i] = \mu$. Define $\bar{X}\_n = \frac{1}{n}\sum_{i=1}^{n} X\_i$. Then:
 >
-> $$P\left(\lim_{n \to \infty} \lvert\bar{X}_n - \mu\rvert < \epsilon\right) = 1$$
+> $$P\left(\lim_{n \to \infty} \bar{X}_n = \mu\right)=1,$$
 >
-> or $\bar{X}\_n \xrightarrow{a.s.} \mu$
+> or $\bar{X}\_n \xrightarrow{a.s.} \mu$.
 
 The SLLN tells us that the sample mean doesn't just get close to $\mu$ in probability, but that it actually converges to $\mu$ with probability 1. This is a stronger statement than the WLLN.
 
@@ -236,7 +236,7 @@ The Laws of Large Numbers tell us that $\bar{X}\_n \to \mu$, but they don't tell
 
 ### Theorem: Central Limit Theorem
 
-> Let $X_1, X_2, \ldots$ be a sequence of i.i.d. RVs whose MGFs exist. Let $E[X_i] = \mu$ and $V[X_i] = \sigma^2$. Define $\bar{X}\_n = \frac{1}{n}\sum_{i=1}^{n} X\_i$. Let $G\_n(x)$ denote the CDF of the RV:
+> Let $X_1, X_2, \ldots$ be a sequence of i.i.d. random variables with $E[X_i] = \mu$ and $V[X_i] = \sigma^2 < \infty$. Define $\bar{X}\_n = \frac{1}{n}\sum_{i=1}^{n} X\_i$. Let $G\_n(x)$ denote the CDF of the RV:
 >
 > $$Z_n = \frac{\sqrt{n}(\bar{X}_n - \mu)}{\sigma}$$
 >
@@ -244,7 +244,11 @@ The Laws of Large Numbers tell us that $\bar{X}\_n \to \mu$, but they don't tell
 >
 > $$\lim_{n \to \infty} G_n(x) = \int_{-\infty}^{x} \frac{1}{\sqrt{2\pi}} e^{-y^2/2} dy$$
 >
-> That is: $\sqrt{n}(\bar{X}_n - \mu) \xrightarrow{d} N(0, \sigma^2)$
+> That is:
+> $$\frac{\sqrt{n}(\bar{X}_n-\mu)}{\sigma}\xrightarrow{d} N(0,1),$$
+> or equivalently $\sqrt{n}(\bar{X}_n-\mu)\xrightarrow{d}N(0,\sigma^2)$.
+
+MGF-based proofs are common and elegant when the MGF exists, but finite variance is the central assumption in the classical iid CLT.
 
 This is remarkable! Regardless of the original distribution of $X_i$, the standardized sample mean converges to a standard normal distribution. This universality is what makes the CLT so powerful in statistics.
 

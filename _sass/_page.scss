@@ -399,3 +399,197 @@
   font-size: $type-size-6;
   text-transform: uppercase;
 }
+
+/*
+   ESE 531 course page
+   ========================================================================== */
+
+.ese531-course {
+  color: $text-color;
+
+  .page__content & a {
+    text-decoration: none;
+  }
+}
+
+.ese531-hero,
+.ese531-panel,
+.ese531-module {
+  border: 1px solid $border-color;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(#000, 0.06);
+}
+
+.ese531-hero {
+  margin-bottom: 1.5em;
+  padding: 1.5em;
+  background:
+    linear-gradient(135deg, rgba($primary-color, 0.12), rgba($info-color, 0.08)),
+    #fff;
+
+  h2 {
+    margin-top: 0;
+    border-bottom: 0;
+    font-size: $type-size-2;
+    line-height: 1.1;
+  }
+
+  p {
+    max-width: 48em;
+  }
+}
+
+.ese531-kicker {
+  margin-bottom: 0.5em;
+  color: $primary-color;
+  font-family: $sans-serif;
+  font-size: $type-size-6;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.ese531-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  margin-top: 1em;
+}
+
+.ese531-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  padding: 0.65em 0.9em;
+  color: #fff !important;
+  font-family: $sans-serif;
+  font-size: $type-size-6;
+  font-weight: bold;
+  background: $primary-color;
+  border-radius: 6px;
+
+  &:hover {
+    background: mix(#000, $primary-color, 15%);
+  }
+}
+
+.ese531-button--secondary {
+  color: $text-color !important;
+  background: $lighter-gray;
+
+  &:hover {
+    background: $light-gray;
+  }
+}
+
+.ese531-panel {
+  margin-bottom: 1.5em;
+  padding: 1.25em;
+
+  h2 {
+    margin-top: 0;
+  }
+}
+
+.ese531-topic-grid,
+.ese531-panel--two-col,
+.ese531-resource-grid {
+  display: grid;
+  gap: 0.75em;
+}
+
+.ese531-topic-grid {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+
+  div {
+    padding: 0.9em;
+    border: 1px solid $border-color;
+    border-radius: 6px;
+    background: $lighter-gray;
+  }
+
+  strong,
+  span {
+    display: block;
+  }
+
+  span {
+    margin-top: 0.35em;
+    font-size: $type-size-6;
+  }
+}
+
+.ese531-materials > h2 {
+  margin-top: 0;
+}
+
+.ese531-module {
+  margin-bottom: 1.25em;
+  overflow: hidden;
+}
+
+.ese531-module__header {
+  padding: 1em 1.25em;
+  border-bottom: 1px solid $border-color;
+  background: $lighter-gray;
+
+  span {
+    display: block;
+    color: $primary-color;
+    font-family: $sans-serif;
+    font-size: $type-size-7;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  h3 {
+    margin: 0.15em 0 0;
+    font-size: $type-size-4;
+  }
+}
+
+.ese531-resource-grid {
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  padding: 1em;
+}
+
+.ese531-resource {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.15em 0.65em;
+  min-height: 6.25em;
+  padding: 0.9em;
+  color: inherit !important;
+  border: 1px solid $border-color;
+  border-radius: 6px;
+  background: #fff;
+
+  &:hover {
+    border-color: $primary-color;
+    box-shadow: 0 8px 18px rgba(#000, 0.08);
+  }
+
+  i {
+    grid-row: 1 / span 2;
+    margin-top: 0.15em;
+    color: $primary-color;
+  }
+
+  span {
+    color: $gray;
+    font-family: $sans-serif;
+    font-size: $type-size-7;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  strong {
+    font-family: $sans-serif;
+    font-size: $type-size-6;
+    line-height: 1.25;
+  }
+}
+
+.ese531-panel--two-col {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}

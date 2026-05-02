@@ -9,48 +9,117 @@ location: "Stony Brook, NY"
 excerpt: "Graduate-level course covering statistical inference and estimation theory, including parameter estimation, hypothesis testing, and Bayesian methods."
 ---
 
-## Course Description
+<div class="ese531-course">
+  <section class="ese531-hero">
+    <p class="ese531-kicker">Graduate Course Archive</p>
+    <h2>Statistical estimation, inference, and detection theory</h2>
+    <p>
+      ESE 531 develops the mathematical tools used to infer unknown quantities from data:
+      random samples, point estimation, estimator evaluation, Bayesian inference, linear
+      models, and hypothesis testing.
+    </p>
+    <div class="ese531-actions">
+      <a class="ese531-button ese531-button--secondary" href="#course-materials">
+        <i class="fa fa-folder-open" aria-hidden="true"></i> Course Materials
+      </a>
+    </div>
+  </section>
 
-This graduate-level course covers fundamental concepts in statistical inference and estimation theory, including parameter estimation, hypothesis testing, and Bayesian methods.
+  <section class="ese531-panel">
+    <h2>Course Description</h2>
+    <p>
+      This graduate-level course covers fundamental concepts in statistical inference and
+      estimation theory, including parameter estimation, hypothesis testing, and Bayesian
+      methods.
+    </p>
+    <div class="ese531-topic-grid">
+      <div><strong>Random samples</strong><span>Sampling distributions, inequalities, convergence, laws of large numbers, CLT, and delta method.</span></div>
+      <div><strong>Point estimation</strong><span>MLE, method of moments, sufficient statistics, exponential families, numerical optimization, EM, and Gaussian mixtures.</span></div>
+      <div><strong>Estimator evaluation</strong><span>MSE, bias-variance tradeoff, minimum variance estimators, Fisher information, Cramer-Rao bounds, and predictive performance.</span></div>
+      <div><strong>Bayesian estimators</strong><span>Bayes' theorem, conjugacy, MAP, MMSE, Jeffreys prior, Laplace approximation, Monte Carlo, and Metropolis-Hastings.</span></div>
+      <div><strong>Linear models</strong><span>Maximum likelihood for linear models, noise models, colored noise, and best linear unbiased estimation.</span></div>
+      <div><strong>Detection theory</strong><span>Binary and composite tests, Neyman-Pearson theorem, likelihood ratios, ROC curves, probability of error, and GLRTs.</span></div>
+    </div>
+  </section>
 
-### Topics
-- **Properties of random samples** – definition of a random sample, population distribution, definition of a
-statistic, sampling distribution, sample mean, sample variance, probability inequalities, convergence of
-random variables, weak and strong law of large numbers, central limit theorem, delta method,
-- **Point estimation** – maximum likelihood estimation, method of moments estimation, sufficient statistics,
-exponential families, single and multi-parameter estimation, methods for estimation (e.g., analytical, and
-numerical optimization, expectation maximization), point estimation under parameter constraints,
-Gaussian mixture models,
-- **Evaluation of estimators** – mean-squared error criterion, bias-variance tradeoff, unbiased estimators,
-minimum variance criterion; existence of minimum variance unbiased estimators, Fisher information,
-Cramer-Rao bounds, properties of maximum likelihood estimators, predictive performance,
-- **Linear models** – definition and properties, maximum likelihood estimation for linear models, noise model,
-colored noise model, best linear unbiased estimator
-- **Bayesian estimators** – Bayesian vs. frequentist philosophies, Bayes’ theorem, conjugate priors, MAP
-estimation, MMSE estimation, Jeffrey’s prior, examples of Bayesian inference, approximate Bayesian
-inference, Laplace approximation, Monte Carlo methods, Metropolis-Hastings algorithm,
-- **Detection theory** – Binary hypothesis testing, type-I and type-II errors, simple and composite hypothesis
-testing, Neyman-Pearson theorem, likelihood ratio test, receiver operating characteristics, probability of
-error, multiple hypothesis testing, generalized likelihood ratio test, examples of various detectors
+  <section id="course-materials" class="ese531-materials">
+    <h2>Course Materials</h2>
 
-## Course Materials
+    <article class="ese531-module">
+      <div class="ese531-module__header">
+        <span>Module 1</span>
+        <h3>Properties of Random Samples</h3>
+      </div>
+      <div class="ese531-resource-grid">
+        <a class="ese531-resource" href="/teaching/ese-531/lectures/lecture-1/"><i class="fa fa-pen-to-square" aria-hidden="true"></i><span>Web notes</span><strong>Lecture 1</strong></a>
+        <a class="ese531-resource" href="/teaching/ese-531/lectures/random-samples-supplement/"><i class="fa fa-pen-to-square" aria-hidden="true"></i><span>Web notes</span><strong>Probability inequalities and limit theorems</strong></a>
+        <a class="ese531-resource" href="/teaching/ese-531/homeworks/homework-1/"><i class="fa fa-pen-to-square" aria-hidden="true"></i><span>Web homework</span><strong>Homework 1</strong></a>
+      </div>
+    </article>
 
-### Lectures
-- **[Lecture 1: Random Samples, Probability Inequalities, Limit Theorems](/teaching/ese-531/lectures/lecture-1/)**
-- **Lecture 2 (coming soon!)**
+    <article class="ese531-module">
+      <div class="ese531-module__header">
+        <span>Module 2</span>
+        <h3>Point Estimation</h3>
+      </div>
+      <div class="ese531-resource-grid">
+        <a class="ese531-resource" href="/teaching/ese-531/lectures/lecture-2-point-estimation/"><i class="fa fa-pen-to-square" aria-hidden="true"></i><span>Web notes</span><strong>Lecture 2: Point Estimation</strong></a>
+        <a class="ese531-resource" href="/teaching/ese-531/lectures/mle-properties-and-optimization/"><i class="fa fa-pen-to-square" aria-hidden="true"></i><span>Web notes</span><strong>MLE Properties and Optimization</strong></a>
+      </div>
+    </article>
 
+    <article class="ese531-module">
+      <div class="ese531-module__header">
+        <span>Module 3</span>
+        <h3>Evaluation of Estimators</h3>
+      </div>
+      <div class="ese531-resource-grid">
+        <a class="ese531-resource" href="/teaching/ese-531/lectures/em-mvue-crlb/"><i class="fa fa-pen-to-square" aria-hidden="true"></i><span>Web notes</span><strong>EM, Risk, MVUE, and CRLB</strong></a>
+        <a class="ese531-resource" href="/teaching/ese-531/lectures/efficient-estimators-vector-crlb/"><i class="fa fa-pen-to-square" aria-hidden="true"></i><span>Web notes</span><strong>Efficient Estimators and Vector CRLB</strong></a>
+      </div>
+    </article>
 
-### Homework Assignments
-- **[Homework 1: Properties of Random Samples](/teaching/ese-531/homeworks/homework-1/)**
-- **Homework 2 (coming soon!)**
+    <article class="ese531-module">
+      <div class="ese531-module__header">
+        <span>Module 4</span>
+        <h3>Bayesian Estimators</h3>
+      </div>
+      <div class="ese531-resource-grid">
+        <a class="ese531-resource" href="/teaching/ese-531/lectures/bayesian-estimation/"><i class="fa fa-pen-to-square" aria-hidden="true"></i><span>Web notes</span><strong>Bayesian Estimation</strong></a>
+        <a class="ese531-resource" href="/teaching/ese-531/lectures/priors-and-predictive-checks/"><i class="fa fa-pen-to-square" aria-hidden="true"></i><span>Web notes</span><strong>Priors and Predictive Checks</strong></a>
+        <a class="ese531-resource" href="/teaching/ese-531/lectures/predictive-checks-approximate-bayesian-inference/"><i class="fa fa-pen-to-square" aria-hidden="true"></i><span>Web notes</span><strong>Approximate Bayesian Inference</strong></a>
+      </div>
+    </article>
 
-### Recommended Supplementary Reading
-- Fundamentals of Statistical Signal Processing: Estimation Theory, S. M. Kay, Prentice Hall, 1993
-- Fundamentals of Statistical Signal Processing: Detection Theory, S. M. Kay, Prentice Hall, 1998
-- Statistical Inference, 2nd ed., G. Casella and R. Berger, Duxbury Press, 2002
+    <article class="ese531-module">
+      <div class="ese531-module__header">
+        <span>Module 5</span>
+        <h3>Linear Models and Detection Theory</h3>
+      </div>
+      <div class="ese531-resource-grid">
+        <a class="ese531-resource" href="/teaching/ese-531/lectures/monte-carlo-linear-models/"><i class="fa fa-pen-to-square" aria-hidden="true"></i><span>Web notes</span><strong>Monte Carlo Methods and Linear Models</strong></a>
+        <a class="ese531-resource" href="/teaching/ese-531/lectures/detection-theory/"><i class="fa fa-pen-to-square" aria-hidden="true"></i><span>Web notes</span><strong>Detection Theory</strong></a>
+        <a class="ese531-resource" href="/teaching/ese-531/lectures/detection-theory-student-notes/"><i class="fa fa-pen-to-square" aria-hidden="true"></i><span>Web notes</span><strong>Detection Theory Examples</strong></a>
+      </div>
+    </article>
+  </section>
 
-## Prerequisites
-
-- Calculus
-- Linear algebra
-- Probability theory
+  <section class="ese531-panel ese531-panel--two-col">
+    <div>
+      <h2>Prerequisites</h2>
+      <ul>
+        <li>Calculus</li>
+        <li>Linear algebra</li>
+        <li>Probability theory</li>
+      </ul>
+    </div>
+    <div>
+      <h2>Recommended Supplementary Reading</h2>
+      <ul>
+        <li><em>Fundamentals of Statistical Signal Processing: Estimation Theory</em>, S. M. Kay, Prentice Hall, 1993.</li>
+        <li><em>Fundamentals of Statistical Signal Processing: Detection Theory</em>, S. M. Kay, Prentice Hall, 1998.</li>
+        <li><em>Statistical Inference</em>, 2nd ed., G. Casella and R. Berger, Duxbury Press, 2002.</li>
+      </ul>
+    </div>
+  </section>
+</div>

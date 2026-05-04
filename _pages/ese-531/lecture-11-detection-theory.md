@@ -1,11 +1,15 @@
 ---
 layout: single
-title: "Lecture 11: Detection Theory"
-permalink: /teaching/ese-531/lectures/detection-theory/
+title: "Detection Theory"
+permalink: /teaching/ese-531/detection-theory/
+redirect_from:
+  - /teaching/ese-531/lectures/detection-theory/
 author_profile: true
 toc: true
-toc_label: "Lecture Outline"
+toc_label: "Topic Outline"
 ---
+
+<div class="ese-531" markdown="1">
 
 Detection theory studies how to choose between competing hypotheses from observed data. The central problem is balancing missed detections against false alarms.
 
@@ -119,6 +123,7 @@ Choosing $\gamma$ controls the tradeoff. A small threshold increases detections 
 ## Neyman-Pearson Lemma
 
 > **Neyman-Pearson Lemma:** For testing a simple null hypothesis against a simple alternative, the most powerful test at false alarm level $\alpha$ rejects $H_0$ when the likelihood ratio exceeds a threshold.
+{: .ese-box .ese-theorem}
 
 The likelihood ratio is
 
@@ -144,7 +149,7 @@ In continuous problems the threshold can usually be chosen so equality holds. In
 
 Different thresholds trace out a receiver operating characteristic curve: each threshold gives one pair $(P_{\mathrm{FA}},P_D)$. The ROC curve summarizes the achievable tradeoff between false alarms and detections.
 
-<details>
+<details class="ese-proof">
 <summary><strong>Proof Idea for Neyman-Pearson</strong></summary>
 
 Let $R$ be the rejection region where the detector decides $H_1$. The optimization problem is
@@ -200,7 +205,7 @@ $$
 \bar{X}>\gamma.
 $$
 
-<details>
+<details class="ese-proof">
 <summary><strong>Derivation</strong></summary>
 
 The log likelihood ratio is
@@ -397,3 +402,7 @@ If the priors are also equal, the threshold is $1$, so the Bayesian rule chooses
 - Neyman-Pearson gives the optimal simple-hypothesis test at a fixed false alarm rate.
 - Gaussian detection problems often reduce to thresholding means or energies.
 - Bayesian detection uses priors and costs to choose the likelihood-ratio threshold.
+
+<p class="ese-next"><a href="/teaching/ese-531/detection-examples/">Next: Detection Theory Examples</a></p>
+
+</div>

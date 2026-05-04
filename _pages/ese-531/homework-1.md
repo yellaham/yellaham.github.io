@@ -1,11 +1,15 @@
 ---
 layout: single
 title: "Homework 1: Properties of Random Samples"
-permalink: /teaching/ese-531/homeworks/homework-1/
+permalink: /teaching/ese-531/homework/random-samples/
+redirect_from:
+  - /teaching/ese-531/homeworks/homework-1/
 author_profile: true
 toc: true
 toc_label: "Homework Problems and Solutions"
 ---
+
+<div class="ese-531" markdown="1">
 
 ### Problem 1
 
@@ -13,7 +17,7 @@ Let $\bar{X}\_n=\frac{1}{n}\sum\_{i=1}^n X\_i$ and $S\_n^2=\frac{1}{n-1}\sum\_{i
 
 #### (a) Show that $\bar{X}\_{n+1}=\frac{X\_{n+1}+n\bar{X}\_n}{n+1}$.
 
-<details>
+<details class="ese-proof">
 <summary>Show Solution</summary>
 
 $$\begin{align}
@@ -26,7 +30,7 @@ $$\begin{align}
 
 #### (b) Show that $n S\_{n+1}^2=(n-1) S\_n^2+\left(\frac{n}{n+1}\right)\left(X\_{n+1}-\bar{X}\_n\right)^2$
 
-<details>
+<details class="ese-proof">
 <summary>Show Solution</summary>
 
 We proceed by using the solution to part (a) and further manipulating the equality:
@@ -53,7 +57,7 @@ $$\widehat\sigma_n^2 = \frac{1}{n}\sum_{i=1}^n (X\_i-\bar{X}\_n)^2$$
 
 #### (a) Show that $\widehat\sigma\_n^2$ is a biased estimator of the population variance $\sigma^2$.
 
-<details>
+<details class="ese-proof">
 <summary>Show Solution</summary>
 
 We need to see if $\mathbb{E}[\widehat\sigma\_n^2]=\sigma^2$
@@ -91,7 +95,7 @@ $$\mathbb{E}[\widehat{\sigma}\_n^2] = \sigma^2 - \frac{2\sigma^2}{n} + \frac{\si
 
 #### (b) Propose a correction to the empirical variance that removes the bias in the estimator. In other words, find a meaningful function $g(\cdot)$ that guarantees: $\mathbb{E}[g(\widehat\sigma\_n^2)]=\sigma^2$
 
-<details>
+<details class="ese-proof">
 <summary>Show Solution</summary>
 
 Consider a class of linear functions $g(x)=cx$, where $c$ is some constant. We have that:
@@ -104,7 +108,7 @@ To satisfy $\mathbb{E}[g(\widehat\sigma\_n^2)]=\sigma^2$, we can choose $c=\frac
 
 #### (c) Show that if the population mean is known, then the empirical variance is unbiased. That is, show the following estimator is unbiased: $\widehat\sigma\_n^2 = \frac{1}{n}\sum_{i=1}^n (X\_i-\mu)^2$
 
-<details>
+<details class="ese-proof">
 <summary>Show Solution</summary>
 
 The proof is straightforward and simply uses the linearity property of expectation and the definition of variance:
@@ -127,7 +131,7 @@ $$\widehat\mu\_n = \sum_{i=1}^n w\_iX\_i$$
 
 #### (a) Show that $\widehat\mu\_n$ is an unbiased estimator for the population mean.
 
-<details>
+<details class="ese-proof">
 <summary>Show Solution</summary>
 
 The proof is straightforward and uses the given condition $\sum_{i=1}^n w\_i = 1$ and the linearity property of expectations:
@@ -142,7 +146,7 @@ $$\begin{align}
 
 #### (b) Compare the variance of the weighted sample mean $\widehat\mu_n$ with the unweighted sample mean $\bar{X}\_n$. Which has smaller variance?
 
-<details>
+<details class="ese-proof">
 <summary>Show Solution</summary>
 
 Recall the variance of the unweighted sample mean is $\mathbb{V}[\bar{X}\_n]= \frac{\sigma^2}{n}$. For the weighted sample mean we have:
@@ -150,7 +154,7 @@ Recall the variance of the unweighted sample mean is $\mathbb{V}[\bar{X}\_n]= \f
 $$\begin{align}
 \mathbb{V}[\widehat\mu_n] &= \mathbb{V}\left[\sum_{i=1}^n w_iX_i\right] \\
 &= \sum_{i=1}^n \mathbb{V}\left[w_iX_i\right] \quad \text{(by independence)}\\
-&=\sum_{i=1}^n w_i^2\mathbb{V}[X_i] \quad (\mathbb{V}[aX]=a^2\mathbb{V}[X]) \\ 
+&=\sum_{i=1}^n w_i^2\mathbb{V}[X_i] \quad (\mathbb{V}[aX]=a^2\mathbb{V}[X]) \\
 &=\sigma^2\left(\sum_{i=1}^n w_i^2\right)
 \end{align}$$
 
@@ -174,7 +178,7 @@ $$\mathbb{V}\left[\frac{\sqrt{n}\left(\bar{X}\_n-\mu\right)}{\sigma}\right] = 1$
 
 Thus, the normalization of $\bar{X}\_n$ in the Central Limit Theorem gives random variables that have the same mean and variance as the limiting $\mathcal{N}(0,1)$ distribution.
 
-<details>
+<details class="ese-proof">
 <summary>Show Solution</summary>
 
 Using $\mathbb{E}[\bar{X}\_n]=\mu$ and $\mathbb{V}[\bar{X}\_n]=\sigma^2 / n$, we obtain:
@@ -193,9 +197,9 @@ $$\begin{align}
 
 ### Problem 5
 
-Let $X\_1, X\_2, \ldots$ be a sequence of random variables that converges in probability to a constant $a$, that is $X\_n\rightarrow a$ in probability. Assume that $\mathbb{P}(X\_i>0)=1$ for all $i$ (i.e., the random variables $X\_i$ are positive). Verify that the sequences defined by $Y\_i=\sqrt{X\_i}\rightarrow \sqrt{a}$ and $Y\_i^{\prime}=a / X\_i\rightarrow 1$ converge in probability.
+Let $X\_1, X\_2, \ldots$ be a sequence of random variables that converges in probability to a positive constant $a>0$, that is $X\_n\rightarrow a$ in probability. Assume that $\mathbb{P}(X\_i>0)=1$ for all $i$ (i.e., the random variables $X\_i$ are positive). Verify that the sequences defined by $Y\_i=\sqrt{X\_i}\rightarrow \sqrt{a}$ and $Y\_i^{\prime}=a / X\_i\rightarrow 1$ converge in probability.
 
-<details>
+<details class="ese-proof">
 <summary>Show Solution</summary>
 
 The key for this problem is to try and rewrite the convergence in probability statement for each of these transformed random variables as a statement about the convergence in probability of $X\_n$ to $a$.
@@ -214,7 +218,7 @@ as $n \rightarrow \infty$, since $X\_n \rightarrow a$ in probability. Thus $\sqr
 
 **Showing $Y\_i^\prime \rightarrow 1$ in probability:**
 
-For any $\epsilon>0$, we have that:
+For $0<\epsilon<1$, we have that:
 
 $$\begin{align}
 \mathbb{P}\left(\left|\frac{a}{X\_n}-1\right| \leq \epsilon\right) & =\mathbb{P}\left(\frac{a}{1+\epsilon} \leq X\_n \leq \frac{a}{1-\epsilon}\right) \\
@@ -225,6 +229,10 @@ $$\begin{align}
 
 as $n \rightarrow \infty$, since $X\_n \rightarrow a$ in probability. Thus $a / X\_n \rightarrow 1$ in probability.
 
+For $\epsilon\geq 1$, the convergence statement follows from the case $0<\epsilon<1$ because the event $\{|a/X_n-1|\leq\epsilon\}$ is larger.
+
 </details>
 
 ---
+
+</div>

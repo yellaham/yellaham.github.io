@@ -1,13 +1,17 @@
 ---
 layout: single
-title: "Student Notes: Detection Theory Examples"
-permalink: /teaching/ese-531/lectures/detection-theory-student-notes/
+title: "Detection Theory Examples"
+permalink: /teaching/ese-531/detection-examples/
+redirect_from:
+  - /teaching/ese-531/lectures/detection-theory-student-notes/
 author_profile: true
 toc: true
-toc_label: "Notes Outline"
+toc_label: "Topic Outline"
 ---
 
-These notes rewrite the April 17 student notes into a clean reference for the main detection-theory examples.
+<div class="ese-531" markdown="1">
+
+This reference collects the main detection-theory examples: mean shifts, variance changes, likelihood-ratio thresholds, and change-point interpretations.
 
 ## Hypotheses
 
@@ -288,3 +292,7 @@ This sum is useful because each observation contributes an evidence increment. I
 - Thresholds control the tradeoff between missed detections and false alarms.
 - Mean changes lead to average-based detectors; variance changes lead to energy-based detectors.
 - Always set thresholds using the null distribution when the goal is to control false alarms.
+
+<p class="ese-next"><a href="/teaching/ese-531/">Back to ESE 531 Course Hub</a></p>
+
+</div>

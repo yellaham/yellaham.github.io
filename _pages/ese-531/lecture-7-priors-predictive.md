@@ -1,13 +1,17 @@
 ---
 layout: single
-title: "Lecture 7: Priors, Jeffreys Prior, and Posterior Predictive Checks"
-permalink: /teaching/ese-531/lectures/priors-and-predictive-checks/
+title: "Prior Design and Predictive Checks"
+permalink: /teaching/ese-531/prior-design-predictive-checks/
+redirect_from:
+  - /teaching/ese-531/lectures/priors-and-predictive-checks/
 author_profile: true
 toc: true
-toc_label: "Lecture Outline"
+toc_label: "Topic Outline"
 ---
 
-This lecture focuses on prior choice, prior calibration, and the first steps toward checking whether a Bayesian model is compatible with observed data.
+<div class="ese-531" markdown="1">
+
+This topic focuses on prior choice, prior calibration, and the first steps toward checking whether a Bayesian model is compatible with observed data.
 
 ## Types of Priors
 
@@ -97,10 +101,11 @@ Thus a flat prior on a log-scale parameter corresponds to a scale prior $p(\thet
 > $$
 >
 > where $I(\theta)$ is Fisher information.
+{: .ese-box .ese-definition}
 
 Jeffreys prior is designed to respect smooth reparameterizations. It uses the local information geometry of the model rather than a coordinate-specific notion of flatness.
 
-<details>
+<details class="ese-proof">
 <summary><strong>Invariance Calculation</strong></summary>
 
 Let $\phi=g(\theta)$ be a one-to-one differentiable transformation. Scores transform by the chain rule:
@@ -331,3 +336,7 @@ Values very close to $0$ or $1$ suggest that the observed statistic is unusual u
 - Jeffreys prior uses Fisher information to reduce coordinate dependence.
 - Posterior predictive checks help diagnose model fit.
 - Prior calibration should be checked on the data scale, not only through hyperparameter formulas.
+
+<p class="ese-next"><a href="/teaching/ese-531/approximate-bayesian-inference/">Next: Approximate Bayesian Inference</a></p>
+
+</div>

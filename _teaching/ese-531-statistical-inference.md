@@ -9,41 +9,36 @@ location: "Stony Brook, NY"
 excerpt: "Graduate-level course covering statistical inference and estimation theory, including parameter estimation, hypothesis testing, and Bayesian methods."
 ---
 
+<div class="ese-531" markdown="1">
+
 ## Course Description
 
 ESE 531 is a graduate-level course on statistical estimation, inference, and detection. The course develops the tools used to infer unknown quantities from data: random samples, point estimation, estimator evaluation, Bayesian inference, linear models, and hypothesis testing.
 
-The notes below are written as web-native course materials rather than PDF downloads. They are organized by module so students can move through the course in sequence.
+The notes below are web-native course materials organized by topic. The sequence is meant to move from the behavior of random samples, through estimators and their limits, into Bayesian computation, linear models, and detection.
 
-## Course Notes
+## Topic Sequence
 
-### Module 1: Properties of Random Samples
+<ol class="ese-course-map">
+  <li><a href="/teaching/ese-531/random-samples/">Random Samples and Sample Statistics</a><span>Population models, iid samples, sample means, sample variances, and why statistics are random variables.</span></li>
+  <li><a href="/teaching/ese-531/probability-inequalities-limit-theorems/">Probability Inequalities and Limit Theorems</a><span>Markov, Chebyshev, Chernoff, convergence modes, laws of large numbers, the central limit theorem, Slutsky, and the delta method.</span></li>
+  <li><a href="/teaching/ese-531/point-estimation/">Point Estimation</a><span>Identifiability, method of moments, likelihood construction, maximum likelihood estimation, constraints, and boundary cases.</span></li>
+  <li><a href="/teaching/ese-531/mle-properties-optimization/">MLE Properties and Numerical Optimization</a><span>Consistency, Fisher information, asymptotic normality, invariance, convexity, gradient methods, Newton updates, and exponential families.</span></li>
+  <li><a href="/teaching/ese-531/expectation-maximization/">Expectation-Maximization</a><span>Latent-variable likelihoods, EM monotonicity, and Gaussian mixture model updates.</span></li>
+  <li><a href="/teaching/ese-531/estimator-risk-cramer-rao/">Estimator Risk and Scalar Cramer-Rao Bounds</a><span>MSE, bias-variance decomposition, risk, MVUEs, Fisher information benchmarks, and scalar efficiency.</span></li>
+  <li><a href="/teaching/ese-531/efficient-estimators-vector-crlb/">Efficient Estimators and Vector Cramer-Rao Bounds</a><span>Equality in the CRLB, transformed parameters, nuisance parameters, and matrix lower bounds.</span></li>
+  <li><a href="/teaching/ese-531/bayesian-estimation/">Bayesian Estimation</a><span>Bayes' theorem, conjugacy, MAP, MMSE, beta-Bernoulli updating, Gaussian priors, and improper flat priors.</span></li>
+  <li><a href="/teaching/ese-531/prior-design-predictive-checks/">Prior Design and Predictive Checks</a><span>Prior strength, reparameterization, Jeffreys prior, calibration by moment matching, and posterior predictive diagnostics.</span></li>
+  <li><a href="/teaching/ese-531/approximate-bayesian-inference/">Approximate Bayesian Inference</a><span>Predictive accuracy, cross-validation, Laplace approximation, variational inference, and the role of approximation error.</span></li>
+  <li><a href="/teaching/ese-531/monte-carlo-methods/">Monte Carlo Methods</a><span>Monte Carlo error, rejection sampling, importance sampling, effective sample size, and Metropolis-Hastings.</span></li>
+  <li><a href="/teaching/ese-531/linear-models-least-squares/">Linear Models and Least Squares</a><span>Normal equations, projection geometry, covariance, Gauss-Markov intuition, generalized least squares, and whitening.</span></li>
+  <li><a href="/teaching/ese-531/detection-theory/">Detection Theory</a><span>Binary hypothesis tests, likelihood ratios, Neyman-Pearson testing, Gaussian mean and variance detection, and Bayes risk.</span></li>
+  <li><a href="/teaching/ese-531/detection-examples/">Detection Theory Examples</a><span>Worked mean-shift, variance-change, threshold, and change-point calculations.</span></li>
+</ol>
 
-- [Lecture 1: Random Samples, Probability Inequalities, Limit Theorems](/teaching/ese-531/lectures/lecture-1/)
-- [Supplement: Probability Inequalities and Limit Theorems](/teaching/ese-531/lectures/random-samples-supplement/)
-- [Homework 1: Properties of Random Samples](/teaching/ese-531/homeworks/homework-1/)
+## Practice
 
-### Module 2: Point Estimation
-
-- [Lecture 2: Point Estimation](/teaching/ese-531/lectures/lecture-2-point-estimation/)
-- [MLE Properties and Numerical Optimization](/teaching/ese-531/lectures/mle-properties-and-optimization/)
-
-### Module 3: Evaluation of Estimators
-
-- [EM, Risk, MVUE, and the Cramer-Rao Bound](/teaching/ese-531/lectures/em-mvue-crlb/)
-- [Efficient Estimators and Vector Cramer-Rao Bounds](/teaching/ese-531/lectures/efficient-estimators-vector-crlb/)
-
-### Module 4: Bayesian Estimators
-
-- [Bayesian Estimation](/teaching/ese-531/lectures/bayesian-estimation/)
-- [Priors, Jeffreys Prior, and Posterior Predictive Checks](/teaching/ese-531/lectures/priors-and-predictive-checks/)
-- [Predictive Checks and Approximate Bayesian Inference](/teaching/ese-531/lectures/predictive-checks-approximate-bayesian-inference/)
-
-### Module 5: Linear Models and Detection Theory
-
-- [Monte Carlo Methods and Linear Models](/teaching/ese-531/lectures/monte-carlo-linear-models/)
-- [Detection Theory](/teaching/ese-531/lectures/detection-theory/)
-- [Detection Theory Examples](/teaching/ese-531/lectures/detection-theory-student-notes/)
+- [Homework 1: Properties of Random Samples](/teaching/ese-531/homework/random-samples/)
 
 ## Topics
 
@@ -64,3 +59,5 @@ The notes below are written as web-native course materials rather than PDF downl
 - Calculus
 - Linear algebra
 - Probability theory
+
+</div>

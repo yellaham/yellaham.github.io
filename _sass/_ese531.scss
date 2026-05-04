@@ -1,0 +1,146 @@
+/* ==========================================================================
+   ESE 531 course notes
+   ========================================================================== */
+
+body:has(.ese-531) {
+  background: #eef2f6;
+}
+
+#main:has(.ese-531) {
+  max-width: 1200px;
+}
+
+.page:has(.ese-531) {
+  padding: 1.4rem;
+  border: 1px solid #d7dde5;
+  border-radius: 6px;
+  background: #ffffff;
+
+  .page__title,
+  header p {
+    color: #20242a;
+  }
+}
+
+.ese-531 {
+  color: #20242a;
+  background: #ffffff;
+  line-height: 1.68;
+
+  h2 {
+    margin-top: 2.2em;
+  }
+
+  h3 {
+    margin-top: 1.7em;
+  }
+
+  .ese-course-map {
+    counter-reset: ese-topic;
+    margin: 1.5rem 0 2rem;
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid #d7dde5;
+  }
+
+  .ese-course-map li {
+    counter-increment: ese-topic;
+    position: relative;
+    padding: 0.9rem 0;
+    padding-left: 2.4rem;
+    border-bottom: 1px solid #d7dde5;
+  }
+
+  .ese-course-map li::before {
+    content: counter(ese-topic);
+    position: absolute;
+    top: 0.95rem;
+    left: 0;
+    width: 1.55rem;
+    height: 1.55rem;
+    border: 1px solid #c9d3df;
+    border-radius: 50%;
+    color: #334155;
+    font-size: 0.8em;
+    font-weight: 700;
+    line-height: 1.55rem;
+    text-align: center;
+  }
+
+  .ese-course-map a {
+    font-weight: 700;
+  }
+
+  .ese-course-map span {
+    display: block;
+    margin-top: 0.2rem;
+    color: #4b5563;
+    font-size: 0.9em;
+  }
+
+  .ese-box,
+  blockquote,
+  details {
+    margin: 1.35rem 0;
+    padding: 1rem 1.15rem;
+    border: 1px solid #cfd8e3;
+    border-left: 0.35rem solid #3f6f8f;
+    border-radius: 6px;
+    background: #f8fafc;
+    color: #20242a;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+  }
+
+  blockquote {
+    font-style: normal;
+  }
+
+  blockquote p:last-child,
+  details p:last-child,
+  .ese-box p:last-child {
+    margin-bottom: 0;
+  }
+
+  .ese-definition {
+    border-left-color: #2f7d64;
+    background: #f4fbf7;
+  }
+
+  .ese-theorem {
+    border-left-color: #7a5a18;
+    background: #fffaf0;
+  }
+
+  .ese-example {
+    border-left-color: #4267a4;
+    background: #f5f8ff;
+  }
+
+  .ese-note {
+    border-left-color: #6b7280;
+    background: #f8fafc;
+  }
+
+  .ese-proof,
+  details {
+    border-left-color: #8b5e83;
+    background: #fbf7fb;
+  }
+
+  details summary {
+    cursor: pointer;
+    color: #22272e;
+    font-weight: 700;
+  }
+
+  details summary + * {
+    margin-top: 0.9rem;
+  }
+
+  .ese-next {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #d7dde5;
+    font-weight: 700;
+  }
+}

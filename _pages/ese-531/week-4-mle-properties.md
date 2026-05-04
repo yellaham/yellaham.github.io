@@ -1,13 +1,17 @@
 ---
 layout: single
-title: "Lecture: MLE Properties and Numerical Optimization"
-permalink: /teaching/ese-531/lectures/mle-properties-and-optimization/
+title: "MLE Properties and Numerical Optimization"
+permalink: /teaching/ese-531/mle-properties-optimization/
+redirect_from:
+  - /teaching/ese-531/lectures/mle-properties-and-optimization/
 author_profile: true
 toc: true
-toc_label: "Lecture Outline"
+toc_label: "Topic Outline"
 ---
 
-This lecture studies why maximum likelihood estimators are useful and what to do when the likelihood cannot be optimized by hand.
+<div class="ese-531" markdown="1">
+
+This topic studies why maximum likelihood estimators are useful and what to do when the likelihood cannot be optimized by hand.
 
 ## Consistency of the MLE
 
@@ -65,6 +69,7 @@ These assumptions are not decorative. If the parameter is not identifiable, the 
 > \left(\frac{\partial}{\partial \theta}\log p(X\mid \theta)\right)^2
 > \right].
 > $$
+{: .ese-box .ese-definition}
 
 When regularity conditions hold, this can also be written as
 
@@ -123,6 +128,7 @@ This is why expected curvature and score variance agree under regularity conditi
 > \xrightarrow{d}
 > N\left(0, I(\theta_0)^{-1}\right).
 > $$
+{: .ese-box .ese-theorem}
 
 This result gives an approximate standard error:
 
@@ -131,7 +137,7 @@ $$
 \approx \sqrt{\frac{1}{nI(\hat{\theta}_n)}}.
 $$
 
-<details>
+<details class="ese-proof">
 <summary><strong>Proof Sketch by Taylor Expanding the Score</strong></summary>
 
 Let
@@ -191,10 +197,11 @@ For vector parameters, the same idea uses the inverse Hessian matrix.
 ## Invariance Property of the MLE
 
 > **Theorem (MLE Invariance):** If $\hat{\theta}$ is the MLE of $\theta$ and $\alpha=g(\theta)$, then $g(\hat{\theta})$ is the MLE of $\alpha$.
+{: .ese-box .ese-theorem}
 
 This property is especially useful when the parameter of interest is a transformation of a parameter we can estimate more easily.
 
-<details>
+<details class="ese-proof">
 <summary><strong>Proof Sketch</strong></summary>
 
 If $\alpha=g(\theta)$, then the induced likelihood for $\alpha$ is obtained by maximizing over all parameter values that map to $\alpha$:
@@ -247,6 +254,7 @@ where $f(\theta)=-\ell(\theta)$ is the negative log likelihood.
 > $$
 > f(tx+(1-t)y)\leq tf(x)+(1-t)f(y).
 > $$
+{: .ese-box .ese-definition}
 
 For twice differentiable scalar functions, convexity is equivalent to
 
@@ -311,10 +319,10 @@ $$
 =
 \theta^{(t)}
 +
-I(\theta^{(t)})^{-1}\nabla\ell(\theta^{(t)}).
+I_n(\theta^{(t)})^{-1}\nabla\ell(\theta^{(t)}),
 $$
 
-This can be more stable when the observed Hessian is noisy or indefinite. If the parameter is constrained, such as $p\in[0,1]$ or $\sigma^2>0$, there are two common strategies: optimize over a transformed unconstrained parameter, or take a step and project back into the feasible set.
+where $I_n(\theta)=nI(\theta)$ for iid data when $I(\theta)$ denotes one-observation information. This can be more stable when the observed Hessian is noisy or indefinite. If the parameter is constrained, such as $p\in[0,1]$ or $\sigma^2>0$, there are two common strategies: optimize over a transformed unconstrained parameter, or take a step and project back into the feasible set.
 
 ## Exponential Families
 
@@ -383,3 +391,7 @@ $$
 - MLEs behave well under transformations.
 - Numerical optimization is a central tool when closed forms are unavailable.
 - Canonical exponential-family likelihoods are concave in the natural parameter, which explains why many textbook MLEs are well behaved.
+
+<p class="ese-next"><a href="/teaching/ese-531/expectation-maximization/">Next: Expectation-Maximization</a></p>
+
+</div>

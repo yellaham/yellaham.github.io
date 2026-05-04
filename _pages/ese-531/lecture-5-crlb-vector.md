@@ -1,13 +1,17 @@
 ---
 layout: single
-title: "Lecture 5: Efficient Estimators and Vector Cramer-Rao Bounds"
-permalink: /teaching/ese-531/lectures/efficient-estimators-vector-crlb/
+title: "Efficient Estimators and Vector Cramer-Rao Bounds"
+permalink: /teaching/ese-531/efficient-estimators-vector-crlb/
+redirect_from:
+  - /teaching/ese-531/lectures/efficient-estimators-vector-crlb/
 author_profile: true
 toc: true
-toc_label: "Lecture Outline"
+toc_label: "Topic Outline"
 ---
 
-This lecture finishes the discussion of estimator evaluation, with special attention to efficient estimators, transformed parameters, and the vector form of the Cramer-Rao lower bound.
+<div class="ese-531" markdown="1">
+
+This topic finishes the discussion of estimator evaluation, with special attention to efficient estimators, transformed parameters, and the vector form of the Cramer-Rao lower bound.
 
 ## MVUE Review
 
@@ -20,6 +24,7 @@ $$
 Therefore, among unbiased estimators, the best estimator in the MSE sense is the one with the smallest variance.
 
 > **Definition (Efficient Estimator):** An unbiased estimator is efficient if it attains the Cramer-Rao lower bound.
+{: .ese-box .ese-definition}
 
 An efficient estimator, when it exists, is an MVUE.
 
@@ -352,3 +357,7 @@ For signal models, this workflow often reduces to differentiating the noiseless 
 - For multiple parameters, the CRLB is a matrix inequality.
 - Estimators that are excellent for one criterion may not be optimal for another transformed quantity.
 - Nuisance parameters and nonlinear transformations are common reasons finite-sample efficiency fails even when MLEs behave well asymptotically.
+
+<p class="ese-next"><a href="/teaching/ese-531/bayesian-estimation/">Next: Bayesian Estimation</a></p>
+
+</div>

@@ -1,11 +1,15 @@
 ---
 layout: single
-title: "Lecture 6: Bayesian Estimation"
-permalink: /teaching/ese-531/lectures/bayesian-estimation/
+title: "Bayesian Estimation"
+permalink: /teaching/ese-531/bayesian-estimation/
+redirect_from:
+  - /teaching/ese-531/lectures/bayesian-estimation/
 author_profile: true
 toc: true
-toc_label: "Lecture Outline"
+toc_label: "Topic Outline"
 ---
+
+<div class="ese-531" markdown="1">
 
 Bayesian estimation treats unknown parameters as random variables. The output is a posterior distribution, from which point estimators and uncertainty summaries can be derived.
 
@@ -60,6 +64,7 @@ The proportionality symbol is useful because the denominator does not depend on 
 ## Conjugate Priors
 
 > **Definition (Conjugacy):** A prior family is conjugate for a likelihood if the posterior distribution belongs to the same family as the prior.
+{: .ese-box .ese-definition}
 
 Conjugacy matters because it turns Bayesian updating into parameter updating. Two canonical examples in this course are:
 
@@ -127,7 +132,7 @@ $$
 
 If the posterior is symmetric and unimodal, MAP and MMSE may coincide. In skewed posteriors, the posterior mode and posterior mean can differ substantially.
 
-<details>
+<details class="ese-proof">
 <summary><strong>Why the Posterior Mean Minimizes Squared Error</strong></summary>
 
 For a candidate estimate $a$, expand the posterior risk:
@@ -269,7 +274,7 @@ $$
 
 This variance is smaller than both the prior variance and the sampling variance of $\bar{X}$ when both sources of information are finite. Bayesian updating combines precisions, where precision means inverse variance.
 
-<details>
+<details class="ese-proof">
 <summary><strong>Completing the Square for the Gaussian Posterior</strong></summary>
 
 The posterior density is proportional to
@@ -376,3 +381,7 @@ Improper priors are therefore tools, not probability distributions. They are acc
 - MMSE is the posterior mean.
 - Conjugate priors make posterior updates analytically tractable.
 - Prior hyperparameters often act like pseudo-data or prior precision, which makes their influence easier to interpret.
+
+<p class="ese-next"><a href="/teaching/ese-531/prior-design-predictive-checks/">Next: Prior Design and Predictive Checks</a></p>
+
+</div>

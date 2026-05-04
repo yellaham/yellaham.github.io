@@ -1,13 +1,17 @@
 ---
 layout: single
-title: "Lecture 2: Point Estimation"
-permalink: /teaching/ese-531/lectures/lecture-2-point-estimation/
+title: "Point Estimation"
+permalink: /teaching/ese-531/point-estimation/
+redirect_from:
+  - /teaching/ese-531/lectures/lecture-2-point-estimation/
 author_profile: true
 toc: true
-toc_label: "Lecture Outline"
+toc_label: "Topic Outline"
 ---
 
-Point estimation turns data into a single numerical guess for an unknown quantity. This lecture introduces the estimation problem, the method of moments, and maximum likelihood estimation.
+<div class="ese-531" markdown="1">
+
+Point estimation turns data into a single numerical guess for an unknown quantity. This topic introduces the estimation problem, the method of moments, and maximum likelihood estimation.
 
 ## Formulating an Estimation Problem
 
@@ -26,6 +30,7 @@ a probabilistic model $p(x\mid \theta)$, and an unknown parameter $\theta$.
 > $$
 >
 > used to estimate an unknown parameter $\theta$.
+{: .ese-box .ese-definition}
 
 A clean formulation should identify:
 
@@ -64,6 +69,7 @@ Before computing any estimator, ask whether the parameter is identifiable.
 > \quad \Longrightarrow \quad
 > \theta_1=\theta_2.
 > $$
+{: .ese-box .ese-definition}
 
 If identifiability fails, no estimator can reliably recover the parameter from the data distribution, even with infinitely many samples. For instance, if $X\sim N(\theta^2,1)$ and the parameter space is $\Theta=\mathbb{R}$, then $\theta$ and $-\theta$ produce the same distribution. The quantity $\theta^2$ is identifiable, but the signed parameter $\theta$ is not.
 
@@ -104,6 +110,34 @@ $$
 
 This factorization is often the difference between a tractable likelihood and an impossible-looking joint model.
 
+## Sufficient Statistics
+
+A statistic is sufficient when it retains all the sample information about the parameter that is present in the full data.
+
+> **Definition (Sufficient Statistic):** A statistic $T(X_1,\ldots,X_n)$ is sufficient for $\theta$ if the conditional distribution of the full sample given $T$ does not depend on $\theta$.
+{: .ese-box .ese-definition}
+
+The main practical test is the factorization theorem.
+
+> **Theorem (Factorization Theorem):** A statistic $T(X)$ is sufficient for $\theta$ if the joint density or mass function can be written as
+>
+> $$
+> p(x\mid\theta)=g(T(x),\theta)h(x),
+> $$
+>
+> where $h(x)$ does not depend on $\theta$.
+{: .ese-box .ese-theorem}
+
+Sufficiency matters because estimation can often be reduced from the full data vector to a lower-dimensional summary without losing information about $\theta$. For example, if $X_i\sim\mathrm{Bernoulli}(p)$ iid, then
+
+$$
+p(x_1,\ldots,x_n\mid p)
+=
+p^{\sum_i x_i}(1-p)^{n-\sum_i x_i},
+$$
+
+so $T(X)=\sum_i X_i$ is sufficient for $p$. The likelihood depends on the data only through the number of successes.
+
 ## Method of Moments
 
 The method of moments matches theoretical moments to sample moments.
@@ -124,14 +158,16 @@ m_j(\hat{\theta})=\hat{m}_j,
 $$
 
 > **Definition (Method of Moments Estimator):** The method of moments estimator is obtained by equating enough theoretical moments to their empirical counterparts to solve for the unknown parameters.
+{: .ese-box .ese-definition}
 
 If the equations cannot be solved exactly, we may instead minimize a moment-matching loss.
 
 > **Moment Identifiability:** Moment matching is meaningful only when the selected theoretical moments determine the parameter. If two different parameter values produce the same matched moments, the resulting estimator cannot distinguish them.
+{: .ese-box .ese-note}
 
 Moment methods are closely related to the uniqueness of moment generating functions: when the MGF exists around zero, the full sequence of moments determines the distribution. In practice, we usually match only enough low-order moments to identify the unknown parameters.
 
-<details>
+<details class="ese-proof">
 <summary><strong>Why Moment Generating Functions Make Moments Useful</strong></summary>
 
 The moment generating function is
@@ -293,6 +329,7 @@ This example also shows the difference between moment matching and likelihood-ba
 > $$
 >
 > interpreted as a function of $\theta$.
+{: .ese-box .ese-definition}
 
 The maximum likelihood estimator is
 
@@ -454,3 +491,7 @@ Maximum likelihood is built from the full probability assigned to the observed d
 - Consistency of MOM follows from the law of large numbers plus identifiability and continuity of the moment map.
 - MLE chooses the parameter value that makes the observed data most likely.
 - Closed forms are convenient, but many MLEs require constrained or numerical optimization.
+
+<p class="ese-next"><a href="/teaching/ese-531/mle-properties-optimization/">Next: MLE Properties and Numerical Optimization</a></p>
+
+</div>

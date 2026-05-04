@@ -1,6 +1,16 @@
 /* ==========================================================================
    BASE ELEMENTS
    ========================================================================== */
+:root {
+  --site-background-color: #{$background-color};
+  --site-surface-color: #{$background-color};
+  --site-text-color: #{$text-color};
+  --site-muted-text-color: #{mix(#fff, $gray, 25%)};
+  --site-border-color: #{$border-color};
+  --site-link-color: #{$link-color};
+  --site-link-hover-color: #{$link-color-hover};
+}
+
 html {
   /* sticky footer fix */
   position: relative;
@@ -11,8 +21,8 @@ body {
   margin: 0;
   padding: $masthead-height 0 0;
   padding-bottom: 9em;
-  color: $text-color;
-  background-color: $background-color;
+  color: var(--site-text-color);
+  background-color: var(--site-background-color);
   font-family: $global-font-family;
   line-height: 1.5;
 
@@ -115,6 +125,10 @@ blockquote {
 a {
   &:focus {
     @extend %tab-focus;
+  }
+
+  &:hover {
+    color: var(--site-link-hover-color);
   }
 
   &:hover,
@@ -237,7 +251,7 @@ figure {
 
 figcaption {
   margin-bottom: 0.5em;
-  color: mix(#fff, $text-color, 25%);
+  color: var(--site-muted-text-color);
   font-family: $caption-font-family;
   font-size: $type-size-6;
 
@@ -249,8 +263,8 @@ figcaption {
     transition: $global-transition;
 
     &:hover {
-      color: $link-color-hover;
-      border-bottom-color: $link-color-hover;
+      color: var(--site-link-hover-color);
+      border-bottom-color: var(--site-link-hover-color);
     }
   }
 }

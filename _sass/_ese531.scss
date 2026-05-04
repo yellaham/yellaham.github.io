@@ -2,8 +2,18 @@
    ESE 531 course notes
    ========================================================================== */
 
+html:has(.ese-531) {
+  --site-background-color: #{$light-background-color};
+  --site-surface-color: #{$light-surface-color};
+  --site-text-color: #{$light-text-color};
+  --site-muted-text-color: #{$light-muted-text-color};
+  --site-border-color: #{$light-border-color};
+  --site-link-color: #{$light-link-color};
+  --site-link-hover-color: #{$light-link-color-hover};
+}
+
 body:has(.ese-531) {
-  background: #eef2f6;
+  background: var(--site-background-color);
 }
 
 #main:has(.ese-531) {
@@ -12,19 +22,19 @@ body:has(.ese-531) {
 
 .page:has(.ese-531) {
   padding: 1.4rem;
-  border: 1px solid #d7dde5;
+  border: 1px solid var(--site-border-color);
   border-radius: 6px;
-  background: #ffffff;
+  background: var(--site-surface-color);
 
   .page__title,
   header p {
-    color: #20242a;
+    color: var(--site-text-color);
   }
 }
 
 .ese-531 {
-  color: #20242a;
-  background: #ffffff;
+  color: var(--site-text-color);
+  background: var(--site-surface-color);
   line-height: 1.68;
 
   h2 {
@@ -40,7 +50,7 @@ body:has(.ese-531) {
     margin: 1.5rem 0 2rem;
     padding: 0;
     list-style: none;
-    border-top: 1px solid #d7dde5;
+    border-top: 1px solid var(--site-border-color);
   }
 
   .ese-course-map li {
@@ -48,7 +58,7 @@ body:has(.ese-531) {
     position: relative;
     padding: 0.9rem 0;
     padding-left: 2.4rem;
-    border-bottom: 1px solid #d7dde5;
+    border-bottom: 1px solid var(--site-border-color);
   }
 
   .ese-course-map li::before {
@@ -60,7 +70,7 @@ body:has(.ese-531) {
     height: 1.55rem;
     border: 1px solid #c9d3df;
     border-radius: 50%;
-    color: #334155;
+    color: var(--site-muted-text-color);
     font-size: 0.8em;
     font-weight: 700;
     line-height: 1.55rem;
@@ -74,7 +84,7 @@ body:has(.ese-531) {
   .ese-course-map span {
     display: block;
     margin-top: 0.2rem;
-    color: #4b5563;
+    color: var(--site-muted-text-color);
     font-size: 0.9em;
   }
 
@@ -87,7 +97,7 @@ body:has(.ese-531) {
     border-left: 0.35rem solid #3f6f8f;
     border-radius: 6px;
     background: #f8fafc;
-    color: #20242a;
+    color: var(--site-text-color);
     box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
   }
 
@@ -129,7 +139,7 @@ body:has(.ese-531) {
 
   details summary {
     cursor: pointer;
-    color: #22272e;
+    color: var(--site-text-color);
     font-weight: 700;
   }
 
@@ -140,7 +150,7 @@ body:has(.ese-531) {
   .ese-next {
     margin-top: 2rem;
     padding-top: 1rem;
-    border-top: 1px solid #d7dde5;
+    border-top: 1px solid var(--site-border-color);
     font-weight: 700;
   }
 }

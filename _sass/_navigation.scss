@@ -265,10 +265,11 @@
     a {
       margin: 0;
       padding: 10px 20px;
+      color: $darker-gray;
       font-size: $type-size-5;
 
       &:hover {
-        color: $masthead-link-color-hover;
+        color: $darker-gray;
         background: mix(#fff, $primary-color, 75%);
       }
     }

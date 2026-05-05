@@ -83,12 +83,12 @@
       line-height: 1.5;
       text-align: center;
       text-decoration: none;
-      color: mix(#fff, $gray, 25%);
-      border: 1px solid $light-gray;
+      color: var(--site-muted-text-color);
+      border: 1px solid var(--site-border-color);
       border-radius: 0;
 
       &:hover {
-        color: $link-color-hover;
+        color: var(--site-link-hover-color);
       }
 
       &.current {
@@ -97,7 +97,7 @@
       }
 
       &.disabled {
-        color: mix(#fff, $gray, 75%);
+        color: mix(#fff, $gray, 20%);
         pointer-events: none;
         cursor: not-allowed;
       }
@@ -131,12 +131,12 @@
     font-weight: bold;
     text-align: center;
     text-decoration: none;
-    color: mix(#fff, $gray, 50%);
-    border: 1px solid $light-gray;
+    color: var(--site-muted-text-color);
+    border: 1px solid var(--site-border-color);
     border-radius: $border-radius;
 
     &:hover {
-      color: $link-color-hover;
+      color: var(--site-link-hover-color);
     }
 
     &:first-child {
@@ -151,7 +151,7 @@
     }
 
     &.disabled {
-      color: mix(#fff, $gray, 75%);
+      color: mix(#fff, $gray, 20%);
       pointer-events: none;
       cursor: not-allowed;
     }
@@ -164,7 +164,7 @@
 .page__comments + .pagination {
   margin-top: 2em;
   padding-top: 2em;
-  border-top: 1px solid $border-color;
+  border-top: 1px solid var(--site-border-color);
 }
 
 
@@ -175,7 +175,7 @@
 .greedy-nav {
   position: relative;
   min-width: 250px;
-  background: $background-color;
+  background: var(--site-surface-color);
 
   a {
     display: block;
@@ -257,20 +257,20 @@
     right: 0;
     margin-top: 15px;
     padding: 5px;
-    border: 1px solid $border-color;
+    border: 1px solid var(--site-border-color);
     border-radius: $border-radius;
-    background: #fff;
+    background: var(--site-surface-color);
     box-shadow: 0 0 10px rgba(#000, 0.25);
 
     a {
       margin: 0;
       padding: 10px 20px;
-      color: $darker-gray;
+      color: var(--site-text-color);
       font-size: $type-size-5;
 
       &:hover {
-        color: $darker-gray;
-        background: mix(#fff, $primary-color, 75%);
+        color: var(--site-link-hover-color);
+        background: #eef6fb;
       }
     }
 
@@ -282,7 +282,7 @@
       width: 0;
       border-style: solid;
       border-width: 0 10px 10px;
-      border-color: $border-color transparent;
+      border-color: var(--site-border-color) transparent;
       display: block;
       z-index: 0;
     }
@@ -295,14 +295,14 @@
       width: 0;
       border-style: solid;
       border-width: 0 10px 10px;
-      border-color: #fff transparent;
+      border-color: var(--site-surface-color) transparent;
       display: block;
       z-index: 1;
     }
 
     li {
       display: block;
-      border-bottom: 1px solid $border-color;
+      border-bottom: 1px solid var(--site-border-color);
 
       &:last-child {
         border-bottom: none;
@@ -364,7 +364,7 @@
   font-size: $type-size-6;
   font-weight: bold;
   text-transform: uppercase;
-  border-bottom: 1px solid $border-color;
+  border-bottom: 1px solid var(--site-border-color);
 }
 
 
@@ -374,11 +374,11 @@
 
 .toc {
   font-family: $sans-serif-narrow;
-  color: $gray;
+  color: var(--site-muted-text-color);
   text-transform: uppercase;
   letter-spacing: 1px;
-  background-color: #fff;
-  border: 1px solid $border-color;
+  background-color: var(--site-surface-color);
+  border: 1px solid var(--site-border-color);
   border-radius: $border-radius;
   box-shadow: $box-shadow;
 
@@ -401,15 +401,15 @@
   a {
     display: block;
     padding: 0.5rem 1rem;
-    color: $gray;
+    color: var(--site-muted-text-color);
     font-size: $type-size-7;
     font-weight: bold;
     line-height: 1.5;
-    border-bottom: 1px solid $border-color;
+    border-bottom: 1px solid var(--site-border-color);
 
     &:hover {
-      color: #000;
-      background: $lighter-gray;
+      color: var(--site-text-color);
+      background: #f3f7fb;
     }
   }
 

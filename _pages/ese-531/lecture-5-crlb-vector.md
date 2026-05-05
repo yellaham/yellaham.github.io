@@ -13,6 +13,8 @@ toc_label: "Topic Outline"
 
 This topic finishes the discussion of estimator evaluation, with special attention to efficient estimators, transformed parameters, and the vector form of the Cramer-Rao lower bound.
 
+<p class="ese-demo-callout"><span>Companion demo</span><a href="/teaching/ese-531/demos/efficient-estimators-vector-crlb/">Read covariance ellipses as vector CRLBs.</a></p>
+
 ## MVUE Review
 
 For an unbiased estimator,

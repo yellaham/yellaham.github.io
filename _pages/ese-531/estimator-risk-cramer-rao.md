@@ -11,6 +11,8 @@ toc_label: "Topic Outline"
 
 After constructing estimators, we need criteria for comparing them. This topic develops mean squared error, risk, minimum-variance unbiased estimation, and the scalar Cramer-Rao lower bound.
 
+<p class="ese-demo-callout"><span>Companion demo</span><a href="/teaching/ese-531/demos/estimator-risk-cramer-rao/">Explore risk, bias-variance tradeoffs, and the CRLB.</a></p>
+
 ## Mean Squared Error
 
 The mean squared error of an estimator $\hat{\theta}$ is

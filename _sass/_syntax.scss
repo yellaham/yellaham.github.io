@@ -9,6 +9,7 @@ div.highlighter-rouge, figure.highlight {
   border: 1px solid $border-color;
   border-radius: $border-radius;
   background-color: $code-background-color;
+  color: var(--site-text-color);
   box-shadow: $box-shadow;
   font-size: $type-size-4;
 

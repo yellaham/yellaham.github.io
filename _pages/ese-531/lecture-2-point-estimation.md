@@ -13,6 +13,8 @@ toc_label: "Topic Outline"
 
 Point estimation turns data into a single numerical guess for an unknown quantity. This topic introduces the estimation problem, the method of moments, and maximum likelihood estimation.
 
+<p class="ese-demo-callout"><span>Companion demo</span><a href="/teaching/ese-531/demos/point-estimation/">Compare MOM and MLE behavior under support constraints.</a></p>
+
 ## Formulating an Estimation Problem
 
 An estimation problem begins with observed data

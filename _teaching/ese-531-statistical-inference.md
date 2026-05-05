@@ -36,6 +36,27 @@ The notes below are web-native course materials organized by topic. The sequence
   <li><a href="/teaching/ese-531/detection-examples/">Detection Theory Examples</a><span>Worked mean-shift, variance-change, threshold, and change-point calculations.</span></li>
 </ol>
 
+## Interactive Demos
+
+These static browser demos are practical companions to the topic notes. They are listed separately so the main sequence stays easy to scan.
+
+<div class="ese-demo-index">
+  <a href="/teaching/ese-531/demos/random-samples/"><strong>Random Samples</strong><span>Sampling variability for means and variances.</span></a>
+  <a href="/teaching/ese-531/demos/probability-inequalities-limit-theorems/"><strong>Inequalities and Limit Theorems</strong><span>Exact tails, bounds, and CLT approximations.</span></a>
+  <a href="/teaching/ese-531/demos/point-estimation/"><strong>Point Estimation</strong><span>MOM and MLE behavior under support constraints.</span></a>
+  <a href="/teaching/ese-531/demos/mle-properties-optimization/"><strong>MLE Properties</strong><span>Likelihood curvature and Fisher information.</span></a>
+  <a href="/teaching/ese-531/demos/expectation-maximization/"><strong>Expectation-Maximization</strong><span>Responsibilities and nondecreasing likelihood.</span></a>
+  <a href="/teaching/ese-531/demos/estimator-risk-cramer-rao/"><strong>Estimator Risk and CRLB</strong><span>Bias-variance tradeoffs and the unbiased variance bound.</span></a>
+  <a href="/teaching/ese-531/demos/efficient-estimators-vector-crlb/"><strong>Vector CRLB</strong><span>Covariance ellipses and matrix lower bounds.</span></a>
+  <a href="/teaching/ese-531/demos/bayesian-estimation/"><strong>Bayesian Estimation</strong><span>Beta-Bernoulli posterior updating.</span></a>
+  <a href="/teaching/ese-531/demos/prior-design-predictive-checks/"><strong>Prior Predictive Checks</strong><span>Prior strength and beta-binomial counts.</span></a>
+  <a href="/teaching/ese-531/demos/approximate-bayesian-inference/"><strong>Approximate Bayes</strong><span>Grid posterior evaluation and interior Laplace approximation.</span></a>
+  <a href="/teaching/ese-531/demos/monte-carlo-methods/"><strong>Monte Carlo</strong><span>Monte Carlo error, importance sampling, and ESS.</span></a>
+  <a href="/teaching/ese-531/demos/linear-models-least-squares/"><strong>Linear Models</strong><span>OLS projection and GLS weighting.</span></a>
+  <a href="/teaching/ese-531/demos/detection-theory/"><strong>Detection Theory</strong><span>Thresholds, false alarms, and detection probability.</span></a>
+  <a href="/teaching/ese-531/demos/detection-examples/"><strong>Detection Examples</strong><span>Mean-shift and variance-change calculations.</span></a>
+</div>
+
 ## Practice
 
 - [Homework 1: Properties of Random Samples](/teaching/ese-531/homework/random-samples/)

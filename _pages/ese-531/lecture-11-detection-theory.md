@@ -13,6 +13,8 @@ toc_label: "Topic Outline"
 
 Detection theory studies how to choose between competing hypotheses from observed data. The central problem is balancing missed detections against false alarms.
 
+<p class="ese-demo-callout"><span>Companion demo</span><a href="/teaching/ese-531/demos/detection-theory/">Move a threshold and watch false alarms and detection probability.</a></p>
+
 ## Gaussian Review
 
 If

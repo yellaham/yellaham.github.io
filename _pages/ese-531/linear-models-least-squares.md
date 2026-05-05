@@ -11,6 +11,8 @@ toc_label: "Topic Outline"
 
 Linear models connect estimation theory to signal processing and regression. They also give a concrete setting where least squares, maximum likelihood, Fisher information, and the vector Cramer-Rao bound all agree.
 
+<p class="ese-demo-callout"><span>Companion demo</span><a href="/teaching/ese-531/demos/linear-models-least-squares/">Visualize OLS projection and GLS weighting.</a></p>
+
 ## Linear Model
 
 A linear model has the form

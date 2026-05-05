@@ -13,6 +13,8 @@ toc_label: "Topic Outline"
 
 Statistical inference begins by treating the observed data as one realized random sample from an underlying population model. This page sets up the core objects that later estimation, testing, and Bayesian methods all reuse.
 
+<p class="ese-demo-callout"><span>Companion demo</span><a href="/teaching/ese-531/demos/random-samples/">Explore sampling variability of means and variances.</a></p>
+
 ## Population and Random Sample
 
 > **Definition (Population):** A population is the complete collection of observations, individuals, measurements, or outcomes that we want to study. In this course, the population is represented by a probability distribution, often with unknown parameters.

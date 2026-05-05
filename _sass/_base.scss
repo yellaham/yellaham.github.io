@@ -3,9 +3,9 @@
    ========================================================================== */
 :root {
   --site-background-color: #{$background-color};
-  --site-surface-color: #{$background-color};
+  --site-surface-color: #{$light-surface-color};
   --site-text-color: #{$text-color};
-  --site-muted-text-color: #{mix(#fff, $gray, 25%)};
+  --site-muted-text-color: #{$light-muted-text-color};
   --site-border-color: #{$border-color};
   --site-link-color: #{$link-color};
   --site-link-hover-color: #{$link-color-hover};
@@ -75,7 +75,7 @@ p {
 u,
 ins {
   text-decoration: none;
-  border-bottom: 1px solid $text-color;
+  border-bottom: 1px solid var(--site-text-color);
   a {
     color: inherit;
   }
@@ -98,7 +98,7 @@ abbr[title],
 abbr[data-original-title] {
   text-decoration: none;
   cursor: help;
-  border-bottom: 1px dotted $text-color;
+  border-bottom: 1px dotted var(--site-text-color);
 }
 
 /* blockquotes */

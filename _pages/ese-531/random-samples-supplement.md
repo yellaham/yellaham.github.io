@@ -13,6 +13,8 @@ toc_label: "Topic Outline"
 
 This topic explains why sample summaries become reliable as the sample size grows. Probability inequalities give finite-sample bounds; limit theorems describe the eventual behavior of averages and smooth transformations.
 
+<p class="ese-demo-callout"><span>Companion demo</span><a href="/teaching/ese-531/demos/probability-inequalities-limit-theorems/">Compare exact tails, probability bounds, and CLT approximations.</a></p>
+
 ## Probability Inequalities
 
 Before proving convergence, we need tools that bound the probability that a random variable deviates from a reference value.

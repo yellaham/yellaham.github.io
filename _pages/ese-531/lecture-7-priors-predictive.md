@@ -13,6 +13,8 @@ toc_label: "Topic Outline"
 
 This topic focuses on prior choice, prior calibration, and the first steps toward checking whether a Bayesian model is compatible with observed data.
 
+<p class="ese-demo-callout"><span>Companion demo</span><a href="/teaching/ese-531/demos/prior-design-predictive-checks/">Check prior strength through predictive counts.</a></p>
+
 ## Types of Priors
 
 Prior distributions can be placed on a spectrum:

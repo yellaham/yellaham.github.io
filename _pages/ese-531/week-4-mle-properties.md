@@ -13,6 +13,8 @@ toc_label: "Topic Outline"
 
 This topic studies why maximum likelihood estimators are useful and what to do when the likelihood cannot be optimized by hand.
 
+<p class="ese-demo-callout"><span>Companion demo</span><a href="/teaching/ese-531/demos/mle-properties-optimization/">Connect likelihood curvature with Fisher information.</a></p>
+
 ## Consistency of the MLE
 
 Under regularity and identifiability conditions, the MLE is consistent:

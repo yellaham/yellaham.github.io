@@ -13,6 +13,8 @@ toc_label: "Topic Outline"
 
 Many Bayesian models have posteriors that cannot be computed in closed form. This topic studies model checking, predictive scoring, and two major approximation ideas: Laplace approximation and variational inference. Sampling algorithms are treated in the next topic.
 
+<p class="ese-demo-callout"><span>Companion demo</span><a href="/teaching/ese-531/demos/approximate-bayesian-inference/">Compare grid posterior evaluation with an interior Laplace approximation.</a></p>
+
 ## Prior Predictive Checks
 
 The prior predictive distribution is

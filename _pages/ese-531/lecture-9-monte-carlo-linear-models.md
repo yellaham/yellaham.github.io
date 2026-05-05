@@ -13,6 +13,8 @@ toc_label: "Topic Outline"
 
 Monte Carlo methods approximate expectations using samples. In Bayesian inference they are essential because posterior expectations are often easier to estimate from draws than to compute analytically.
 
+<p class="ese-demo-callout"><span>Companion demo</span><a href="/teaching/ese-531/demos/monte-carlo-methods/">Track Monte Carlo error, importance sampling, and ESS.</a></p>
+
 ## Standard Monte Carlo
 
 If we can sample

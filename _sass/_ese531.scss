@@ -2,16 +2,6 @@
    ESE 531 course notes
    ========================================================================== */
 
-html:has(.ese-531) {
-  --site-background-color: #{$light-background-color};
-  --site-surface-color: #{$light-surface-color};
-  --site-text-color: #{$light-text-color};
-  --site-muted-text-color: #{$light-muted-text-color};
-  --site-border-color: #{$light-border-color};
-  --site-link-color: #{$light-link-color};
-  --site-link-hover-color: #{$light-link-color-hover};
-}
-
 body:has(.ese-531) {
   background: var(--site-background-color);
 }
@@ -88,6 +78,46 @@ body:has(.ese-531) {
     font-size: 0.9em;
   }
 
+  .ese-demo-index {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 0.75rem;
+    margin: 1.25rem 0 2rem;
+  }
+
+  .ese-demo-index a {
+    display: block;
+    min-height: 6.5rem;
+    padding: 0.85rem 0.95rem;
+    border: 1px solid #d8e0ea;
+    border-radius: 6px;
+    background: #f8fafc;
+    color: var(--site-text-color);
+    text-decoration: none;
+  }
+
+  .ese-demo-index a:hover {
+    border-color: #7aa6c5;
+    background: #f4f9fd;
+    color: var(--site-link-hover-color);
+  }
+
+  .ese-demo-index strong,
+  .ese-demo-index span {
+    display: block;
+  }
+
+  .ese-demo-index strong {
+    line-height: 1.25;
+  }
+
+  .ese-demo-index span {
+    margin-top: 0.35rem;
+    color: var(--site-muted-text-color);
+    font-size: 0.86em;
+    line-height: 1.45;
+  }
+
   .ese-box,
   blockquote,
   details {
@@ -152,5 +182,207 @@ body:has(.ese-531) {
     padding-top: 1rem;
     border-top: 1px solid var(--site-border-color);
     font-weight: 700;
+  }
+
+  .ese-demo-callout {
+    display: grid;
+    gap: 0.2rem;
+    margin: 1rem 0 1.4rem;
+    padding: 0.7rem 0.85rem;
+    border: 1px solid #cfd8e3;
+    border-left: 0.3rem solid #3f6f8f;
+    border-radius: 6px;
+    background: #f7fbfd;
+    color: var(--site-text-color);
+    font-size: 0.95em;
+    font-weight: 700;
+  }
+
+  .ese-demo-callout span {
+    color: var(--site-muted-text-color);
+    font-size: 0.72em;
+    letter-spacing: 0.04em;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+
+  .ese-demo-callout a {
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.16em;
+  }
+
+  .ese-demo {
+    margin: 1.35rem 0 1.6rem;
+    padding: 1rem;
+    border: 1px solid #d8e0ea;
+    border-radius: 6px;
+    background: #f8fafc;
+  }
+
+  .ese-demo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+    gap: 0.85rem;
+    margin: 0 0 1rem;
+  }
+
+  .ese-demo-grid::before,
+  .ese-demo-plot::before,
+  .ese-demo-stats::before,
+  .ese-demo-takeaway::before {
+    color: var(--site-muted-text-color);
+    font-size: 0.74em;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+
+  .ese-demo-grid::before {
+    content: "Controls";
+    grid-column: 1 / -1;
+  }
+
+  .ese-demo-control {
+    display: grid;
+    gap: 0.25rem;
+    align-content: start;
+    min-width: 0;
+  }
+
+  .ese-demo-control label {
+    color: var(--site-text-color);
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  .ese-demo-control small,
+  .ese-demo-takeaway {
+    color: var(--site-muted-text-color);
+  }
+
+  .ese-demo-control input,
+  .ese-demo-control select {
+    width: 100%;
+    margin-bottom: 0;
+    accent-color: #245f82;
+  }
+
+  .ese-demo-button {
+    align-self: end;
+    min-height: 2.2rem;
+    border: 1px solid #b8c6d8;
+    border-radius: 6px;
+    background: #ffffff;
+    color: var(--site-text-color);
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .ese-demo-button:hover {
+    border-color: #2563eb;
+    color: #1d4ed8;
+  }
+
+  .ese-demo-plot {
+    position: relative;
+    margin: 0.9rem 0;
+    padding-top: 1.8rem;
+    overflow-x: auto;
+    border: 1px solid #d8e0ea;
+    border-radius: 6px;
+    background: #ffffff;
+  }
+
+  .ese-demo-plot::before {
+    content: "Output";
+    position: absolute;
+    top: 0.6rem;
+    left: 0.75rem;
+  }
+
+  .ese-demo-plot svg {
+    display: block;
+    width: 100%;
+    min-width: 34rem;
+    height: auto;
+  }
+
+  .ese-demo-axis-text {
+    fill: #475569;
+    font-size: 12px;
+  }
+
+  .ese-demo-axis-label {
+    fill: #0f172a;
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .ese-demo-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr));
+    gap: 0.65rem;
+    margin: 1rem 0;
+  }
+
+  .ese-demo-stats::before {
+    content: "Current values";
+    grid-column: 1 / -1;
+  }
+
+  .ese-demo-stats div {
+    padding: 0.7rem 0.8rem;
+    border: 1px solid #d8e0ea;
+    border-radius: 6px;
+    background: #f8fafc;
+  }
+
+  .ese-demo-stats strong,
+  .ese-demo-stats span {
+    display: block;
+  }
+
+  .ese-demo-stats strong {
+    color: var(--site-muted-text-color);
+    font-size: 0.78em;
+    text-transform: uppercase;
+  }
+
+  .ese-demo-stats span {
+    margin-top: 0.1rem;
+    color: var(--site-text-color);
+    font-size: 1.05em;
+    font-weight: 700;
+  }
+
+  .ese-demo-takeaway {
+    margin: 0.8rem 0 1.5rem;
+    padding-top: 0.8rem;
+    border-top: 1px solid var(--site-border-color);
+  }
+
+  .ese-demo-takeaway::before {
+    content: "Takeaway";
+    display: block;
+    margin-bottom: 0.35rem;
+  }
+
+  @media (max-width: 520px) {
+    @at-root .page:has(.ese-531) {
+      padding: 1rem;
+    }
+
+    .ese-course-map li {
+      padding-left: 2rem;
+    }
+
+    .ese-demo {
+      padding: 0.8rem;
+    }
+
+    .ese-demo-plot svg {
+      min-width: 30rem;
+    }
   }
 }

@@ -13,6 +13,8 @@ toc_label: "Topic Outline"
 
 Expectation-maximization is an optimization strategy for likelihood problems with latent variables. It is especially useful when the complete-data likelihood is simple but the observed-data likelihood is hard to optimize directly.
 
+<p class="ese-demo-callout"><span>Companion demo</span><a href="/teaching/ese-531/demos/expectation-maximization/">Watch Gaussian-mixture responsibilities and EM updates.</a></p>
+
 ## Newton's Method as Background
 
 Gradient descent uses first-order information. Newton's method uses second-order information through the Hessian.

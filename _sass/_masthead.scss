@@ -4,8 +4,8 @@
 
 .masthead {
   position: fixed;
-  background: $background-color;
-  border-bottom: 1px solid $border-color;
+  background: var(--site-surface-color);
+  border-bottom: 1px solid var(--site-border-color);
   height: $masthead-height;
   top: 0;
   width: 100%;

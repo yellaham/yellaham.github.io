@@ -61,12 +61,12 @@ $darker-gray                : mix(#000, $gray, 60%);
 $light-gray                 : mix(#fff, $gray, 50%);
 $lighter-gray               : mix(#fff, $gray, 90%);
 
-$body-color                 : #2b2b2b;
-$background-color           : #2b2b2b;
-$code-background-color      : #363636;
-$code-background-color-dark : #404040;
-$text-color                 : #f0f0f0;
-$border-color               : #4a4a4a;
+$body-color                 : #20242a;
+$background-color           : #eef2f6;
+$code-background-color      : #f8fafc;
+$code-background-color-dark : #e5edf5;
+$text-color                 : #20242a;
+$border-color               : #d7dde5;
 
 $light-background-color     : #eef2f6;
 $light-surface-color        : #ffffff;
@@ -74,11 +74,11 @@ $light-text-color           : #20242a;
 $light-muted-text-color     : #4b5563;
 $light-border-color         : #d7dde5;
 
-$primary-color              : #a0a8b0;
-$success-color              : #7ed87e;
-$warning-color              : #ffab2e;
-$danger-color               : #ff7b77;
-$info-color                 : #6bc5e0;
+$primary-color              : #245f82;
+$success-color              : #2f7d64;
+$warning-color              : #9a6700;
+$danger-color               : #b42318;
+$info-color                 : #2f6f8f;
 
 /* brands */
 $behance-color              : #1769FF;
@@ -108,13 +108,13 @@ $xing-color                 : #006567;
 
 
 /* links */
-$link-color                 : #6bc5e0;
-$link-color-hover           : #8dd8ef;
-$link-color-visited         : #9dd0e5;
+$link-color                 : #245f82;
+$link-color-hover           : #174765;
+$link-color-visited         : #5f4b8b;
 $light-link-color           : #245f82;
 $light-link-color-hover     : #174765;
-$masthead-link-color        : #c8cdd3;
-$masthead-link-color-hover  : #ffffff;
+$masthead-link-color        : #20242a;
+$masthead-link-color-hover  : #174765;
 
 
 /*

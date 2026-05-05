@@ -13,6 +13,8 @@ toc_label: "Topic Outline"
 
 Bayesian estimation treats unknown parameters as random variables. The output is a posterior distribution, from which point estimators and uncertainty summaries can be derived.
 
+<p class="ese-demo-callout"><span>Companion demo</span><a href="/teaching/ese-531/demos/bayesian-estimation/">Update a beta-binomial posterior by changing prior strength and data.</a></p>
+
 ## Frequentist and Bayesian Views
 
 In frequentist point estimation, $\theta$ is fixed but unknown. An estimator is a function of the random sample:

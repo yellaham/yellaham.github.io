@@ -13,6 +13,8 @@ toc_label: "Topic Outline"
 
 This reference collects the main detection-theory examples: mean shifts, variance changes, likelihood-ratio thresholds, and change-point interpretations.
 
+<p class="ese-demo-callout"><span>Companion demo</span><a href="/teaching/ese-531/demos/detection-examples/">Compare mean-shift and variance-change calculations.</a></p>
+
 ## Hypotheses
 
 A detection problem starts with two competing descriptions of the world:

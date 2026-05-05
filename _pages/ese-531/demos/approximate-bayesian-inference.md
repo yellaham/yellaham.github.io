@@ -70,6 +70,52 @@ The red curve is a Laplace approximation only when this mode is interior. Otherw
 
 The Laplace curve uses local second-order information at an interior mode. If the posterior mode moves to 0 or 1, the demo labels the red curve as a moment-matched normal fallback rather than a valid interior Laplace approximation.
 
+## Try it in Python
+
+<p class="ese-code-note">This cell compares the exact beta posterior density with an interior Laplace normal approximation when the mode is away from the boundary.</p>
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy import stats
+
+alpha = 1.5
+beta = 1.5
+n = 12
+s = 2
+s = int(np.clip(s, 0, n))
+
+a_post = alpha + s
+b_post = beta + n - s
+theta = np.linspace(0.001, 0.999, 600)
+exact = stats.beta.pdf(theta, a_post, b_post)
+
+if a_post > 1 and b_post > 1:
+    mode = (a_post - 1) / (a_post + b_post - 2)
+    curvature = (a_post - 1) / mode**2 + (b_post - 1) / (1 - mode)**2
+    laplace_sd = 1 / np.sqrt(curvature)
+    approx = stats.norm.pdf(theta, mode, laplace_sd)
+    label = "Laplace normal"
+else:
+    mode = np.nan
+    laplace_sd = np.sqrt(a_post * b_post / ((a_post + b_post)**2 * (a_post + b_post + 1)))
+    approx = stats.norm.pdf(theta, a_post / (a_post + b_post), laplace_sd)
+    label = "moment-matched fallback"
+
+plt.plot(theta, exact, label=f"exact Beta({a_post:.1f}, {b_post:.1f})")
+plt.plot(theta, approx, "--", label=label)
+if np.isfinite(mode):
+    plt.axvline(mode, color="black", linestyle=":", label="posterior mode")
+plt.xlabel("theta")
+plt.ylabel("density")
+plt.legend()
+plt.show()
+
+print(f"posterior mean = {a_post / (a_post + b_post):.3f}")
+print(f"mode used for Laplace = {mode}")
+print(f"normal approximation sd = {laplace_sd:.3f}")
+```
+
 <p class="ese-next"><a href="/teaching/ese-531/approximate-bayesian-inference/">Back to topic notes</a></p>
 
 </div>

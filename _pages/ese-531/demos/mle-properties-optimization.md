@@ -57,6 +57,38 @@ In this model the asymptotic normal approximation is also the exact sampling dis
 
 Here $I_n(\theta)=n/\sigma^2$, so $1/\sqrt{I_n(\theta)}=\sigma/\sqrt n$. In this normal mean model that is the exact standard error of $\bar X$, not only an asymptotic approximation.
 
+## Try it in Python
+
+<p class="ese-code-note">This cell draws the normalized log likelihood curve and prints the Fisher-information standard error.</p>
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+n = 25
+sigma = 1.0
+xbar = 0.4
+
+theta = np.linspace(xbar - 1.5, xbar + 1.5, 400)
+loglik = -0.5 * n * (theta - xbar)**2 / sigma**2
+loglik -= loglik.max()
+
+information = n / sigma**2
+se = 1 / np.sqrt(information)
+
+plt.plot(theta, loglik, label="log likelihood minus max")
+plt.axvline(xbar, color="black", linestyle="--", label="MLE")
+plt.axvspan(xbar - 1.96 * se, xbar + 1.96 * se, alpha=0.15, label="approx 95% interval")
+plt.xlabel("theta")
+plt.ylabel("relative log likelihood")
+plt.legend()
+plt.show()
+
+print(f"MLE = xbar = {xbar:.3f}")
+print(f"observed Fisher information = {information:.3f}")
+print(f"standard error = {se:.3f}")
+```
+
 <p class="ese-next"><a href="/teaching/ese-531/mle-properties-optimization/">Back to topic notes</a></p>
 
 </div>

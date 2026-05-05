@@ -42,7 +42,7 @@ $$
 u^T(\Sigma/n)^{-1}u=4,
 $$
 
-so its semiaxes are two marginal standard deviations along the principal directions. It is not the same object as a fixed-probability confidence ellipse unless the radius is chosen from a chi-squared quantile.
+so its semiaxes are twice the principal standard deviations. It is not the same object as a fixed-probability confidence ellipse unless the radius is chosen from a chi-squared quantile.
 
 ## What to try
 
@@ -75,6 +75,47 @@ so its semiaxes are two marginal standard deviations along the principal directi
 </div>
 
 The ellipse shows the Mahalanobis-radius-2 contour for the inverse-information covariance $\Sigma/n$.
+
+## Try it in Python
+
+<p class="ese-code-note">This code computes the inverse-information covariance and draws the same Mahalanobis-radius-2 ellipse.</p>
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+sigma1 = 1.4
+sigma2 = 0.8
+rho = 0.4
+n = 20
+
+Sigma = np.array([
+    [sigma1**2, rho * sigma1 * sigma2],
+    [rho * sigma1 * sigma2, sigma2**2],
+])
+cov_xbar = Sigma / n
+information = n * np.linalg.inv(Sigma)
+
+angles = np.linspace(0, 2 * np.pi, 300)
+circle = np.vstack([np.cos(angles), np.sin(angles)])
+eigvals, eigvecs = np.linalg.eigh(cov_xbar)
+ellipse = eigvecs @ np.diag(2 * np.sqrt(eigvals)) @ circle
+
+print("Sigma / n =")
+print(cov_xbar)
+print("\nI_n(theta) =")
+print(information)
+print("\nCov(xbar) - inverse information =")
+print(cov_xbar - np.linalg.inv(information))
+
+plt.plot(ellipse[0], ellipse[1])
+plt.scatter([0], [0], color="black")
+plt.gca().set_aspect("equal", adjustable="box")
+plt.xlabel("theta1 error")
+plt.ylabel("theta2 error")
+plt.title("Mahalanobis-radius-2 covariance ellipse")
+plt.show()
+```
 
 <p class="ese-next"><a href="/teaching/ese-531/efficient-estimators-vector-crlb/">Back to topic notes</a></p>
 

@@ -71,7 +71,39 @@ a diagnostic for weight concentration, not a proof of accuracy.
   <p class="ese-demo-takeaway"></p>
 </div>
 
-The importance estimate uses unnormalized $f/q$ weights and is unbiased here because both the target and proposal densities are known. The effective sample size summarizes weight degeneracy: large weights from a few draws reduce useful information.
+The importance estimate averages $\mathbf 1\{Y>\gamma\}f(Y)/q(Y)$ over the proposal draws, dividing by $M$ rather than by the sum of weights. That non-self-normalized form is unbiased here because both the target and proposal densities are known. The effective sample size summarizes weight degeneracy: large weights from a few draws reduce useful information.
+
+## Try it in Python
+
+<p class="ese-code-note">This cell estimates the same normal tail probability with crude Monte Carlo and shifted-normal importance sampling.</p>
+
+```python
+import numpy as np
+from scipy import stats
+
+M = 1000
+gamma = 2.5
+shift = 2.0
+rng = np.random.default_rng(531)
+
+z = rng.normal(0, 1, size=M)
+crude = np.mean(z > gamma)
+
+y = rng.normal(shift, 1, size=M)
+log_weights = stats.norm.logpdf(y, 0, 1) - stats.norm.logpdf(y, shift, 1)
+weights = np.exp(log_weights)
+importance = np.mean((y > gamma) * weights)
+ess = weights.sum()**2 / np.sum(weights**2)
+
+truth = stats.norm.sf(gamma)
+crude_se = np.sqrt(crude * (1 - crude) / M)
+is_se = np.std((y > gamma) * weights, ddof=1) / np.sqrt(M)
+
+print(f"true probability:       {truth:.6f}")
+print(f"crude estimate:        {crude:.6f}  SE about {crude_se:.6f}")
+print(f"importance estimate:   {importance:.6f}  SE about {is_se:.6f}")
+print(f"effective sample size: {ess:.1f} out of {M}")
+```
 
 <p class="ese-next"><a href="/teaching/ese-531/monte-carlo-methods/">Back to topic notes</a></p>
 

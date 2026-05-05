@@ -66,6 +66,52 @@ For the heavy-tailed $t_3$ option, the variance is finite but large, so the norm
 
 The plot is simulation-based. Changing the seed gives a new set of repeated samples with the same population model and sample size.
 
+## Try it in Python
+
+<p class="ese-code-note">This notebook cell reproduces the repeated-sampling histogram and overlays the CLT approximation for the selected population.</p>
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy import stats
+
+dist = "t3"       # "normal", "exponential", "bernoulli", or "t3"
+n = 20
+reps = 800
+rng = np.random.default_rng(531)
+
+if dist == "normal":
+    x = rng.normal(0, 1, size=(reps, n))
+    mu, sigma = 0.0, 1.0
+elif dist == "exponential":
+    x = rng.exponential(1, size=(reps, n)) - 1
+    mu, sigma = 0.0, 1.0
+elif dist == "bernoulli":
+    p = 0.35
+    x = rng.binomial(1, p, size=(reps, n))
+    mu, sigma = p, np.sqrt(p * (1 - p))
+elif dist == "t3":
+    x = rng.standard_t(df=3, size=(reps, n))
+    mu, sigma = 0.0, np.sqrt(3.0)
+
+xbar = x.mean(axis=1)
+s2 = x.var(axis=1, ddof=1)
+
+grid = np.linspace(xbar.min(), xbar.max(), 300)
+plt.hist(xbar, bins=35, density=True, alpha=0.45, label="simulated means")
+plt.plot(grid, stats.norm.pdf(grid, mu, sigma / np.sqrt(n)), label="CLT normal")
+plt.axvline(mu, color="black", linestyle="--", label="population mean")
+plt.xlabel("sample mean")
+plt.ylabel("density")
+plt.legend()
+plt.show()
+
+print(f"mean of xbar: {xbar.mean():.3f}")
+print(f"Monte Carlo Var(xbar): {xbar.var(ddof=1):.3f}")
+print(f"theory Var(xbar): {sigma**2 / n:.3f}")
+print(f"mean sample variance: {s2.mean():.3f}")
+```
+
 <p class="ese-next"><a href="/teaching/ese-531/random-samples/">Back to topic notes</a></p>
 
 </div>

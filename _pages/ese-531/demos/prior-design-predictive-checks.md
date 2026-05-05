@@ -52,6 +52,37 @@ Its mean is $m\alpha/(\alpha+\beta)$. At a fixed prior mean, increasing $\alpha+
 
 Use this as a quick calibration check: do the exact beta-binomial future-count probabilities match what would be plausible before data are collected?
 
+## Try it in Python
+
+<p class="ese-code-note">This cell computes the exact beta-binomial prior predictive distribution for future success counts.</p>
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy import stats
+
+alpha = 2.0
+beta = 8.0
+m = 20
+
+k = np.arange(m + 1)
+pmf = stats.betabinom.pmf(k, m, alpha, beta)
+prior_mean = alpha / (alpha + beta)
+predictive_mean = m * prior_mean
+
+plt.bar(k, pmf)
+plt.axvline(predictive_mean, color="black", linestyle="--", label="predictive mean")
+plt.xlabel("future successes")
+plt.ylabel("prior predictive probability")
+plt.legend()
+plt.show()
+
+print(f"prior mean for theta = {prior_mean:.3f}")
+print(f"predictive mean count = {predictive_mean:.2f}")
+print(f"P(Y = 0) = {pmf[0]:.3f}")
+print(f"P(Y >= 8) = {stats.betabinom.sf(7, m, alpha, beta):.3f}")
+```
+
 <p class="ese-next"><a href="/teaching/ese-531/prior-design-predictive-checks/">Back to topic notes</a></p>
 
 </div>

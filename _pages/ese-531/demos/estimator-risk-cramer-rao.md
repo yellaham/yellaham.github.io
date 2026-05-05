@@ -68,6 +68,44 @@ For unbiased estimators of $\mu$, the scalar Cramer-Rao bound gives $\operatorna
 
 For unbiased estimators of $\mu$, $\operatorname{Var}(\hat\mu)\geq \sigma^2/n$. Biased estimators are judged by full MSE.
 
+## Try it in Python
+
+<p class="ese-code-note">This code plots the pointwise MSE as the shrinkage factor varies and marks the current widget setting.</p>
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+a = 0.75
+mu = 0.4
+m0 = 0.0
+n = 10
+sigma = 1.0
+
+a_grid = np.linspace(0, 1.4, 300)
+risk_shrink = (a_grid - 1)**2 * (mu - m0)**2 + a_grid**2 * sigma**2 / n
+risk_xbar = sigma**2 / n * np.ones_like(a_grid)
+crlb_unbiased = sigma**2 / n
+
+current_risk = (a - 1)**2 * (mu - m0)**2 + a**2 * sigma**2 / n
+current_bias = (a - 1) * (mu - m0)
+current_variance = a**2 * sigma**2 / n
+
+plt.plot(a_grid, risk_shrink, label="shrinkage MSE")
+plt.plot(a_grid, risk_xbar, "--", label="sample mean MSE")
+plt.axvline(a, color="black", linestyle=":", label="current a")
+plt.axhline(crlb_unbiased, color="gray", linestyle="--", label="unbiased CRLB")
+plt.xlabel("shrinkage factor a")
+plt.ylabel("MSE")
+plt.legend()
+plt.show()
+
+print(f"bias at current mu: {current_bias:.3f}")
+print(f"variance at current a: {current_variance:.3f}")
+print(f"shrinkage MSE at current mu: {current_risk:.3f}")
+print(f"sample mean MSE and unbiased CRLB: {crlb_unbiased:.3f}")
+```
+
 <p class="ese-next"><a href="/teaching/ese-531/estimator-risk-cramer-rao/">Back to topic notes</a></p>
 
 </div>

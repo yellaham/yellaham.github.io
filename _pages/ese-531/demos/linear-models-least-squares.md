@@ -71,7 +71,52 @@ The weighted residual is orthogonal in the $W$-inner product, so it need not be 
   <p class="ese-demo-takeaway"></p>
 </div>
 
-For weighted least squares or GLS after whitening, the normal equation becomes $H^T W(y-H\hat\theta)=0$. The unweighted residual dot product need not be zero for the weighted fit.
+For weighted least squares, and for GLS with $W=\Sigma^{-1}$, the normal equation becomes $H^T W(y-H\hat\theta)=0$. The unweighted residual dot product need not be zero for the weighted fit.
+
+## Try it in Python
+
+<p class="ese-code-note">This cell computes the OLS and weighted projections, then checks the two normal equations directly.</p>
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+y = np.array([2.0, 1.0])
+slope = 0.6
+w2 = 1.0
+
+h = np.array([1.0, slope])
+W = np.diag([1.0, w2])
+
+theta_ols = h @ y / (h @ h)
+fit_ols = h * theta_ols
+resid_ols = y - fit_ols
+
+theta_wls = (h @ W @ y) / (h @ W @ h)
+fit_wls = h * theta_wls
+resid_wls = y - fit_wls
+
+line_t = np.linspace(-3, 3, 100)
+line = np.outer(line_t, h)
+
+plt.plot(line[:, 0], line[:, 1], color="gray", label="column space")
+plt.scatter(*y, color="black", label="observed y")
+plt.scatter(*fit_ols, label="OLS fit")
+plt.scatter(*fit_wls, label="WLS fit")
+plt.plot([y[0], fit_ols[0]], [y[1], fit_ols[1]], "--", label="OLS residual")
+plt.plot([y[0], fit_wls[0]], [y[1], fit_wls[1]], ":", label="WLS residual")
+plt.axis("equal")
+plt.xlabel("coordinate 1")
+plt.ylabel("coordinate 2")
+plt.legend()
+plt.show()
+
+print(f"theta_OLS = {theta_ols:.3f}")
+print(f"theta_WLS = {theta_wls:.3f}")
+print(f"h dot OLS residual = {h @ resid_ols:.3e}")
+print(f"h^T W WLS residual = {h @ W @ resid_wls:.3e}")
+print(f"h dot WLS residual = {h @ resid_wls:.3e}")
+```
 
 <p class="ese-next"><a href="/teaching/ese-531/linear-models-least-squares/">Back to topic notes</a></p>
 

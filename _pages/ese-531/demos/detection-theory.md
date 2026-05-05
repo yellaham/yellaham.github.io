@@ -80,6 +80,41 @@ Sweeping $\gamma$ traces out the ROC curve.
 
 The operating probabilities are $P_{\mathrm{FA}}=P_0(\bar X>\gamma)$ and $P_D=P_1(\bar X>\gamma)$.
 
+## Try it in Python
+
+<p class="ese-code-note">This cell computes the false-alarm and detection probabilities for the displayed threshold and traces the ROC curve.</p>
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy import stats
+
+n = 10
+mu1 = 1.0
+sigma = 1.0
+gamma = 0.45
+
+se = sigma / np.sqrt(n)
+p_fa = stats.norm.sf(gamma, loc=0, scale=se)
+p_d = stats.norm.sf(gamma, loc=mu1, scale=se)
+
+gamma_grid = np.linspace(-1, 3, 300)
+roc_fa = stats.norm.sf(gamma_grid, loc=0, scale=se)
+roc_d = stats.norm.sf(gamma_grid, loc=mu1, scale=se)
+
+plt.plot(roc_fa, roc_d, label="ROC")
+plt.scatter([p_fa], [p_d], color="black", label="current threshold")
+plt.plot([0, 1], [0, 1], color="gray", linestyle="--")
+plt.xlabel("false-alarm probability")
+plt.ylabel("detection probability")
+plt.legend()
+plt.show()
+
+print(f"P_FA = {p_fa:.4f}")
+print(f"P_D  = {p_d:.4f}")
+print(f"miss probability = {1 - p_d:.4f}")
+```
+
 <p class="ese-next"><a href="/teaching/ese-531/detection-theory/">Back to topic notes</a></p>
 
 </div>

@@ -90,6 +90,50 @@ The displayed variance-change probabilities use these chi-squared survival funct
 
 For the variance-change example, the energy statistic uses the scaled chi-squared distribution: under $H_0$, $\sum_i X_i^2\sim\chi_n^2$, and under the larger-variance alternative, $\sum_i X_i^2/\sigma_1^2\sim\chi_n^2$.
 
+## Try it in Python
+
+<p class="ese-code-note">This cell covers both widget modes: the signed mean-shift statistic and the energy statistic for a variance change.</p>
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy import stats
+
+mode = "mean"   # "mean" or "variance"
+n = 12
+gamma = 1.8
+mu1 = 0.8
+sigma1 = 1.8
+
+if mode == "mean":
+    se = 1 / np.sqrt(n)
+    p_fa = stats.norm.sf(gamma, loc=0, scale=se)
+    p_d = stats.norm.sf(gamma, loc=mu1, scale=se)
+
+    grid = np.linspace(min(-1, gamma - 1), max(mu1 + 1, gamma + 1), 400)
+    plt.plot(grid, stats.norm.pdf(grid, 0, se), label="H0")
+    plt.plot(grid, stats.norm.pdf(grid, mu1, se), label="H1")
+    plt.axvline(gamma, color="black", linestyle="--", label="threshold")
+    plt.xlabel("sample mean")
+else:
+    p_fa = stats.chi2.sf(gamma, df=n)
+    p_d = stats.chi2.sf(gamma / sigma1**2, df=n)
+
+    grid = np.linspace(0.001, max(35, sigma1**2 * n * 3), 500)
+    plt.plot(grid, stats.chi2.pdf(grid, df=n), label="H0")
+    plt.plot(grid, stats.chi2.pdf(grid / sigma1**2, df=n) / sigma1**2, label="H1")
+    plt.axvline(gamma, color="black", linestyle="--", label="threshold")
+    plt.xlabel("energy statistic")
+
+plt.ylabel("density")
+plt.legend()
+plt.show()
+
+print(f"mode = {mode}")
+print(f"P_FA = {p_fa:.4f}")
+print(f"P_D  = {p_d:.4f}")
+```
+
 <p class="ese-next"><a href="/teaching/ese-531/detection-examples/">Back to topic notes</a></p>
 
 </div>

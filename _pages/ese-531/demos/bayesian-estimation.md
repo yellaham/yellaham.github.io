@@ -62,6 +62,57 @@ The posterior mean behaves like a weighted average of the prior mean $\alpha/(\a
 When $s>n$, the script caps the effective number of successes at $n$ so the posterior remains meaningful.
 When the beta posterior is not maximized in the interior, the MAP statistic is reported as a boundary value rather than by the interior formula.
 
+## Try it in Python
+
+<p class="ese-code-note">This cell reproduces beta-Bernoulli updating and compares prior, likelihood shape, and posterior density.</p>
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy import stats
+
+alpha = 2.0
+beta = 2.0
+n = 20
+s = 9
+s = int(np.clip(s, 0, n))
+
+post_alpha = alpha + s
+post_beta = beta + n - s
+theta = np.linspace(0.001, 0.999, 500)
+
+prior = stats.beta.pdf(theta, alpha, beta)
+posterior = stats.beta.pdf(theta, post_alpha, post_beta)
+likelihood_shape = stats.beta.pdf(theta, s + 1, n - s + 1)
+
+post_mean = post_alpha / (post_alpha + post_beta)
+if post_alpha > 1 and post_beta > 1:
+    post_map = (post_alpha - 1) / (post_alpha + post_beta - 2)
+    map_summary = f"{post_map:.3f}"
+elif post_alpha == 1 and post_beta == 1:
+    map_summary = "any theta in [0, 1]"
+elif post_alpha < 1 and post_beta < 1:
+    map_summary = "both boundaries, 0 and 1"
+elif post_alpha <= 1 and post_beta >= 1:
+    map_summary = "0 (boundary)"
+else:
+    map_summary = "1 (boundary)"
+
+plt.plot(theta, prior, label="prior")
+plt.plot(theta, likelihood_shape, label="scaled likelihood")
+plt.plot(theta, posterior, label="posterior")
+plt.axvline(s / n, color="gray", linestyle=":", label="sample proportion")
+plt.axvline(post_mean, color="black", linestyle="--", label="posterior mean")
+plt.xlabel("theta")
+plt.ylabel("density")
+plt.legend()
+plt.show()
+
+print(f"posterior Beta({post_alpha:.1f}, {post_beta:.1f})")
+print(f"posterior mean = {post_mean:.3f}")
+print(f"posterior MAP = {map_summary}")
+```
+
 <p class="ese-next"><a href="/teaching/ese-531/bayesian-estimation/">Back to topic notes</a></p>
 
 </div>

@@ -38,7 +38,7 @@ The notes below are web-native course materials organized by topic. The sequence
 
 ## Interactive Demos
 
-These static browser demos are practical companions to the topic notes. Each demo now opens with a short mathematical setup and a few guided mini-cases before the browser widget, so students can connect the lecture formulas with what the controls are changing.
+These static browser demos are practical companions to the topic notes. Each demo now opens with a short mathematical setup and a few guided mini-cases before the browser widget, so students can connect the lecture formulas with what the controls are changing. The demo pages also include copyable Python snippets for students who want to reproduce or extend the calculation in a notebook.
 
 <div class="ese-demo-index">
   <a href="/teaching/ese-531/demos/random-samples/"><strong>Random Samples</strong><span>Sampling variability for means and variances.</span></a>

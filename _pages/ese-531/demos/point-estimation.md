@@ -60,6 +60,41 @@ so the maximum likelihood estimator is $\hat\theta_{\mathrm{MLE}}=X_{(n)}$. It i
 
 The MLE uses the support constraint: values of $\theta$ below the sample maximum have likelihood zero.
 
+## Try it in Python
+
+<p class="ese-code-note">This simulation compares the method-of-moments estimator and the support-constrained MLE across many samples.</p>
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+theta = 2.0
+n = 12
+reps = 1000
+rng = np.random.default_rng(531)
+
+x = rng.uniform(0, theta, size=(reps, n))
+theta_mom = 2 * x.mean(axis=1)
+theta_mle = x.max(axis=1)
+
+def summarize(name, estimates):
+    bias = estimates.mean() - theta
+    rmse = np.sqrt(np.mean((estimates - theta)**2))
+    print(f"{name:4s} mean={estimates.mean():.3f}, bias={bias:.3f}, RMSE={rmse:.3f}")
+
+summarize("MOM", theta_mom)
+summarize("MLE", theta_mle)
+print(f"Theory E[MLE] = {n * theta / (n + 1):.3f}")
+
+plt.hist(theta_mom, bins=35, alpha=0.45, density=True, label="MOM: 2 xbar")
+plt.hist(theta_mle, bins=35, alpha=0.45, density=True, label="MLE: max")
+plt.axvline(theta, color="black", linestyle="--", label="true theta")
+plt.xlabel("estimate")
+plt.ylabel("density")
+plt.legend()
+plt.show()
+```
+
 <p class="ese-next"><a href="/teaching/ese-531/point-estimation/">Back to topic notes</a></p>
 
 </div>

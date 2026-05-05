@@ -77,6 +77,69 @@ These KL terms are used when the shifted probabilities stay in $[0,1]$ and are t
 
 Markov is shown as a two-sided union bound. Chebyshev, Chernoff, and Hoeffding are upper bounds; the CLT bar is a continuity-corrected approximation.
 
+## Try it in Python
+
+<p class="ese-code-note">This cell computes the exact binomial deviation probability and the same comparison bars used in the browser demo.</p>
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy import stats
+
+p = 0.35
+n = 40
+eps = 0.12
+
+lower = int(np.floor(n * (p - eps)))
+upper = int(np.ceil(n * (p + eps)))
+exact = stats.binom.cdf(lower, n, p) + stats.binom.sf(upper - 1, n, p)
+
+chebyshev = min(1.0, p * (1 - p) / (n * eps**2))
+
+markov = 0.0
+if p + eps <= 1:
+    markov += p / (p + eps)
+if p - eps >= 0:
+    markov += (1 - p) / (1 - p + eps)
+markov = min(1.0, markov)
+
+def bernoulli_kl(q, p):
+    if q <= 0:
+        return np.log(1 / (1 - p))
+    if q >= 1:
+        return np.log(1 / p)
+    return q * np.log(q / p) + (1 - q) * np.log((1 - q) / (1 - p))
+
+chernoff = 0.0
+if p + eps <= 1:
+    chernoff += np.exp(-n * bernoulli_kl(p + eps, p))
+if p - eps >= 0:
+    chernoff += np.exp(-n * bernoulli_kl(p - eps, p))
+chernoff = min(1.0, chernoff)
+
+hoeffding = min(1.0, 2 * np.exp(-2 * n * eps**2))
+
+sd_count = np.sqrt(n * p * (1 - p))
+clt = 0.0
+if lower >= 0:
+    clt += stats.norm.cdf((lower + 0.5 - n * p) / sd_count)
+if upper <= n:
+    clt += stats.norm.sf((upper - 0.5 - n * p) / sd_count)
+clt = min(1.0, clt)
+
+labels = ["exact", "Markov", "Chebyshev", "Chernoff", "Hoeffding", "CLT"]
+values = [exact, markov, chebyshev, chernoff, hoeffding, clt]
+
+plt.bar(labels, values)
+plt.ylim(0, min(1.05, max(values) * 1.2))
+plt.ylabel("probability or bound")
+plt.xticks(rotation=30)
+plt.show()
+
+for label, value in zip(labels, values):
+    print(f"{label:10s} {value:.5f}")
+```
+
 <p class="ese-next"><a href="/teaching/ese-531/probability-inequalities-limit-theorems/">Back to topic notes</a></p>
 
 </div>

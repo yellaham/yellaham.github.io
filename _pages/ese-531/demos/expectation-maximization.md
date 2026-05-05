@@ -68,6 +68,52 @@ The M-step updates $\pi$, $\mu_1$, and $\mu_2$ by weighted averages. The observe
 
 EM alternates responsibilities $P(Z_i=1\mid X_i,\theta^{(t)})$ with weighted maximum-likelihood updates. The observed-data likelihood should be nondecreasing, up to numerical rounding.
 
+## Try it in Python
+
+<p class="ese-code-note">This compact EM loop reproduces the hidden-label responsibilities and nondecreasing observed-data log likelihood.</p>
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy import stats
+
+sep = 2.4
+n = 80
+iterations = 8
+rng = np.random.default_rng(531)
+
+true_pi = 0.45
+z = rng.binomial(1, true_pi, size=n)
+mu_true = np.where(z == 1, -sep / 2, sep / 2)
+x = rng.normal(mu_true, 1.0)
+
+pi = 0.5
+mu1, mu2 = -0.5, 0.5
+history = []
+
+for step in range(iterations + 1):
+    dens1 = pi * stats.norm.pdf(x, mu1, 1.0)
+    dens2 = (1 - pi) * stats.norm.pdf(x, mu2, 1.0)
+    r = dens1 / (dens1 + dens2)
+    loglik = np.sum(np.log(dens1 + dens2))
+    history.append((step, pi, mu1, mu2, loglik))
+
+    if step == iterations:
+        break
+
+    pi = r.mean()
+    mu1 = np.sum(r * x) / np.sum(r)
+    mu2 = np.sum((1 - r) * x) / np.sum(1 - r)
+
+for step, pi, mu1, mu2, loglik in history:
+    print(f"{step:2d}: pi={pi:.3f}, mu1={mu1:.3f}, mu2={mu2:.3f}, loglik={loglik:.2f}")
+
+plt.plot([row[0] for row in history], [row[4] for row in history], marker="o")
+plt.xlabel("EM iteration")
+plt.ylabel("observed-data log likelihood")
+plt.show()
+```
+
 <p class="ese-next"><a href="/teaching/ese-531/expectation-maximization/">Back to topic notes</a></p>
 
 </div>

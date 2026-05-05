@@ -129,7 +129,7 @@ Approximate inference replaces the exact posterior with an approximation that is
 
 ## Laplace Approximation
 
-The Laplace approximation uses a Gaussian centered at the MAP estimator:
+The Laplace approximation uses a Gaussian centered at an interior MAP estimator:
 
 $$
 p(\theta\mid x)
@@ -146,12 +146,13 @@ H
 \bigg|_{\theta=\hat{\theta}_{\mathrm{MAP}}}.
 $$
 
-It is often good when $n$ is large and the posterior is approximately unimodal and Gaussian.
+This ordinary form requires $H$ to be positive definite at an interior mode. It is often good when $n$ is large and the posterior is approximately unimodal and Gaussian.
 
 Limitations:
 
 - It can fail for multimodal posteriors.
 - It can be poor for small sample sizes.
+- It can be misleading when the posterior mode lies on a boundary or the local Hessian is singular.
 - It may be expensive in high dimensions because it requires a Hessian.
 
 ### One-Dimensional Laplace Recipe
@@ -178,7 +179,7 @@ $$
 H=-h''(\hat{\theta}_{\mathrm{MAP}}).
 $$
 
-Exponentiating both sides shows that the posterior is approximated by
+When $\hat{\theta}_{\mathrm{MAP}}$ is interior and $H>0$, exponentiating both sides shows that the posterior is approximated by
 
 $$
 N(\hat{\theta}_{\mathrm{MAP}},H^{-1}).
@@ -205,7 +206,7 @@ $$
 Z
 \approx
 \exp(h(\hat{\theta}))
-(2\pi)^{d/2}|H|^{-1/2}.
+(2\pi)^{d/2}\det(H)^{-1/2}.
 $$
 
 This is why Laplace approximation can approximate both posterior distributions and marginal likelihoods.
@@ -218,7 +219,7 @@ $$
 q^\star
 =
 \arg\min_{q\in\mathcal{Q}}
-D_{\mathrm{KL}}(q(\theta)\|p(\theta\mid x)).
+D_{\mathrm{KL}}(q(\theta)\,\Vert\,p(\theta\mid x)).
 $$
 
 Equivalently, variational inference maximizes an evidence lower bound.
@@ -248,10 +249,10 @@ $$
 \log p(x)
 =
 \mathrm{ELBO}(q)
-+D_{\mathrm{KL}}(q(\theta)\|p(\theta\mid x)).
++D_{\mathrm{KL}}(q(\theta)\,\Vert\,p(\theta\mid x)).
 $$
 
-Since $\log p(x)$ does not depend on $q$, maximizing the ELBO is equivalent to minimizing $D_{\mathrm{KL}}(q\|p)$. The direction of the KL divergence matters: this common direction often prefers approximations that concentrate on one high-density region rather than covering all posterior modes.
+Since $\log p(x)$ does not depend on $q$, maximizing the ELBO is equivalent to minimizing $D_{\mathrm{KL}}(q\,\Vert\,p)$. The direction of the KL divergence matters: this common direction often prefers approximations that concentrate on one high-density region rather than covering all posterior modes.
 
 ## Student Takeaways
 

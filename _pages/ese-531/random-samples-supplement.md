@@ -54,7 +54,7 @@ Dividing by $a$ gives the result.
 > **Theorem (Chebyshev's Inequality):** If $Y$ has mean $\mu$ and finite nonzero variance $\sigma^2$, then for any $k>0$,
 >
 > $$
-> P(|Y-\mu|\geq k\sigma)\leq \frac{1}{k^2}.
+> P(\lvert Y-\mu\rvert\geq k\sigma)\leq \frac{1}{k^2}.
 > $$
 {: .ese-box .ese-theorem}
 
@@ -65,7 +65,7 @@ Chebyshev's inequality applies Markov's inequality to the nonnegative random var
 
 $$
 \begin{aligned}
-P(|Y-\mu|\geq k\sigma)
+P(\lvert Y-\mu\rvert\geq k\sigma)
 &=P((Y-\mu)^2\geq k^2\sigma^2)\\
 &\leq \frac{E[(Y-\mu)^2]}{k^2\sigma^2}\\
 &=\frac{1}{k^2}.
@@ -88,7 +88,7 @@ $$
 \frac{dM_X(t)}{dt}\bigg|_{t=0}=E[X].
 $$
 
-> **Theorem (Chernoff Bound):** Let $Y$ have MGF $M_Y(t)$ where $|t|<h$. Then
+> **Theorem (Chernoff Bound):** Let $Y$ have MGF $M_Y(t)$ where $\lvert t\rvert<h$. Then
 >
 > $$
 > P(Y\geq a)\leq e^{-at}M_Y(t),\qquad 0<t<h,
@@ -128,7 +128,7 @@ Limit theorems require precise language for convergence.
 > **Definition (Convergence in Probability):** A sequence of random variables $X_1,X_2,\ldots$ converges in probability to $X$ if, for every $\epsilon>0$,
 >
 > $$
-> \lim_{n\to\infty}P(|X_n-X|>\epsilon)=0.
+> \lim_{n\to\infty}P(\lvert X_n-X\rvert>\epsilon)=0.
 > $$
 >
 > We write $X_n\xrightarrow{P}X$.
@@ -174,7 +174,7 @@ For any $\epsilon>0$,
 
 $$
 \begin{aligned}
-P(|\bar{X}_n-\mu|\geq \epsilon)
+P(\lvert \bar{X}_n-\mu\rvert\geq \epsilon)
 &\leq \frac{\mathrm{Var}(\bar{X}_n)}{\epsilon^2}\\
 &=\frac{\sigma^2}{n\epsilon^2}.
 \end{aligned}

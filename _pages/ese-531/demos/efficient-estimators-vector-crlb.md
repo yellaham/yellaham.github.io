@@ -9,7 +9,46 @@ toc_label: "Demo"
 
 <div class="ese-531" markdown="1">
 
-In a two-parameter Gaussian location model, the sample mean has covariance $\Sigma/n$. Since the information matrix is $n\Sigma^{-1}$, the vector CRLB says any unbiased covariance matrix must dominate $\Sigma/n$.
+In a two-parameter Gaussian location model, use the covariance ellipse to connect Fisher information with the matrix form of the Cramer-Rao lower bound.
+
+## Mathematical setup
+
+Let $X_i\sim N_2(\theta,\Sigma)$ iid, where
+
+$$
+\Sigma=
+\begin{bmatrix}
+\sigma_1^2 & \rho\sigma_1\sigma_2\\
+\rho\sigma_1\sigma_2 & \sigma_2^2
+\end{bmatrix}.
+$$
+
+For the vector mean parameter $\theta=(\theta_1,\theta_2)^T$, the Fisher information is
+
+$$
+I_n(\theta)=n\Sigma^{-1}.
+$$
+
+The vector CRLB says that any unbiased estimator $\hat\theta$ must satisfy
+
+$$
+\operatorname{Cov}(\hat\theta)-I_n(\theta)^{-1}
+\quad\text{is positive semidefinite}.
+$$
+
+The sample mean attains the bound because $\operatorname{Cov}(\bar X)=\Sigma/n$. The plotted ellipse is the covariance contour
+
+$$
+u^T(\Sigma/n)^{-1}u=4,
+$$
+
+so its semiaxes are two marginal standard deviations along the principal directions. It is not the same object as a fixed-probability confidence ellipse unless the radius is chosen from a chi-squared quantile.
+
+## What to try
+
+- Increase $n$. The whole ellipse contracts, reflecting the $1/n$ covariance scaling.
+- Change $\rho$. Correlation rotates the ellipse and changes the covariance term without changing the marginal variances directly.
+- Make $\sigma_1$ much larger than $\sigma_2$. The ellipse stretches in the less precise coordinate.
 
 <div class="ese-demo" data-demo="efficient-estimators-vector-crlb">
   <div class="ese-demo-grid">
@@ -35,7 +74,7 @@ In a two-parameter Gaussian location model, the sample mean has covariance $\Sig
   <p class="ese-demo-takeaway"></p>
 </div>
 
-The ellipse shows a two-standard-deviation contour for the inverse-information covariance $\Sigma/n$.
+The ellipse shows the Mahalanobis-radius-2 contour for the inverse-information covariance $\Sigma/n$.
 
 <p class="ese-next"><a href="/teaching/ese-531/efficient-estimators-vector-crlb/">Back to topic notes</a></p>
 

@@ -9,7 +9,31 @@ toc_label: "Demo"
 
 <div class="ese-531" markdown="1">
 
-This demo repeats the same sampling experiment many times. Watch how the sampling distribution of $\bar X_n$ and the average behavior of $S_n^2$ change with sample size.
+This demo repeats the same sampling experiment many times. Use it to connect iid sampling assumptions with the random behavior of familiar sample statistics.
+
+## Mathematical setup
+
+Let $X_1,\ldots,X_n$ be iid observations from a population with mean $\mu$ and variance $\sigma^2<\infty$. The main statistics are
+
+$$
+\bar X_n=\frac{1}{n}\sum_{i=1}^n X_i,
+\qquad
+S_n^2=\frac{1}{n-1}\sum_{i=1}^n(X_i-\bar X_n)^2.
+$$
+
+Then $E[\bar X_n]=\mu$, $\operatorname{Var}(\bar X_n)=\sigma^2/n$, and $E[S_n^2]=\sigma^2$ under iid sampling. The central limit theorem says that, for many population models,
+
+$$
+\frac{\sqrt n(\bar X_n-\mu)}{\sigma}\Rightarrow N(0,1).
+$$
+
+For the heavy-tailed $t_3$ option, the variance is finite but large, so the normal approximation may need more samples to look convincing.
+
+## What to try
+
+- Compare Normal, centered Exponential, Bernoulli, and $t_3$ populations at the same $n$. The sample mean centers correctly in all four cases, but the histogram shape changes.
+- Increase $n$ while keeping the number of repeated samples fixed. The width of the sampling distribution should shrink at roughly the $1/\sqrt n$ rate.
+- Increase the repeated samples slider when the histogram looks noisy. More repetitions improve the Monte Carlo picture, not the theoretical variance of one sample mean.
 
 <div class="ese-demo" data-demo="random-samples">
   <div class="ese-demo-grid">
@@ -40,13 +64,7 @@ This demo repeats the same sampling experiment many times. Watch how the samplin
   <p class="ese-demo-takeaway"></p>
 </div>
 
-Formula to keep in view:
-
-$$
-\bar X_n=\frac{1}{n}\sum_{i=1}^n X_i,
-\qquad
-S_n^2=\frac{1}{n-1}\sum_{i=1}^n(X_i-\bar X_n)^2.
-$$
+The plot is simulation-based. Changing the seed gives a new set of repeated samples with the same population model and sample size.
 
 <p class="ese-next"><a href="/teaching/ese-531/random-samples/">Back to topic notes</a></p>
 

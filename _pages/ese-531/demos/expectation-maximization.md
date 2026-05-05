@@ -9,7 +9,38 @@ toc_label: "Demo"
 
 <div class="ese-531" markdown="1">
 
-This demo fits a two-component Gaussian mixture with fixed component variance. Points near responsibility 1 are assigned mostly to component 1; points near 0 are assigned mostly to component 2.
+This demo fits a two-component Gaussian mixture with fixed component variance. It is meant to make the hidden-label calculation visible rather than to be a full clustering package.
+
+## Mathematical setup
+
+Let $Z_i\in\{1,2\}$ be an unobserved component label and
+
+$$
+X_i\mid Z_i=1\sim N(\mu_1,1),
+\qquad
+X_i\mid Z_i=2\sim N(\mu_2,1),
+\qquad
+\Pr(Z_i=1)=\pi.
+$$
+
+For current parameters $\theta^{(t)}=(\pi^{(t)},\mu_1^{(t)},\mu_2^{(t)})$, the E-step computes responsibilities
+
+$$
+r_i^{(t)}
+=
+\Pr(Z_i=1\mid X_i,\theta^{(t)})
+=
+\frac{\pi^{(t)}\phi(X_i;\mu_1^{(t)},1)}
+{\pi^{(t)}\phi(X_i;\mu_1^{(t)},1)+(1-\pi^{(t)})\phi(X_i;\mu_2^{(t)},1)}.
+$$
+
+The M-step updates $\pi$, $\mu_1$, and $\mu_2$ by weighted averages. The observed-data log likelihood should not decrease, apart from numerical rounding.
+
+## What to try
+
+- Start with well-separated components. Responsibilities should be close to 0 or 1 for most observations after a few iterations.
+- Reduce the true separation. The soft assignments become less certain, and the fitted means can move more slowly.
+- Change the seed. EM depends on the sample and can also be sensitive to initialization in more general mixture problems.
 
 <div class="ese-demo" data-demo="expectation-maximization">
   <div class="ese-demo-grid">

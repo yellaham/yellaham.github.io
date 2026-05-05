@@ -9,7 +9,30 @@ toc_label: "Demo"
 
 <div class="ese-531" markdown="1">
 
-For samples from $\mathrm{Uniform}(0,\theta)$, compare a method-of-moments estimator $\hat\theta_{\mathrm{MOM}}=2\bar X$ with the MLE $\hat\theta_{\mathrm{MLE}}=\max_i X_i$.
+For samples from $\mathrm{Uniform}(0,\theta)$, compare a moment estimator with a likelihood estimator that is driven by the support constraint.
+
+## Mathematical setup
+
+Let $X_1,\ldots,X_n\sim\mathrm{Uniform}(0,\theta)$ iid. Since $E[X_i]=\theta/2$, the method-of-moments estimator is
+
+$$
+\hat\theta_{\mathrm{MOM}}=2\bar X.
+$$
+
+The likelihood is
+
+$$
+L(\theta;x)=\theta^{-n}\mathbf 1\{\theta\geq x_{(n)}\},
+\qquad x_{(n)}=\max_i x_i,
+$$
+
+so the maximum likelihood estimator is $\hat\theta_{\mathrm{MLE}}=X_{(n)}$. It is biased downward with $E[X_{(n)}]=n\theta/(n+1)$, while the MOM estimator is unbiased.
+
+## What to try
+
+- Use small $n$ to see the MLE's downward bias clearly. It often has lower spread but tends to sit below the true endpoint.
+- Increase $n$ and compare RMSE. Both estimators improve, but they do so for different reasons: averaging versus the maximum moving toward the boundary.
+- Change $\theta$ after fixing $n$. The relative behavior is scale-stable, while the absolute RMSE scales with the endpoint.
 
 <div class="ese-demo" data-demo="point-estimation">
   <div class="ese-demo-grid">

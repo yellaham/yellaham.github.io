@@ -9,11 +9,31 @@ toc_label: "Demo"
 
 <div class="ese-531" markdown="1">
 
-For Bernoulli data with a beta prior, posterior updating is parameter updating:
+For Bernoulli data with a beta prior, posterior updating is parameter updating. The widget shows how prior strength and observed counts combine.
+
+## Mathematical setup
+
+Let $X_i\mid\theta\sim\mathrm{Bernoulli}(\theta)$ and let $\theta\sim\mathrm{Beta}(\alpha,\beta)$. If $s=\sum_i x_i$ successes are observed in $n$ trials, then conjugacy gives
 
 $$
 \Theta\mid x\sim\mathrm{Beta}(\alpha+s,\beta+n-s).
 $$
+
+The posterior mean and, when the posterior mode is interior, the MAP estimate are
+
+$$
+E[\Theta\mid x]=\frac{\alpha+s}{\alpha+\beta+n},
+\qquad
+\hat\theta_{\mathrm{MAP}}=\frac{\alpha+s-1}{\alpha+\beta+n-2}.
+$$
+
+The posterior mean behaves like a weighted average of the prior mean $\alpha/(\alpha+\beta)$ and the sample proportion $s/n$.
+
+## What to try
+
+- Keep $s/n$ fixed and increase $\alpha+\beta$. The posterior moves less because the prior has more effective strength.
+- Compare a symmetric prior with a skeptical prior such as $\alpha=2,\beta=8$. The same data can lead to different posterior compromise.
+- Try boundary data, such as $s=0$ or $s=n$. The page reports boundary MAP behavior rather than using the interior formula blindly.
 
 <div class="ese-demo" data-demo="bayesian-estimation">
   <div class="ese-demo-grid">

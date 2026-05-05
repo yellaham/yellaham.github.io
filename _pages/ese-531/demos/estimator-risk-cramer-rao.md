@@ -9,7 +9,38 @@ toc_label: "Demo"
 
 <div class="ese-531" markdown="1">
 
-Consider estimating a normal mean with known variance. The shrinkage rule $\hat\mu=m_0+a(\bar X-m_0)$ trades bias against variance.
+Consider estimating a normal mean with known variance. The shrinkage rule lets you see why a biased estimator can have attractive MSE while still not contradicting the scalar CRLB.
+
+## Mathematical setup
+
+Let $X_i\sim N(\mu,\sigma^2)$ iid with known $\sigma=1$ in the widget. The shrinkage estimator is
+
+$$
+\hat\mu_a=m_0+a(\bar X-m_0).
+$$
+
+At a fixed true value $\mu$,
+
+$$
+\operatorname{Bias}_\mu(\hat\mu_a)=(a-1)(\mu-m_0),
+\qquad
+\operatorname{Var}_\mu(\hat\mu_a)=\frac{a^2\sigma^2}{n},
+$$
+
+so the pointwise risk under squared error is
+
+$$
+R(\mu,\hat\mu_a)=E_\mu[(\hat\mu_a-\mu)^2]
+=(a-1)^2(\mu-m_0)^2+\frac{a^2\sigma^2}{n}.
+$$
+
+For unbiased estimators of $\mu$, the scalar Cramer-Rao bound gives $\operatorname{Var}(\hat\mu)\geq\sigma^2/n$. The biased shrinkage curve is compared by full MSE, not variance alone.
+
+## What to try
+
+- Set $m_0$ close to the true $\mu$. Strong shrinkage can reduce MSE because the bias penalty is small.
+- Move $\mu$ far from $m_0$. The same shrinkage can become worse than the sample mean because squared bias dominates.
+- Increase $n$. The CRLB drops, and the variance benefit of shrinkage becomes less dramatic.
 
 <div class="ese-demo" data-demo="estimator-risk-cramer-rao">
   <div class="ese-demo-grid">

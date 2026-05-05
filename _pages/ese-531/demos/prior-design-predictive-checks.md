@@ -9,7 +9,26 @@ toc_label: "Demo"
 
 <div class="ese-531" markdown="1">
 
-Before seeing data, a beta prior implies a beta-binomial prior predictive distribution for future successes.
+Before seeing data, a beta prior implies a beta-binomial distribution for future counts. Use this page as a prior calibration check before committing to an analysis.
+
+## Mathematical setup
+
+Let $\Theta\sim\mathrm{Beta}(\alpha,\beta)$ and, conditional on $\Theta$, let $Y\mid\Theta\sim\mathrm{Binomial}(m,\Theta)$ for $m$ future trials. Integrating over the prior gives the beta-binomial prior predictive distribution:
+
+$$
+\Pr(Y=k)=
+\binom{m}{k}
+\frac{B(k+\alpha,m-k+\beta)}{B(\alpha,\beta)},
+\qquad k=0,\ldots,m.
+$$
+
+Its mean is $m\alpha/(\alpha+\beta)$. At a fixed prior mean, increasing $\alpha+\beta$ makes the prior for $\Theta$ more concentrated, which usually makes the predictive count distribution less overdispersed.
+
+## What to try
+
+- Hold the prior mean near 0.2 and compare $\mathrm{Beta}(2,8)$ with a stronger prior such as $\mathrm{Beta}(8,32)$.
+- Increase $m$. The predictive distribution spreads over more possible counts, but its center stays tied to the prior mean.
+- Check whether extreme counts, such as no successes, look plausible before data are collected.
 
 <div class="ese-demo" data-demo="prior-design-predictive-checks">
   <div class="ese-demo-grid">

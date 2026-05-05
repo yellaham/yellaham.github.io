@@ -49,19 +49,19 @@ Thus Monte Carlo error usually decreases like $1/\sqrt{M}$, independent of the p
 
 ## Rejection Sampling
 
-Rejection sampling uses an easier proposal density $q(\theta)$ and a constant $M$ such that
+Rejection sampling uses an easier proposal density $q(\theta)$ and an envelope constant $C$ such that
 
 $$
-\pi(\theta)\leq Mq(\theta)
+\pi(\theta)\leq Cq(\theta)
 $$
 
 for all $\theta$ in the support. Candidate samples from $q$ are accepted with probability
 
 $$
-\frac{\pi(\theta)}{Mq(\theta)}.
+\frac{\pi(\theta)}{Cq(\theta)}.
 $$
 
-If $q$ is not close to $\pi$, the required $M$ becomes large and the acceptance rate becomes small. For normalized $\pi$, the average acceptance probability is $1/M$.
+If $q$ is not close to $\pi$, the required $C$ becomes large and the acceptance rate becomes small. For normalized $\pi$, the average acceptance probability is $1/C$.
 
 <details class="ese-proof">
 <summary>Why Accepted Samples Have the Target Distribution</summary>
@@ -69,9 +69,9 @@ If $q$ is not close to $\pi$, the required $M$ becomes large and the acceptance 
 Let $A$ be the event that a proposed value is accepted. The density of an accepted value is proportional to
 
 $$
-q(\theta)\frac{\pi(\theta)}{Mq(\theta)}
+q(\theta)\frac{\pi(\theta)}{Cq(\theta)}
 =
-\frac{1}{M}\pi(\theta).
+\frac{1}{C}\pi(\theta).
 $$
 
 After normalizing over accepted samples, the accepted density is exactly $\pi(\theta)$.
@@ -98,7 +98,7 @@ $$
 w(\theta)=\frac{\pi(\theta)}{q(\theta)}.
 $$
 
-When the target is known only up to a normalizing constant, normalized importance sampling uses
+When the target is known only up to a normalizing constant, the weights are known only up to a common proportionality constant. Normalized importance sampling then uses
 
 $$
 \frac{\sum_{m=1}^M w_mh(\theta^{(m)})}
@@ -111,7 +111,7 @@ $$
 \pi(\theta)>0\quad\Longrightarrow\quad q(\theta)>0.
 $$
 
-Importance sampling can technically run when this condition fails, but it silently ignores target mass. A good proposal should put substantial probability in regions where both $\pi(\theta)$ and $|h(\theta)|$ are large.
+Importance sampling can technically run when this condition fails, but it silently ignores target mass. A good proposal should put substantial probability in regions where both $\pi(\theta)$ and $\lvert h(\theta)\rvert$ are large.
 
 The unnormalized estimator is unbiased when the normalized target density is known exactly. The self-normalized estimator is usually biased for finite $M$, but it is consistent and is often the practical choice in Bayesian inference because posteriors are known only up to a normalizing constant.
 

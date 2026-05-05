@@ -9,7 +9,43 @@ toc_label: "Demo"
 
 <div class="ese-531" markdown="1">
 
-Estimate the rare-event probability $P(Z>\gamma)$ for $Z\sim N(0,1)$ by crude Monte Carlo and by importance sampling from $N(\text{shift},1)$.
+Estimate a normal tail probability by crude Monte Carlo and by importance sampling. This is a compact way to see why proposal choice matters for rare events.
+
+## Mathematical setup
+
+The target probability is
+
+$$
+p_\gamma=\Pr(Z>\gamma)=E_f[\mathbf 1\{Z>\gamma\}],
+\qquad Z\sim N(0,1).
+$$
+
+Crude Monte Carlo uses
+
+$$
+\hat p_{\mathrm{crude}}=\frac{1}{M}\sum_{m=1}^M \mathbf 1\{Z_m>\gamma\},
+\qquad Z_m\sim f.
+$$
+
+Importance sampling draws $Y_m\sim q=N(\delta,1)$ and weights by $w(Y_m)=f(Y_m)/q(Y_m)$:
+
+$$
+\hat p_{\mathrm{IS}}=\frac{1}{M}\sum_{m=1}^M \mathbf 1\{Y_m>\gamma\}w(Y_m).
+$$
+
+This estimate is unbiased for the displayed setup because both $f$ and $q$ are normalized and known exactly. The effective sample size displayed by the widget is
+
+$$
+\mathrm{ESS}=\frac{\left(\sum_m w_m\right)^2}{\sum_m w_m^2},
+$$
+
+a diagnostic for weight concentration, not a proof of accuracy.
+
+## What to try
+
+- Set $\gamma$ near 1.5. Crude Monte Carlo usually works because the event is not too rare.
+- Move $\gamma$ toward 3 or 4. Crude estimates can become unstable unless $M$ is large.
+- Set the proposal shift near the threshold. If the shift is too small, few proposal samples hit the tail; if too large, weights can become unstable.
 
 <div class="ese-demo" data-demo="monte-carlo-methods">
   <div class="ese-demo-grid">

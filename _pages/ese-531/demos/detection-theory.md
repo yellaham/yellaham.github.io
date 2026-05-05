@@ -9,7 +9,50 @@ toc_label: "Demo"
 
 <div class="ese-531" markdown="1">
 
-For a Gaussian mean-shift test, decide $H_1$ when the sample mean exceeds threshold $\gamma$. The left panel shows the threshold on the statistic distributions; the right panel shows the ROC operating point.
+For a Gaussian mean-shift test, decide $H_1$ when the sample mean exceeds a threshold. The plot connects the likelihood-ratio idea with false-alarm and detection probabilities.
+
+## Mathematical setup
+
+Consider
+
+$$
+H_0:X_i\sim N(0,\sigma^2),
+\qquad
+H_1:X_i\sim N(\mu_1,\sigma^2),
+\qquad \mu_1>0.
+$$
+
+For iid observations, the sample mean is sufficient for this one-sided mean-shift test:
+
+$$
+\bar X\mid H_0\sim N\left(0,\frac{\sigma^2}{n}\right),
+\qquad
+\bar X\mid H_1\sim N\left(\mu_1,\frac{\sigma^2}{n}\right).
+$$
+
+The threshold rule is decide $H_1$ when $\bar X>\gamma$, so
+
+$$
+P_{\mathrm{FA}}=\Pr_0(\bar X>\gamma),
+\qquad
+P_D=\Pr_1(\bar X>\gamma).
+$$
+
+Equivalently,
+
+$$
+P_{\mathrm{FA}}=1-\Phi\left(\frac{\gamma\sqrt n}{\sigma}\right),
+\qquad
+P_D=1-\Phi\left(\frac{(\gamma-\mu_1)\sqrt n}{\sigma}\right).
+$$
+
+Sweeping $\gamma$ traces out the ROC curve.
+
+## What to try
+
+- Move $\gamma$ right. False alarms decrease, but missed detections increase.
+- Increase $\mu_1$ or $n$. The two statistic distributions separate more, improving the ROC.
+- Increase $\sigma$. The distributions overlap more, so the same threshold becomes less decisive.
 
 <div class="ese-demo" data-demo="detection-theory">
   <div class="ese-demo-grid">
